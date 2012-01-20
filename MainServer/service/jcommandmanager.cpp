@@ -6,8 +6,6 @@
 #include <QCoreApplication>
 #include <QProcess>
 
-#include <QSqlDatabase>
-
 JCommandManager::JCommandManager()
 {
 }

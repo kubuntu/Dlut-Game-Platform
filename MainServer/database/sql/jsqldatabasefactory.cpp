@@ -12,33 +12,13 @@
 
 #include <QSettings>
 #include <QStringList>
+#include <QCoreApplication>
 
 #include <QDebug>
-
-//int JSQLDatabaseFactory::connectCount = 0;
-
-//JSQLDatabaseFactory::~JSQLDatabaseFactory() {
-//	qDebug() << "++ JSQLDatabaseFactory destructed";
-////	if (!--connectCount) {
-////		qDebug() << "connectCount = " << connectCount;
-//		if (dgpDB->isOpen()) {
-//			qDebug() << "dgpdb close...";
-//			dgpDB->close();
-//			delete dgpDB;
-//		} else {
-//			//already closed
-//			qDebug() << "dgpdb closed before destructed";
-//		}
-////	} else {
-////		qDebug() << "connectCount = " << connectCount;
-////		//nothing...
-////	}
-//}
 
 JSQLDatabaseFactory::JSQLDatabaseFactory(QObject *parent) :
 	JAbstractDatabaseFactory(parent)
 {
-	qDebug() << "++ JSQLDatabaseFactory constructed ";
 	dgpDB = new QSqlDatabase;
 
 	dgpdbIni = new QSettings("dgpdb.ini", QSettings::IniFormat);
@@ -84,6 +64,9 @@ JSQLDatabaseFactory::JSQLDatabaseFactory(QObject *parent) :
 			qDebug() << dgpDB->lastError().databaseText();
 			qDebug() << "dgpdb connect fali...";
 		}
+    connect(QCoreApplication::instance(),
+            SIGNAL(aboutToQuit()),
+            SLOT(on_application_aboutToQuit()));
 }
 
 
@@ -112,4 +95,13 @@ JAbstractGameInfoDB* JSQLDatabaseFactory::createGameInfoDB() {
 JAbstractServerInfoDB* JSQLDatabaseFactory::createServerInfoDB() {
 	qDebug() << "++ JSQLDatabaseFactory createServerInfoDB";
 	return new JSQLServerInfoDB(dgpDB, this);
+}
+
+void JSQLDatabaseFactory::on_application_aboutToQuit()
+{
+    qDebug()<<__FUNCTION__;
+    dgpDB->close();
+    delete dgpDB;
+    dgpDB = NULL ;
+    QSqlDatabase::removeDatabase( "dgpdb" );
 }
