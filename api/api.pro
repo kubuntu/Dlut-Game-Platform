@@ -1,6 +1,6 @@
 QT += network
 TEMPLATE = lib
-TARGET = api
+TARGET = dgpapi
 VERSION = 0.1.1
 CONFIG += create_prl
 
