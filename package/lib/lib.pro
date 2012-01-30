@@ -1,4 +1,5 @@
 QT += xml
+QT -= gui
 TEMPLATE = lib
 TARGET = dgppkg
 VERSION = 0.0.1
