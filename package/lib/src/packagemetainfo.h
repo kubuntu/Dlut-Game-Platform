@@ -9,12 +9,25 @@ class PackageMetainfo
 public:
     PackageMetainfo();
 
+    enum OS{
+        X11,
+        SBMSWIN,
+        MAX,
+    };
+
     void setGameId(int);
     void setName(const QString&);
     void setVersion(const QString&);
     void setAuthor(const QString&);
     void setOrganization(const QString&);
     void setIntroduction(const QString&);
+    void setOS(OS os);
+    void setOsStr(const QString&);
+
+    const QString& name()const;
+    const QString& version()const;
+    OS os()const;
+    const QString& osStr()const;
 
     static PackageMetainfo fromXML(const QByteArray& data);
     static QByteArray toXML(const PackageMetainfo& info);
@@ -25,6 +38,7 @@ private:
     QString m_author;
     QString m_organization;
     QString m_introduction;
+    OS m_os;
 };
 
 #endif // PACKAGEMETAINFO_H

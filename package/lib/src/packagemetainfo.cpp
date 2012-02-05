@@ -4,6 +4,13 @@
 
 #include <QDebug>
 
+const static QString s_osStrList[]={
+    "X11",
+    "win",
+    "error",
+};
+
+
 /*!
     \class PackageMetainfo
     这个类记录的信息必须是人类可读的。
@@ -12,6 +19,9 @@
 PackageMetainfo::PackageMetainfo()
 {
     m_gameId = -1;
+    m_name = "noName";
+    m_version = "0.0";
+    m_os = MAX;
 }
 
 void PackageMetainfo::setGameId(int id){
@@ -38,6 +48,39 @@ void PackageMetainfo::setIntroduction(const QString& str){
     m_introduction = str;
 }
 
+void PackageMetainfo::setOS(OS os){
+    m_os = os ;
+}
+
+void PackageMetainfo::setOsStr(const QString& str){
+    int value = -1 ;
+    for(value =0;value<MAX;++value){
+        if(s_osStrList[value] == str){
+            break;
+        }
+    }
+    if(value >= 0 && value<MAX){
+        setOS((OS)value);
+    }else{
+        setOS(MAX);
+    }
+}
+
+const QString& PackageMetainfo::name()const{
+    return m_name;
+}
+
+const QString& PackageMetainfo::version()const{
+    return m_version ;
+}
+
+PackageMetainfo::OS PackageMetainfo::os()const{
+    return m_os ;
+}
+
+const QString& PackageMetainfo::osStr()const{
+    return s_osStrList[m_os];
+}
 
 PackageMetainfo PackageMetainfo::fromXML(const QByteArray& data){
     QDomDocument dom;
@@ -64,6 +107,8 @@ PackageMetainfo PackageMetainfo::fromXML(const QByteArray& data){
             info.setOrganization(node.toElement().text());
         }else if(node.nodeName() == "introduction"){
             info.setIntroduction(node.toElement().text());
+        }else if(node.nodeName() == "os"){
+            info.setOsStr(node.toElement().text());
         }
     }
 
@@ -112,6 +157,12 @@ QByteArray PackageMetainfo::toXML(const PackageMetainfo& info){
     eleInfo.appendChild(eleIntroduction);
     QDomText txtIntroduction = dom.createTextNode(info.m_introduction);
     eleIntroduction.appendChild(txtIntroduction);
+
+    // os
+    QDomElement eleOs = dom.createElement("os");
+    eleInfo.appendChild(eleOs);
+    QDomText txtOs = dom.createTextNode(info.osStr());
+    eleOs.appendChild(txtOs);
 
     return dom.toByteArray();
 }
