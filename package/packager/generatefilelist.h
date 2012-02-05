@@ -12,6 +12,7 @@ public:
     QStringList fileList()const;
     QString inZipPath(const QString& filePath)const;
 private:
+    void generateDir(const QString& basePath,const QString& innerPath);
     QMap<QString,QString> m_file;
 };
 

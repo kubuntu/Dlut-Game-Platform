@@ -1,6 +1,7 @@
 #include "generatemetainfo.h"
 
-#include <QSettings>
+#include "jargumentanalysis.h"
+
 #include <QFile>
 
 GenerateMetainfo::GenerateMetainfo()
@@ -8,12 +9,11 @@ GenerateMetainfo::GenerateMetainfo()
 }
 
 PackageMetainfo GenerateMetainfo::generate(){
-    QSettings set("dgppkg.ini",QSettings::IniFormat);
+    JArgumentAnalysis* aa = JArgumentAnalysis::getInstance();
 
-    QString inputPath = set.value("input/path",".").toString();
-    QString metainfoPath = set.value("metainfo/path","dgppkg/metainfo.xml").toString();
+    QString filePath = aa->path()+"/dgppkg/metainfo.xml";
 
-    QFile file(inputPath+'/'+metainfoPath);
+    QFile file(filePath);
     file.open(QIODevice::ReadOnly);
     QByteArray data = file.readAll();
 
