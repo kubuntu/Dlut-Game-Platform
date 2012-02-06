@@ -41,6 +41,7 @@ void JUserRegister::execute(const QString& loginname,const QString& password,ERo
 	m_result=logindb->addLoginUser(loginname,password);
 	if(0==m_result){
 		m_userId = logindb->checkLoginName(loginname);
+		logindb->setRoleCombination(m_userId,(1<<role));
 		m_loginname = logindb->getLoginName(m_userId);
 	}
 }
