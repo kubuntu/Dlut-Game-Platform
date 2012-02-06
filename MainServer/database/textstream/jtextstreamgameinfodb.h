@@ -10,6 +10,8 @@ public:
 	JGameInfo getGameInfoById(JID id);
 	JGameList getGameList();
 	JCode updateGameInfo(const JGameInfo& gameinfo);
+	bool isGameIdExist(JID id);
+	JCode insertGameInfo(const JGameInfo& gameinfo);
 
 	static void flush();
 };

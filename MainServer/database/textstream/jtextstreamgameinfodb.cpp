@@ -1,5 +1,7 @@
 #include "jtextstreamgameinfodb.h"
 
+#include <Global/CodeError>
+
 #include <QStringList>
 #include <QString>
 #include <QFile>
@@ -65,6 +67,20 @@ JGameList JTextStreamGameInfoDB::getGameList()
 }
 
 JCode JTextStreamGameInfoDB::updateGameInfo(const JGameInfo& gameinfo)
+{
+	if(!isGameIdExist(gameinfo.getGameId())){
+		return EIdNotExist;
+	}
+	s_gameinfos.insert(gameinfo.getGameId(),gameinfo);
+	return 0;
+}
+
+bool JTextStreamGameInfoDB::isGameIdExist(JID id)
+{
+	return s_gameinfos.contains(id);
+}
+
+JCode JTextStreamGameInfoDB::insertGameInfo(const JGameInfo& gameinfo)
 {
 	s_gameinfos.insert(gameinfo.getGameId(),gameinfo);
 	return 0;

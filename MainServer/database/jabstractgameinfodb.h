@@ -14,6 +14,8 @@ public:
 	virtual JGameInfo getGameInfoById(JID id)=0;
 	virtual JGameList getGameList()=0;
 	virtual JCode updateGameInfo(const JGameInfo& gameinfo)=0;
+	virtual bool isGameIdExist(JID id)=0;
+	virtual JCode insertGameInfo(const JGameInfo& gameinfo)=0;
 };
 
 #endif // JABSTRACTGAMEINFODB_H

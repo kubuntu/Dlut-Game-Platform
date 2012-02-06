@@ -107,7 +107,12 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 			{
 				JGameInfo gameinfo;
 				gameinfo.fromByteArray(data);
-				databaseFactory->createGameInfoDB()->updateGameInfo(gameinfo);
+				JAbstractGameInfoDB* gameInfoDb = databaseFactory->createGameInfoDB();
+				if(gameInfoDb->isGameIdExist(gameinfo.getGameId())){
+					gameInfoDb->updateGameInfo(gameinfo);
+				}else{
+					gameInfoDb->insertGameInfo(gameinfo);
+				}
 			}
 			break;
 		default:
@@ -121,7 +126,12 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 			{
 				JServerInfo serverinfo;
 				serverinfo.fromByteArray(data);
-				databaseFactory->createServerInfoDB()->updateServerInfo(serverinfo);
+				JAbstractServerInfoDB* serverInfoDb = databaseFactory->createServerInfoDB();
+				if(serverInfoDb->isServerIdExist(serverinfo.getServerId())){
+					serverInfoDb->updateServerInfo(serverinfo);
+				}else{
+					serverInfoDb->insertServerInfo(serverinfo);
+				}
 			}
 			break;
 		default:

@@ -22,8 +22,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="0" rowspan="7">
-     <widget class="QListWidget" name="list_game">
-     </widget>
+     <widget class="QListWidget" name="list_game"/>
     </item>
     <item row="0" column="1" rowspan="7">
      <widget class="QTextBrowser" name="tb_game">
@@ -207,12 +206,18 @@
      <string>&amp;admin</string>
     </property>
     <addaction name="actionShow_admin_window"/>
+    <addaction name="actionAdd_game"/>
    </widget>
    <addaction name="menuAdmin"/>
   </widget>
   <action name="actionShow_admin_window">
    <property name="text">
     <string>show &amp;admin window</string>
+   </property>
+  </action>
+  <action name="actionAdd_game">
+   <property name="text">
+    <string>add &amp;game</string>
    </property>
   </action>
  </widget>

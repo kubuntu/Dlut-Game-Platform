@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JFormAddGame</class>
+ <widget class="QWidget" name="JFormAddGame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>add game</string>
+  </property>
+  <widget class="QWidget" name="formLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>291</width>
+     <height>370</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_3">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lab_gameid">
+      <property name="text">
+       <string>game id</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="lab_name">
+      <property name="text">
+       <string>name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="lab_version">
+      <property name="text">
+       <string>version</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="lab_authorid">
+      <property name="text">
+       <string>author id</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="lab_runnerid">
+      <property name="text">
+       <string>runner id</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="lab_intro">
+      <property name="text">
+       <string>introduction</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="lab_serverid">
+      <property name="text">
+       <string>server id</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="lab_url">
+      <property name="text">
+       <string>download url</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="lab_servername">
+      <property name="text">
+       <string>server name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="lab_server_addr">
+      <property name="text">
+       <string>server address</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="lab_server_port">
+      <property name="text">
+       <string>server port</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="edt_gameid"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="edt_gamename"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="edt_version"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="edt_authorid"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="edt_runnerid"/>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="edt_serverid"/>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="edt_intro"/>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="edt_downloadurl"/>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="edt_servername"/>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLineEdit" name="edt_server_addr"/>
+    </item>
+    <item row="10" column="1">
+     <widget class="QLineEdit" name="edt_server_port"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QTextBrowser" name="txt_msg_add_game">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>40</y>
+     <width>261</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>250</y>
+     <width>261</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="btn_game_reset">
+      <property name="text">
+       <string>reset</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_game_add">
+      <property name="text">
+       <string>add</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>edt_gameid</tabstop>
+  <tabstop>edt_gamename</tabstop>
+  <tabstop>edt_version</tabstop>
+  <tabstop>edt_authorid</tabstop>
+  <tabstop>edt_runnerid</tabstop>
+  <tabstop>edt_intro</tabstop>
+  <tabstop>edt_serverid</tabstop>
+  <tabstop>edt_downloadurl</tabstop>
+  <tabstop>edt_servername</tabstop>
+  <tabstop>edt_server_addr</tabstop>
+  <tabstop>edt_server_port</tabstop>
+  <tabstop>txt_msg_add_game</tabstop>
+  <tabstop>btn_game_reset</tabstop>
+  <tabstop>btn_game_add</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

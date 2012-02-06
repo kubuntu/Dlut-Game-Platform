@@ -1,5 +1,7 @@
 #include "jtextstreamserverinfodb.h"
 
+#include <Global/CodeError>
+
 #include <QStringList>
 #include <QFile>
 #include <QTextStream>
@@ -41,9 +43,24 @@ JServerInfo JTextStreamServerInfoDB::getServerInfoById(JID id)
 
 JCode JTextStreamServerInfoDB::updateServerInfo(const JServerInfo& serverinfo)
 {
+	if(!isServerIdExist(serverinfo.getServerId())){
+		return EIdNotExist;
+	}
 	s_serverinfos.insert(serverinfo.getServerId(),serverinfo);
 	return 0;
 }
+
+bool JTextStreamServerInfoDB::isServerIdExist(JID id)
+{
+	return s_serverinfos.contains(id);
+}
+
+JCode JTextStreamServerInfoDB::insertServerInfo(const JServerInfo& serverinfo)
+{
+	s_serverinfos.insert(serverinfo.getServerId(),serverinfo);
+	return 0;
+}
+
 
 void JTextStreamServerInfoDB::flush()
 {

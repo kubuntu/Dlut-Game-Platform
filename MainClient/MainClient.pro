@@ -21,7 +21,8 @@ SOURCES += main/main.cpp \
     service/jgameclientloader.cpp \
     service/jdownloader.cpp \
     gui/gamehall/jdialogstartgame.cpp \
-    gui/gamehall/jwidgethalltalk.cpp
+    gui/gamehall/jwidgethalltalk.cpp \
+    gui/gamehall/jformaddgame.cpp
 HEADERS += gui/gamehall/mainwindow.h \
     gui/selectserver/jcomboselectserver.h \
     gui/login/jdlglogin.h \
@@ -40,7 +41,8 @@ HEADERS += gui/gamehall/mainwindow.h \
     service/jgameclientloader.h \
     service/jdownloader.h \
     gui/gamehall/jdialogstartgame.h \
-    gui/gamehall/jwidgethalltalk.h
+    gui/gamehall/jwidgethalltalk.h \
+    gui/gamehall/jformaddgame.h
 FORMS += gui/gamehall/mainwindow.ui \
     gui/login/jdlglogin.ui \
     gui/selectserver/jdlgnewserver.ui \
@@ -49,6 +51,7 @@ FORMS += gui/gamehall/mainwindow.ui \
     gui/login/jdialoguserregister.ui \
     gui/gamehall/jdialogupdateuserinfo.ui \
     gui/gamehall/jdialogstartgame.ui \
-    gui/gamehall/jwidgethalltalk.ui
+    gui/gamehall/jwidgethalltalk.ui \
+    gui/gamehall/jformaddgame.ui
 RESOURCES += \
     res/sources.qrc

@@ -14,6 +14,7 @@
 #include "jwidgetadmin.h"
 #include "jdialogupdateuserinfo.h"
 #include "jdialogstartgame.h"
+#include "jformaddgame.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	m_requserinfo=new JRequestUserInfo(this);
 	m_widgetadmin=NULL;
+	m_formAddGame = NULL;
 	connect(JMainClientSocket::getInstance(),
 			SIGNAL(disconnected()),
 			SLOT(On_socket_disconnected()));
@@ -70,6 +72,15 @@ void MainWindow::on_actionShow_admin_window_triggered()
 		m_widgetadmin->setWindowFlags(Qt::Window);
 	}
 	m_widgetadmin->show();
+}
+
+void MainWindow::on_actionAdd_game_triggered(){
+	if( NULL == m_formAddGame ){
+		m_formAddGame = new JFormAddGame(this);
+		m_formAddGame->setWindowFlags(Qt::Window);
+	}
+	m_formAddGame->show();
+	m_formAddGame->reset();
 }
 
 void MainWindow::on_btn_refresh_list_clicked()

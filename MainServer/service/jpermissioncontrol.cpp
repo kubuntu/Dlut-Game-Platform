@@ -34,16 +34,20 @@ bool JPermissionControl::checkInformation(JID protocol,const JHead& head)
 			}
 			return false;
 			break;
-		case EIT_GameInfo://只有游戏运营者才能更改游戏信息
+		case EIT_GameInfo://只有游戏运营者和Admin可以更改游戏信息
 			{
+				JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+				if(logindb->checkRole(m_userId,ROLE_ADMIN)) return true;
 				JID gameId = head.m_id;
 				JAbstractGameInfoDB* gameinfoDb=m_dbFactory->createGameInfoDB();
 				JGameInfo gameinfo = gameinfoDb->getGameInfoById(gameId);
 				return gameinfo.getRunner() == m_userId;
 			}
 			break;
-		case EIT_ServerInfo:
+		case EIT_ServerInfo://只有游戏运营者和Admin可以更改游戏信息
 			{
+				JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+				if(logindb->checkRole(m_userId,ROLE_ADMIN)) return true;
 				JID serverId = head.m_id;
 				JAbstractServerInfoDB* serverinfoDB = m_dbFactory->createServerInfoDB();
 				JServerInfo serverinfo = serverinfoDB->getServerInfoById(serverId);

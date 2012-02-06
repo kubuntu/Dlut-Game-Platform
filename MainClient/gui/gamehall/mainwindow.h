@@ -14,6 +14,7 @@ class JRequestGameInfo;
 class JRequestUserInfo;
 class QListWidgetItem;
 class JWidgetAdmin;
+class JFormAddGame;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -28,10 +29,12 @@ protected:
 private:
     Ui::MainWindow *ui;
 	JWidgetAdmin *m_widgetadmin;
+	JFormAddGame *m_formAddGame;
 private slots:
 	void on_btn_update_myuserinfo_clicked();
 	void on_btn_refresh_myuserinfo_clicked();
 	void on_actionShow_admin_window_triggered();
+	void on_actionAdd_game_triggered();
 	void on_btn_start_game_clicked();
 	void on_list_game_itemClicked(QListWidgetItem* item);
 	void on_btn_refresh_list_clicked();

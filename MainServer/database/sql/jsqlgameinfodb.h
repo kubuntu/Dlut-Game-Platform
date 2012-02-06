@@ -9,10 +9,11 @@ class JSQLGameInfoDB : public JAbstractGameInfoDB
 {
 public:
 	explicit JSQLGameInfoDB(QSqlDatabase *dgpDB, QObject *parent = 0);
-//	~JSQLGameInfoDB();
 	JGameInfo getGameInfoById(JID ID);
 	JGameList getGameList();
 	JCode updateGameInfo(const JGameInfo &gameInfo);
+	bool isGameIdExist(JID id);
+	JCode insertGameInfo(const JGameInfo& gameinfo);
 
 private:
 	QSqlDatabase *gameInfoDB;
