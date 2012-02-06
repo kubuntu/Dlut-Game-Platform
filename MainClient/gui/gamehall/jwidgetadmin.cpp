@@ -63,7 +63,7 @@ void JWidgetAdmin::on_send_receiveCommandResult(JID type,JCode result)
 	}
 }
 
-void JWidgetAdmin::on_buttonBox_accepted()
+void JWidgetAdmin::on_btn_add_clicked()
 {
 	QString loginname = ui->edt_loginname->text();
 	QString password = ui->edt_password->text();
@@ -88,7 +88,7 @@ void JWidgetAdmin::on_buttonBox_accepted()
 	}
 }
 
-void JWidgetAdmin::on_buttonBox_rejected()
+void JWidgetAdmin::on_btn_reset_clicked()
 {
 	ui->edt_loginname->clear();
 	ui->edt_password->clear();

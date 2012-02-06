@@ -110,18 +110,31 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QDialogButtonBox" name="buttonBox">
+      <widget class="QWidget" name="horizontalLayoutWidget">
        <property name="geometry">
         <rect>
-         <x>190</x>
-         <y>210</y>
-         <width>176</width>
-         <height>27</height>
+         <x>160</x>
+         <y>200</y>
+         <width>204</width>
+         <height>41</height>
         </rect>
        </property>
-       <property name="standardButtons">
-        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="btn_reset">
+          <property name="text">
+           <string>reset</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_add">
+          <property name="text">
+           <string>add</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QWidget" name="tab_addgame">
