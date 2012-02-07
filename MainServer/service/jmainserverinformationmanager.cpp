@@ -152,3 +152,9 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 {
 	return updateData(head,data,getCurrentTime());
 }
+
+JCode JMainServerInformationManager::removeData(const NetworkData::JHead& head)
+{
+	m_mtime.remove(head);
+	return 0;
+}

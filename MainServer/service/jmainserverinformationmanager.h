@@ -18,6 +18,7 @@ public:
 
 	JCode updateData(const NetworkData::JHead& head,const QByteArray& data,JTime_t Mtime);
 	JCode updateData(const NetworkData::JHead& head,const QByteArray& data);
+	JCode removeData(const NetworkData::JHead& head);
 private:
 	QMap<NetworkData::JHead,JTime_t> m_mtime;
 };

@@ -105,6 +105,10 @@ void JMainServerInformationProcessor::processUploadData(const JHead& head,const 
 {
 	JPermissionControl pc(getSession()->getUserId());
 	if(pc.checkInformation(EIP_UploadData,head)){
+		if(head.m_type == EIT_GameInfo){
+			JHead headGameList = JHead(-1,EIT_GameInfo,1);
+			m_im.removeData(headGameList);
+		}
 		replyUploadResult(head,m_im.updateData(head,uploadData));
 	}else{
 		replyUploadResult(head,EPermissionDenied);

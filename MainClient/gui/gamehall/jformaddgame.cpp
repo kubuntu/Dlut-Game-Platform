@@ -33,6 +33,7 @@ void JFormAddGame::reset()
 	ui->edt_server_addr->clear();
 	ui->edt_server_port->clear();
 	ui->edt_version->clear();
+	ui->txt_msg_add_game->clear();
 }
 
 void JFormAddGame::on_btn_game_add_clicked()
