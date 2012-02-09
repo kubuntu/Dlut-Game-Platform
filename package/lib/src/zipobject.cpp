@@ -3,6 +3,9 @@
 #include <zip.h>
 #include <errno.h>
 
+#include <QFileInfo>
+#include <QDir>
+
 #include <QDebug>
 
 zipobject::zipobject(const QString& filePath){
@@ -122,6 +125,36 @@ QByteArray zipobject::readData(const QString& inZipPath)const{
     }
     buffer[rRead]='\0';
     return QByteArray(buffer);
+}
+
+bool zipobject::extractTo(const QString& dirPath){
+    int num_entries = zip_get_num_files(m_zip) ;
+    for( int i = 0 ; i < num_entries ; ++i ){
+        qDebug()<<zip_get_name(m_zip,i,0);
+        zip_file* pFile = zip_fopen_index(m_zip,i,0);
+        struct zip_stat stat ;
+        zip_stat_index(m_zip,i,0,&stat);
+        
+        const int length = stat.size ;
+        char buffer[length +1 ] ;
+        int rRead = zip_fread(pFile,buffer,sizeof(buffer));
+        if( -1 == rRead ){
+            qDebug()<<"read failed : "<<zip_strerror(m_zip);
+            return false;
+        }
+        
+        QFileInfo fileInfo(dirPath + '/' + stat.name);
+        QDir dir = fileInfo.absoluteDir() ;
+        if(!dir.mkpath(".")){
+            return false;
+        }
+        
+        QFile file(dirPath + '/' + stat.name);
+        file.open(QIODevice::WriteOnly);
+        file.write(buffer);
+        file.close();
+    }
+    return true;
 }
 
 bool zipobject::close(){

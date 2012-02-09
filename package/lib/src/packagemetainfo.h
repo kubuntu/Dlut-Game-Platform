@@ -24,6 +24,7 @@ public:
     void setOS(OS os);
     void setOsStr(const QString&);
 
+    int gameId()const;
     const QString& name()const;
     const QString& version()const;
     OS os()const;

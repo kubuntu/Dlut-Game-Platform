@@ -23,6 +23,8 @@ public:
     bool writeData(const QByteArray& data,const QString& inZipPath);
     QByteArray readData(const QString& inZipPath)const;
 
+    bool extractTo(const QString& dirPath);
+
     bool close();
 
     QString errorString()const;

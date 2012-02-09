@@ -3,9 +3,11 @@
 
 #include <Global/CodeError>
 #include <Session/JSession>
+#include <DgpPkgReader>
 
 #include <QProcess>
 #include <QFile>
+#include <QFileInfo>
 
 JGameClientLoader::JGameClientLoader()
 {
@@ -56,13 +58,53 @@ void JGameClientLoader::download()
 {
 	m_downloader->start(
 				m_gameInfo.getDownloadUrl(),
-				getSaveFilePath());
+				getPartialSaveFilePath());
 }
 
-void JGameClientLoader::install()
+bool JGameClientLoader::install()
 {
-	QFile file(getSaveFilePath());
-	file.setPermissions(QFile::Permissions(0x7555));
+	// move file from partial to archive
+	QFile partialFile (getPartialSaveFilePath());
+	if(!partialFile.rename(getArchiveSaveFilePath())){
+		m_error = partialFile.errorString();
+		return false;
+	}
+	partialFile.close();
+
+	// read metainfo
+	DgpPkgReader reader(getArchiveSaveFilePath());
+	reader.open();
+	PackageMetainfo metainfo = reader.read();
+
+	// check metainfo
+	// - id
+	if(metainfo.gameId() != m_gameInfo.getGameId() ){
+		m_error =
+				QObject::tr("gameinfo not match : id (%1,%2)")
+				.arg(metainfo.gameId())
+				.arg(m_gameInfo.getGameId());
+		return false;
+	}
+	// - name
+	if(metainfo.name() != m_gameInfo.getName()){
+		m_error =
+				QObject::tr("gameinfo not match : name (%1,%2)")
+				.arg(metainfo.name())
+				.arg(m_gameInfo.getName());
+		return false;
+	}
+
+	// extract package
+	QString dirPath = getInstallDirPath() ;
+	if( ! reader.extractTo(dirPath) ){
+		m_error = 
+				QObject::tr("extract fail .");
+		return false;
+	}
+
+	// write metainfo to db
+
+	return true;
 }
 
 void JGameClientLoader::start()
@@ -74,9 +116,10 @@ void JGameClientLoader::start()
 	}
 	if(s_process->state()==QProcess::NotRunning)
 	{
-		qDebug()<<"run:"<<getSaveFilePath();
+		QString filePath = getGameClientFilePath();
+		qDebug()<<"run:"<<filePath;
 		s_process->setProcessChannelMode(QProcess::ForwardedChannels);
-		s_process->start(getSaveFilePath(),getArguments());
+		s_process->start(filePath,getArguments());
 		if(s_process->waitForStarted(1000)){
 			qDebug()<<"run succeed";
 		}else{
@@ -92,12 +135,34 @@ void JGameClientLoader::setErrorString(const QString& error)
 	m_error = error;
 }
 
-QString JGameClientLoader::getSaveFilePath()const
+QString JGameClientLoader::getPartialSaveFilePath()const
 {
-	return QString("%1/%2/%3")
-			.arg(m_gameInfo.getAuthor())
-			.arg(m_gameInfo.getName())
-			.arg("setup");
+	QString fileName ;
+	QFileInfo f(m_gameInfo.getDownloadUrl().path());
+	fileName = f.fileName();
+	qDebug()<<__FUNCTION__<<fileName;
+	return QString("temp/partial/%1")
+			.arg(fileName);
+}
+
+QString JGameClientLoader::getArchiveSaveFilePath()const
+{
+	QString fileName ;
+	QFileInfo f(m_gameInfo.getDownloadUrl().path());
+	fileName = f.fileName();
+	qDebug()<<__FUNCTION__<<fileName;
+	return QString("temp/%1")
+			.arg(fileName);
+}
+
+QString JGameClientLoader::getInstallDirPath()const
+{
+	return QString("clients/%1/").arg(m_gameInfo.getGameId());
+}
+
+QString JGameClientLoader::getGameClientFilePath()const
+{
+	return QString(" un finish function : %1").arg(__FUNCTION__);
 }
 
 QStringList JGameClientLoader::getArguments()const

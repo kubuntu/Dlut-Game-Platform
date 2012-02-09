@@ -1,6 +1,9 @@
 TARGET = MainClient
 TEMPLATE = app
 include(../api/api.pri)
+include(../package/lib/lib.pri)
+LIBS += -L../package/lib/
+unix:!mac:QMAKE_LFLAGS += -Wl,--rpath=../package/lib
 
 SOURCES += main/main.cpp \
     gui/gamehall/mainwindow.cpp \
@@ -10,7 +13,6 @@ SOURCES += main/main.cpp \
     gui/selectserver/shallserver.cpp \
     gui/login/settings/jrememberpassword.cpp \
     gui/login/settings/jsettinglogin.cpp \
-	service/jdownloadrun.cpp \
     gui/selectserver/jdlgselectserver.cpp \
     gui/gamehall/jwidgetadmin.cpp \
     pseudoserver/jpseudoserver.cpp \
@@ -30,7 +32,6 @@ HEADERS += gui/gamehall/mainwindow.h \
     gui/selectserver/shallserver.h \
     gui/login/settings/jrememberpassword.h \
     gui/login/settings/jsettinglogin.h \
-    service/jdownloadrun.h \
     gui/selectserver/jdlgselectserver.h \
     gui/gamehall/jwidgetadmin.h \
     pseudoserver/jpseudoserver.h \

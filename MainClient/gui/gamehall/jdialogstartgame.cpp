@@ -102,7 +102,13 @@ void JDialogStartGame::download_error()
 
 void JDialogStartGame::loader_install_start()
 {
-	m_gameClientLoader->install();
+	if(!m_gameClientLoader->install()){
+		ui->label->setText(
+					tr("install failed : %1")
+					.arg(m_gameClientLoader->getErrorString())
+					);
+		return ;
+	}
 	m_gameClientLoader->start();
 	accept();
 }

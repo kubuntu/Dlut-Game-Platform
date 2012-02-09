@@ -66,6 +66,10 @@ void PackageMetainfo::setOsStr(const QString& str){
     }
 }
 
+int PackageMetainfo::gameId()const{
+    return m_gameId ;
+}
+
 const QString& PackageMetainfo::name()const{
     return m_name;
 }

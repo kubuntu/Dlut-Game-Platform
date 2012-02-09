@@ -22,11 +22,14 @@ public:
 	JDownloader* getDownloader()const;
 	const QString& getErrorString()const;
 	void download();
-	void install();
+	bool install();
 	void start();
 private:
 	void setErrorString(const QString& error);
-	QString getSaveFilePath()const;
+	QString getPartialSaveFilePath()const;
+	QString getArchiveSaveFilePath()const;
+	QString getInstallDirPath()const;
+	QString getGameClientFilePath()const;
 	QStringList getArguments()const;
 private:
 	SHost m_pseudoServer;

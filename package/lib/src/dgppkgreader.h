@@ -8,6 +8,8 @@ class DgpPkgReader : public DgpPkgBase
 public:
     DgpPkgReader(const QString& filePath);
     PackageMetainfo read()const;
+    
+    bool extractTo(const QString& dirPath);
 protected:
     QFlags<zipobject::OpenModeFlag> getOpenModeFlag()const;
 };
