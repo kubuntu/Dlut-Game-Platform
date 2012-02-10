@@ -1,6 +1,8 @@
 #include "jversion.h"
 
 #include <QDataStream>
+#include <QRegExp>
+#include <QStringList>
 
 /*!
 	\class JVersion jversion.h <DataStruct/JVersion>
@@ -70,6 +72,37 @@ bool JVersion::operator!=(const JVersion& b)const
 quint32 JVersion::getData()const
 {
 	return m_data;
+}
+
+/*!
+	\brief 转化为字符串
+*/
+QString JVersion::toString()const
+{
+	return QString("%1.%2.%3.%4")
+			.arg( m_data >> 24 )
+			.arg( ( m_data >> 16 ) % 256 )
+			.arg( ( m_data >> 8 ) % 256 )
+			.arg( ( m_data >> 0 ) % 256 );
+}
+
+/*!
+	\brief 从字符串构造一个 JVersion 对象
+*/
+JVersion JVersion::fromString(const QString& str)
+{
+	QRegExp reg("(\\d+)\\.(\\d+)(\\.(\\d+))?(\\.(\\d+))?");
+	if(reg.exactMatch(str)){
+		QStringList capTxt = reg.capturedTexts();
+		quint32 data = 0;
+		data = ( (capTxt.at(1).toInt() % 256) << 24 )
+				+( (capTxt.at(2).toInt() % 256) << 16 )
+				+( (capTxt.at(4).toInt() % 256) << 8 )
+				+( (capTxt.at(6).toInt() % 256) << 0 );
+		return JVersion(data);
+	}else{
+	}
+	return JVersion();
 }
 
 /*!

@@ -93,6 +93,15 @@ bool JGameClientLoader::install()
 				.arg(m_gameInfo.getName());
 		return false;
 	}
+	// - version
+	JVersion versionInMetainfo = JVersion::fromString(metainfo.version());
+	if(versionInMetainfo != m_gameInfo.getVersion()){
+		m_error =
+				QObject::tr("gameinfo not match : version (%1,%2)")
+				.arg(versionInMetainfo.toString())
+				.arg(m_gameInfo.getVersion().toString());
+		return false;
+	}
 
 	// extract package
 	QString dirPath = getInstallDirPath() ;

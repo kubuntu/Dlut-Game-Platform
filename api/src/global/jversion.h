@@ -19,6 +19,9 @@ public:
 	bool operator==(const JVersion&)const;
 	bool operator!=(const JVersion&)const;
 	quint32 getData()const;
+	
+	QString toString()const;
+	static JVersion fromString(const QString& str);
 private:
 	bool isLowerThan(const JVersion&)const;
 	bool isHigherThan(const JVersion&)const;
