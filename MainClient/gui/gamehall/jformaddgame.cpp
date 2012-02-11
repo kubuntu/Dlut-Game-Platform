@@ -41,7 +41,7 @@ void JFormAddGame::on_btn_game_add_clicked()
 	JGameInfo gameinfo(
 			ui->edt_gameid->text().toInt(),
 			ui->edt_gamename->text(),
-			JVersion(ui->edt_version->text().toInt()),
+			JVersion::fromString(ui->edt_version->text()),
 			ui->edt_authorid->text().toInt(),
 			ui->edt_runnerid->text().toInt(),
 			ui->edt_intro->text(),
