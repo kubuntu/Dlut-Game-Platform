@@ -111,9 +111,17 @@ bool JGameClientLoader::install()
 				QObject::tr("extract fail .");
 		return false;
 	}
+	
 
 	// write metainfo to db
+	JInstalledAppManager* iam = JInstalledAppManager::getInstance();
+	iam->setInstallPath(m_gameInfo.getGameId(),getInstallDirPath());
 
+	// add executable permission to runfile
+	QFile runfile(iam->getRunFilePath(m_gameInfo.getGameId()));
+	QFile::Permissions pms = runfile.permissions();
+	runfile.setPermissions( pms | QFile::ExeUser );
+	
 	return true;
 }
 
