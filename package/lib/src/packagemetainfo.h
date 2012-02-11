@@ -23,12 +23,14 @@ public:
     void setIntroduction(const QString&);
     void setOS(OS os);
     void setOsStr(const QString&);
+    void setRunFilePath(const QString&);
 
     int gameId()const;
     const QString& name()const;
     const QString& version()const;
     OS os()const;
     const QString& osStr()const;
+    const QString& runFilePath()const;
 
     static PackageMetainfo fromXML(const QByteArray& data);
     static QByteArray toXML(const PackageMetainfo& info);
@@ -40,6 +42,7 @@ private:
     QString m_organization;
     QString m_introduction;
     OS m_os;
+    QString m_runFilePath;
 };
 
 #endif // PACKAGEMETAINFO_H

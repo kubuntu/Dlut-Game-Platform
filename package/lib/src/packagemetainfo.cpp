@@ -66,6 +66,10 @@ void PackageMetainfo::setOsStr(const QString& str){
     }
 }
 
+void PackageMetainfo::setRunFilePath(const QString& str){
+    m_runFilePath = str;
+}
+
 int PackageMetainfo::gameId()const{
     return m_gameId ;
 }
@@ -84,6 +88,10 @@ PackageMetainfo::OS PackageMetainfo::os()const{
 
 const QString& PackageMetainfo::osStr()const{
     return s_osStrList[m_os];
+}
+
+const QString& PackageMetainfo::runFilePath()const{
+    return m_runFilePath ;
 }
 
 PackageMetainfo PackageMetainfo::fromXML(const QByteArray& data){
@@ -113,6 +121,8 @@ PackageMetainfo PackageMetainfo::fromXML(const QByteArray& data){
             info.setIntroduction(node.toElement().text());
         }else if(node.nodeName() == "os"){
             info.setOsStr(node.toElement().text());
+        }else if(node.nodeName() == "runfilepath"){
+            info.setRunFilePath(node.toElement().text());
         }
     }
 
@@ -167,6 +177,12 @@ QByteArray PackageMetainfo::toXML(const PackageMetainfo& info){
     eleInfo.appendChild(eleOs);
     QDomText txtOs = dom.createTextNode(info.osStr());
     eleOs.appendChild(txtOs);
+    
+    // runfilepath
+    QDomElement eleRunFilePath = dom.createElement("runfilepath");
+    eleInfo.appendChild(eleRunFilePath);
+    QDomText txtRunFilePath = dom.createTextNode(info.runFilePath());
+    eleRunFilePath.appendChild(txtRunFilePath);
 
     return dom.toByteArray();
 }

@@ -1,5 +1,6 @@
 #include "jgameclientloader.h"
 #include "jdownloader.h"
+#include "jinstalledappmanager.h"
 
 #include <Global/CodeError>
 #include <Session/JSession>
@@ -171,7 +172,8 @@ QString JGameClientLoader::getInstallDirPath()const
 
 QString JGameClientLoader::getGameClientFilePath()const
 {
-	return QString(" un finish function : %1").arg(__FUNCTION__);
+	JInstalledAppManager* iam = JInstalledAppManager::getInstance();
+	return iam->getRunFilePath(m_gameInfo.getGameId());
 }
 
 QStringList JGameClientLoader::getArguments()const

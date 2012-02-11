@@ -24,7 +24,8 @@ SOURCES += main/main.cpp \
     service/jdownloader.cpp \
     gui/gamehall/jdialogstartgame.cpp \
     gui/gamehall/jwidgethalltalk.cpp \
-    gui/gamehall/jformaddgame.cpp
+    gui/gamehall/jformaddgame.cpp \
+    service/jinstalledappmanager.cpp
 HEADERS += gui/gamehall/mainwindow.h \
     gui/selectserver/jcomboselectserver.h \
     gui/login/jdlglogin.h \
@@ -43,7 +44,8 @@ HEADERS += gui/gamehall/mainwindow.h \
     service/jdownloader.h \
     gui/gamehall/jdialogstartgame.h \
     gui/gamehall/jwidgethalltalk.h \
-    gui/gamehall/jformaddgame.h
+    gui/gamehall/jformaddgame.h \
+    service/jinstalledappmanager.h
 FORMS += gui/gamehall/mainwindow.ui \
     gui/login/jdlglogin.ui \
     gui/selectserver/jdlgnewserver.ui \
