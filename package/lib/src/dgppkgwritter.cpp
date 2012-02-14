@@ -2,14 +2,23 @@
 
 #include "zipobject.h"
 
+#include <QDataStream>
+
 DgpPkgWritter::DgpPkgWritter(const QString& filePath)
     :DgpPkgBase(filePath){
 }
 
-bool DgpPkgWritter::write(const PackageMetainfo& info){
+bool DgpPkgWritter::writeMetainfo(const PackageMetainfo& info){
     QByteArray data;
     data = PackageMetainfo::toXML(info);
     return m_zip->writeData(data,metainfoPath());
+}
+
+bool DgpPkgWritter::writePermissionList(const QMap<QString,int> & list){
+    QByteArray data;
+    QDataStream stream(&data,QIODevice::WriteOnly);
+    stream<<list;
+    return m_zip->writeData(data,permissionListPath() );
 }
 
 bool DgpPkgWritter::addFile(const QString& filePath,const QString& inZipPath){

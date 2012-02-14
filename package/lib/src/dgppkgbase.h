@@ -13,6 +13,7 @@ public:
 
     static QString dgppkgPath();
     static QString metainfoPath();
+    static QString permissionListPath();
 
     virtual ~DgpPkgBase();
 protected:

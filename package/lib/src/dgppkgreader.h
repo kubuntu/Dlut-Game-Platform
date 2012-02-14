@@ -3,11 +3,14 @@
 
 #include "dgppkgbase.h"
 
+#include <QMap>
+
 class DgpPkgReader : public DgpPkgBase
 {
 public:
     DgpPkgReader(const QString& filePath);
-    PackageMetainfo read()const;
+    PackageMetainfo readMetainfo()const;
+    QMap<QString,int> readPermissionList()const;
     
     bool extractTo(const QString& dirPath);
 protected:

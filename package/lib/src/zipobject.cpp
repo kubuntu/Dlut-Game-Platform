@@ -123,8 +123,7 @@ QByteArray zipobject::readData(const QString& inZipPath)const{
         qDebug()<<"read failed : "<<zip_strerror(m_zip);
         return QByteArray();
     }
-    buffer[rRead]='\0';
-    return QByteArray(buffer);
+    return QByteArray (buffer,rRead);
 }
 
 bool zipobject::extractTo(const QString& dirPath){
@@ -151,7 +150,7 @@ bool zipobject::extractTo(const QString& dirPath){
         
         QFile file(dirPath + '/' + stat.name);
         file.open(QIODevice::WriteOnly);
-        file.write(buffer);
+        file.write(QByteArray(buffer,length));
         file.close();
     }
     return true;

@@ -4,6 +4,7 @@
 
 #include <QFile>
 #include <QSettings>
+#include <QDir>
 
 JInstalledAppManager* JInstalledAppManager::getInstance(){
 	static JInstalledAppManager* s_instance = NULL ;
@@ -42,6 +43,7 @@ QString JInstalledAppManager::getRunFilePath(JID gameId)const{
 	QString runFilePath = QString("%1/%2")
 						  .arg(installPath)
 						  .arg(info.runFilePath());
+	runFilePath = QDir::cleanPath(runFilePath);
 	return runFilePath ;
 }
 

@@ -75,7 +75,7 @@ bool JGameClientLoader::install()
 	// read metainfo
 	DgpPkgReader reader(getArchiveSaveFilePath());
 	reader.open();
-	PackageMetainfo metainfo = reader.read();
+	PackageMetainfo metainfo = reader.readMetainfo();
 
 	// check metainfo
 	// - id
@@ -117,10 +117,14 @@ bool JGameClientLoader::install()
 	JInstalledAppManager* iam = JInstalledAppManager::getInstance();
 	iam->setInstallPath(m_gameInfo.getGameId(),getInstallDirPath());
 
-	// add executable permission to runfile
-	QFile runfile(iam->getRunFilePath(m_gameInfo.getGameId()));
-	QFile::Permissions pms = runfile.permissions();
-	runfile.setPermissions( pms | QFile::ExeUser );
+	// set permissions
+	QMap<QString,int> pmsnList = reader.readPermissionList();
+	QMap<QString, int>::const_iterator i ;
+	for( i = pmsnList.constBegin();i != pmsnList.constEnd();++i){
+		QString filePath = dirPath + i.key();
+		QFile::Permissions pmsn = (QFile::Permissions)i.value();
+		QFile::setPermissions(filePath,pmsn);
+	}
 	
 	return true;
 }

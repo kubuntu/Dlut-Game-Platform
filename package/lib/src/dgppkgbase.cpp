@@ -21,6 +21,10 @@ QString DgpPkgBase::metainfoPath(){
     return dgppkgPath()+"/metainfo.xml";
 }
 
+QString DgpPkgBase::permissionListPath(){
+    return dgppkgPath()+"/pmsnList.dat";
+}
+
 DgpPkgBase::~DgpPkgBase(){
     delete m_zip;
     m_zip = NULL;

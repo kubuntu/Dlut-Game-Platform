@@ -1,4 +1,5 @@
 #include <QtCore/QCoreApplication>
+#include <QFile>
 
 #include <DgpPkgWritter>
 #include <QDebug>
@@ -33,11 +34,15 @@ int main(int argc, char *argv[])
     // writter
     DgpPkgWritter writter(fileName);
     writter.open();
-    writter.write(info);
+    writter.writeMetainfo(info);
 
+    // file list
     QStringList fileList = gf.fileList();
     JArgumentAnalysis* aa = JArgumentAnalysis::getInstance();
     const QList<QRegExp>& ignoreList = aa->ignoreList();
+    
+    // file permissions list
+    QMap<QString,int> pmsnList ;
     foreach(QString filePath , fileList){
         QString inZipPath = gf.inZipPath(filePath);
         bool ignore = false;
@@ -50,9 +55,13 @@ int main(int argc, char *argv[])
 
         if( !ignore ){
             qDebug()<<filePath<<inZipPath;
+            
             writter.addFile(filePath,inZipPath);
+            pmsnList.insert(inZipPath , QFile::permissions(filePath) );
         }
     }
+    qDebug()<<pmsnList ;
+    writter.writePermissionList(pmsnList);
 
     writter.close();
     return 0;
