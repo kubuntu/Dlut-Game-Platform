@@ -141,6 +141,7 @@ void JGameClientLoader::start()
 		QString filePath = getGameClientFilePath();
 		qDebug()<<"run:"<<filePath;
 		s_process->setProcessChannelMode(QProcess::ForwardedChannels);
+		s_process->setWorkingDirectory(getInstallDirPath());
 		s_process->start(filePath,getArguments());
 		if(s_process->waitForStarted(1000)){
 			qDebug()<<"run succeed";

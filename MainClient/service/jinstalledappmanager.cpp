@@ -38,12 +38,9 @@ PackageMetainfo JInstalledAppManager::getMetainfo(JID gameId)const{
 
 QString JInstalledAppManager::getRunFilePath(JID gameId)const{
 	PackageMetainfo info = getMetainfo(gameId);
-	QString installPath = getInstallPath(gameId);
 
-	QString runFilePath = QString("%1/%2")
-						  .arg(installPath)
+	QString runFilePath = QString("./%1")
 						  .arg(info.runFilePath());
-	runFilePath = QDir::cleanPath(runFilePath);
 	return runFilePath ;
 }
 
