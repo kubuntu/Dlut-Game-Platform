@@ -47,6 +47,10 @@ QString JInstalledAppManager::getRunFilePath(JID gameId)const{
 	return runFilePath ;
 }
 
+bool JInstalledAppManager::isInstalled(JID gameId)const{
+	return m_settings->contains(key(gameId));
+}
+
 JInstalledAppManager::JInstalledAppManager(QObject *parent) :
     QObject(parent)
 {

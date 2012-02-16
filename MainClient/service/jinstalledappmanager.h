@@ -2,11 +2,12 @@
 #define JINSTALLEDAPPMANAGER_H
 
 #include <QObject>
+
 #include <Global/Global>
 
-class QSettings;
+#include <PackageMetainfo>
 
-class PackageMetainfo;
+class QSettings;
 
 class JInstalledAppManager : public QObject
 {
@@ -17,6 +18,7 @@ public:
 	QString getInstallPath(JID gameId)const;
 	PackageMetainfo getMetainfo(JID gameId)const;
 	QString getRunFilePath(JID gameId)const;
+	bool isInstalled(JID gameId)const;
 private:
     explicit JInstalledAppManager(QObject *parent = 0);
 	QString key(JID gameId)const;

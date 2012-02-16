@@ -15,6 +15,9 @@
 #include "jdialogupdateuserinfo.h"
 #include "jdialogstartgame.h"
 #include "jformaddgame.h"
+#include "service/jinstalledappmanager.h"
+#include "service/jgameclientloader.h"
+#include "pseudoserver/jpseudoserver.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -146,6 +149,25 @@ void MainWindow::on_btn_start_game_clicked()
 							 tr("please select a game.")
 							 );
 		return;
+	}
+	
+	JID gameId = m_currentId ;
+	JGameInfo gameinfo = m_gis->pullGameInfo(gameId);
+	JRequestServerInfo rsi;
+	JServerInfo serverinfo = rsi.pullServerInfo(gameinfo.getServerId());
+	JInstalledAppManager* iam = JInstalledAppManager::getInstance() ;
+	if( iam->isInstalled(gameId) ){
+		PackageMetainfo metainfo = iam->getMetainfo(gameId) ;
+		if( metainfo.gameId() && JVersion::fromString( metainfo.version() ) == gameinfo.getVersion() ){
+			JGameClientLoader gameClientLoader;
+			gameClientLoader.setParent(parent());
+			gameClientLoader.setPseudoServer(SHost(QHostAddress::LocalHost,JPseudoServer::getInstance()->serverPort()));
+			gameClientLoader.setGameInfo(gameinfo);
+			gameClientLoader.setServerInfo(serverinfo);
+			gameClientLoader.setSession(JMainClientSocket::getInstance()->getSession());
+			gameClientLoader.start();
+			return ;
+		}
 	}
 	JDialogStartGame dlg(this);
 	dlg.setGameId(m_currentId);
