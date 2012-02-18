@@ -99,7 +99,7 @@ JCode JSQLGameInfoDB::updateGameInfo(const JGameInfo &gameInfo) {
 	}
 	gameInfoQuery.bindValue(":gameName", gameInfo.getName());
 	gameInfoQuery.bindValue(":version", gameInfo.getVersion().getData());
-	gameInfoQuery.bindValue(":authorID", gameInfo.getGameId());
+	gameInfoQuery.bindValue(":authorID", gameInfo.getAuthor());
 	gameInfoQuery.bindValue(":runnerID", gameInfo.getRunner());
 	gameInfoQuery.bindValue(":introdution", gameInfo.getIntroduction());
 	gameInfoQuery.bindValue(":serverID", gameInfo.getServerId());
@@ -156,7 +156,7 @@ JCode JSQLGameInfoDB::insertGameInfo(const JGameInfo& gameInfo)
 	}
 	gameInfoQuery.bindValue(":gameName", gameInfo.getName());
 	gameInfoQuery.bindValue(":version", gameInfo.getVersion().getData());
-	gameInfoQuery.bindValue(":authorID", gameInfo.getGameId());
+	gameInfoQuery.bindValue(":authorID", gameInfo.getAuthor());
 	gameInfoQuery.bindValue(":runnerID", gameInfo.getRunner());
 	gameInfoQuery.bindValue(":introduction", gameInfo.getIntroduction());
 	gameInfoQuery.bindValue(":serverID", gameInfo.getServerId());
