@@ -51,7 +51,7 @@ bool JInstalledAppManager::isInstalled(JID gameId)const{
 JInstalledAppManager::JInstalledAppManager(QObject *parent) :
     QObject(parent)
 {
-	m_settings = new QSettings("installedapp",QSettings::IniFormat,this);
+	m_settings = new QSettings("installedapp.ini",QSettings::IniFormat,this);
 }
 
 QString JInstalledAppManager::key(JID gameId)const{
