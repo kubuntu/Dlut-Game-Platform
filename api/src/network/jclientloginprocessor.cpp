@@ -35,13 +35,17 @@ void JClientLoginProcessor::login(const QString& loginname,
 void JClientLoginProcessor::process(const QByteArray& data){
     QDataStream stream(data);
     JCode code;
+    JID irole ;
 	QByteArray loginhashcode;
     stream>>code;
     if(code==0)
     {
         stream>>m_userid;
+		stream>>irole;
 		stream>>loginhashcode;
+		ERole role = (ERole)irole;
 		getSession()->setUserId(m_userid);
+		getSession()->setRole(role) ;
 		getSession()->setLoginHashCode(loginhashcode);
     }
     emit loginCode(code);

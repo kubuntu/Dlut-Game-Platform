@@ -1,6 +1,10 @@
 #include <QtGui/QApplication>
 #include <QFile>
 
+#include <Global/Login>
+#include <Socket/JMainClientSocket>
+#include <Session/JSession>
+
 #include "gui/gamehall/mainwindow.h"
 #include "gui/login/jdlglogin.h"
 #include "gui/selectserver/jdlgselectserver.h"
@@ -23,6 +27,8 @@ int main(int argc, char *argv[])
     {
         return 0;
 	}
+	ERole role = JMainClientSocket::getInstance()->getSession()->getRole() ;
+	qDebug()<<"role="<<role ;
     MainWindow w;
     w.show();
     return a.exec();

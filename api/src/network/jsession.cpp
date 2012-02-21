@@ -16,6 +16,16 @@ void JSession::setUserId(JID userId)
 	m_userId=userId;
 }
 
+ERole JSession::getRole()const
+{
+	return m_role;
+}
+
+void JSession::setRole(ERole role)
+{
+	m_role = role ;
+}
+
 const QByteArray& JSession::getLoginHashCode()const
 {
 	return m_loginhashcode;

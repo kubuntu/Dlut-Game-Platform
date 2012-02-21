@@ -24,10 +24,11 @@ void JMainServerLoginProcessor::process(const QByteArray& data)
 	QDataStream stream(data);
 	QString loginname;
 	QString passwd;
-	JID role;
-	stream>>loginname>>passwd>>role;
+	JID irole;
+	stream>>loginname>>passwd>>irole;
 	JLoginVerification lv;
-	JCode code=lv.verification(loginname,passwd,(ERole)role);
+	ERole role = (ERole)irole ;
+	JCode code=lv.verification(loginname,passwd,role);
 	if(0==code){
 		JUserStateManager usm;
 		JPermissionControl pc(lv.getUserId());
@@ -39,6 +40,7 @@ void JMainServerLoginProcessor::process(const QByteArray& data)
 			JLoginHashCodeCreator lhcc;
 			lhcc.setUserId(lv.getUserId());
 			getSession()->setUserId(lv.getUserId());
+			getSession()->setRole(role);
 			getSession()->setLoginHashCode(lhcc.createLoginHashCode());
 			usm.setUserState(lv.getUserId(),JUserStateManager::ES_OnLine);
 		}
@@ -48,6 +50,7 @@ void JMainServerLoginProcessor::process(const QByteArray& data)
 	outstream<<code;
 	if(0==code){
 		outstream<<getSession()->getUserId();
+		outstream<<(JID)getSession()->getRole();
 		outstream<<getSession()->getLoginHashCode();
 	}
 	sendData(outdata);
