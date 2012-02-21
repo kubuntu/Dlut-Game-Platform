@@ -15,7 +15,7 @@ SOURCES += main/main.cpp \
     gui/login/settings/jrememberpassword.cpp \
     gui/login/settings/jsettinglogin.cpp \
     gui/selectserver/jdlgselectserver.cpp \
-    gui/gamehall/jwidgetadmin.cpp \
+    gui/admin/jwidgetadmin.cpp \
     pseudoserver/jpseudoserver.cpp \
     pseudoserver/jpseudoserversocket.cpp \
     pseudoserver/jpseudoserverinformationprocessor.cpp \
@@ -25,8 +25,9 @@ SOURCES += main/main.cpp \
     service/jdownloader.cpp \
     gui/gamehall/jdialogstartgame.cpp \
     gui/gamehall/jwidgethalltalk.cpp \
-    gui/gamehall/jformaddgame.cpp \
-    service/jinstalledappmanager.cpp
+    gui/admin/jformaddgame.cpp \
+    service/jinstalledappmanager.cpp \
+    gui/admin/adminmainwindow.cpp
 HEADERS += gui/gamehall/mainwindow.h \
     gui/selectserver/jcomboselectserver.h \
     gui/login/jdlglogin.h \
@@ -35,7 +36,7 @@ HEADERS += gui/gamehall/mainwindow.h \
     gui/login/settings/jrememberpassword.h \
     gui/login/settings/jsettinglogin.h \
     gui/selectserver/jdlgselectserver.h \
-    gui/gamehall/jwidgetadmin.h \
+    gui/admin/jwidgetadmin.h \
     pseudoserver/jpseudoserver.h \
     pseudoserver/jpseudoserversocket.h \
     pseudoserver/jpseudoserverinformationprocessor.h \
@@ -45,17 +46,19 @@ HEADERS += gui/gamehall/mainwindow.h \
     service/jdownloader.h \
     gui/gamehall/jdialogstartgame.h \
     gui/gamehall/jwidgethalltalk.h \
-    gui/gamehall/jformaddgame.h \
-    service/jinstalledappmanager.h
+    gui/admin/jformaddgame.h \
+    service/jinstalledappmanager.h \
+    gui/admin/adminmainwindow.h
 FORMS += gui/gamehall/mainwindow.ui \
     gui/login/jdlglogin.ui \
     gui/selectserver/jdlgnewserver.ui \
     gui/selectserver/jdlgselectserver.ui \
-    gui/gamehall/jwidgetadmin.ui \
+    gui/admin/jwidgetadmin.ui \
     gui/login/jdialoguserregister.ui \
     gui/gamehall/jdialogupdateuserinfo.ui \
     gui/gamehall/jdialogstartgame.ui \
     gui/gamehall/jwidgethalltalk.ui \
-    gui/gamehall/jformaddgame.ui
+    gui/admin/jformaddgame.ui \
+    gui/admin/adminmainwindow.ui
 RESOURCES += \
     res/sources.qrc

@@ -11,10 +11,8 @@
 #include <Socket/JMainClientSocket>
 #include <Session/JSession>
 
-#include "jwidgetadmin.h"
 #include "jdialogupdateuserinfo.h"
 #include "jdialogstartgame.h"
-#include "jformaddgame.h"
 #include "service/jinstalledappmanager.h"
 #include "service/jgameclientloader.h"
 #include "pseudoserver/jpseudoserver.h"
@@ -37,8 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tb_game->setPalette(palette);
 
 	m_requserinfo=new JRequestUserInfo(this);
-	m_widgetadmin=NULL;
-	m_formAddGame = NULL;
 	connect(JMainClientSocket::getInstance(),
 			SIGNAL(disconnected()),
 			SLOT(On_socket_disconnected()));
@@ -66,24 +62,6 @@ void MainWindow::showEvent ( QShowEvent * event)
 	QMainWindow::showEvent(event);
     on_btn_refresh_list_clicked();
 	on_btn_refresh_myuserinfo_clicked();
-}
-
-void MainWindow::on_actionShow_admin_window_triggered()
-{
-	if(m_widgetadmin==NULL){
-		m_widgetadmin=new JWidgetAdmin(this);
-		m_widgetadmin->setWindowFlags(Qt::Window);
-	}
-	m_widgetadmin->show();
-}
-
-void MainWindow::on_actionAdd_game_triggered(){
-	if( NULL == m_formAddGame ){
-		m_formAddGame = new JFormAddGame(this);
-		m_formAddGame->setWindowFlags(Qt::Window);
-	}
-	m_formAddGame->show();
-	m_formAddGame->reset();
 }
 
 void MainWindow::on_btn_refresh_list_clicked()

@@ -8,6 +8,7 @@
 #include "gui/gamehall/mainwindow.h"
 #include "gui/login/jdlglogin.h"
 #include "gui/selectserver/jdlgselectserver.h"
+#include "gui/admin/adminmainwindow.h"
 
 void loadStyles(){
 	QFile qss("styles/mc.qss");
@@ -29,7 +30,22 @@ int main(int argc, char *argv[])
 	}
 	ERole role = JMainClientSocket::getInstance()->getSession()->getRole() ;
 	qDebug()<<"role="<<role ;
-    MainWindow w;
-    w.show();
-    return a.exec();
+	QWidget *win = NULL ;
+	switch(role){
+	case ROLE_GAMEPLAYER:
+	case ROLE_GAMEDESIGNER:
+	case ROLE_GAMESERVERRUNNER:
+		win = new MainWindow ;
+		break;
+	case ROLE_ADMIN:
+	case ROLE_ROOT:
+		win = new AdminMainWindow;
+		break;
+	}
+	if( NULL != win ){
+		win->show() ;
+	}
+	int rtn = a.exec() ;
+	delete win ;
+    return rtn;
 }
