@@ -112,7 +112,7 @@ QString JSQLLoginDB::getPassword(JID userID) {
 
 void JSQLLoginDB::setPassword(JID userId , const QString& pswd)
 {
-	QSqlQuery query ;
+	QSqlQuery query(*loginDB) ;
 	if( ! query.prepare(" UPDATE logininfo		\n"
 							"SET passwd = :passwd		\n"
 							"WHERE user_id = :userID")){

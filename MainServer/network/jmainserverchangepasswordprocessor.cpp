@@ -18,8 +18,8 @@ void JMainServerChangePasswordProcessor::process(const QByteArray& data){
 	JID userId;
 	QString encryptedOldPswd , encryptedNewPswd ;
 	stream>>userId;
-	stream<<encryptedOldPswd;
-	stream<<encryptedNewPswd;
+	stream>>encryptedOldPswd;
+	stream>>encryptedNewPswd;
 
 	processChangePassword(userId,encryptedOldPswd,encryptedNewPswd);
 }
