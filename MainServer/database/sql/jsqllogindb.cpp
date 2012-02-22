@@ -110,6 +110,23 @@ QString JSQLLoginDB::getPassword(JID userID) {
 		return loginQuery->lastError().databaseText();
 }
 
+void JSQLLoginDB::setPassword(JID userId , const QString& pswd)
+{
+	QSqlQuery query ;
+	if( ! query.prepare(" UPDATE logininfo		\n"
+							"SET passwd = :passwd		\n"
+							"WHERE user_id = :userID")){
+		qDebug()<<__FUNCTION__<<" prepare failed";
+		return ;
+	}
+	query.bindValue(":userID",userId);
+	query.bindValue(":passwd", pswd);
+	if( ! query.exec() ){
+		qDebug()<<__FUNCTION__<<" exec failed : "<<query.lastError();
+		return ;
+	}
+}
+
 JCode JSQLLoginDB::addLoginUser(const QString &loginName, const QString &passwd) {
 	qDebug() << "+ addLoginUser";
 	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);

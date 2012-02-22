@@ -15,6 +15,7 @@ public:
 	bool checkRole(JID userID, JID roleID);
 	QString getLoginName(JID userID);
 	QString getPassword(JID userID);
+	void setPassword(JID userId , const QString& pswd);
 	JRoleCombination getRoleCombination(JID userID);
 	JCode addLoginUser(const QString &loginName, const QString &passwd);
 	void setRoleCombination(JID userID, JRoleCombination roles);

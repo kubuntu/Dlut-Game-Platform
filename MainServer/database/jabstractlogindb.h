@@ -16,7 +16,7 @@ public:
 	virtual bool checkRole(JID userId,JID roleId)=0;
 	virtual QString getLoginName(JID userId)=0;
 	virtual QString getPassword(JID userId)=0;
-	// virtual void setPassword(JID userId , const QString& pswd)=0;
+	virtual void setPassword(JID userId , const QString& pswd)=0;
 	virtual JCode addLoginUser(const QString& loginname,const QString& password)=0;
 	virtual JRoleCombination getRoleCombination(JID userId)=0;
 	virtual void setRoleCombination(JID userId,JRoleCombination role)=0;

@@ -32,6 +32,9 @@ const JCode EOpenFileFailed = EFileSystemError | 0x0002; ///< 打开文件失败
 const JCode EDbError = 0x800; ///< 数据库错误
 const JCode EIdNotExist = EDbError | 0x0001; ///< Id不存在
 
+const JCode ELoginError = 0x900; ///< error about login
+const JCode EPasswordError = ELoginError | 0x0001; ///< password error
+
 const JCode EUserCode = 0x1000; ///< 用户自定义值不得小于这个值
 const JCode EMaxCode = 0xF000; ///< 用户自定义值不得大于这个值
 

@@ -74,6 +74,13 @@ QString JTextStreamLoginDB::getPassword(JID userId)
 	return s_loginusers.value(userId).m_passwd;
 }
 
+void JTextStreamLoginDB::setPassword(JID userId , const QString& pswd)
+{
+	if(s_loginusers.contains(userId)){
+		s_loginusers[userId].m_passwd = pswd ;
+	}
+}
+
 JCode JTextStreamLoginDB::addLoginUser(const QString& loginname,const QString& password)
 {
 	JID userId;
