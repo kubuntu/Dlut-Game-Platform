@@ -105,6 +105,10 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 		switch(head.m_category){
 		case 0:
 			{
+				// flush game list
+				JHead headGameList = JHead(-1,EIT_GameInfo,1);
+				removeData(headGameList);
+				
 				JGameInfo gameinfo;
 				gameinfo.fromByteArray(data);
 				JAbstractGameInfoDB* gameInfoDb = databaseFactory->createGameInfoDB();
