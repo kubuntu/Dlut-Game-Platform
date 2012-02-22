@@ -25,7 +25,9 @@ HEADERS += \
     service/jcontrolrole.h \
     service/juserstatemanager.h \
     network/jmainserverhalltalkprocessor.h \
-    service/jhalltalkbroadcaster.h
+    service/jhalltalkbroadcaster.h \
+    network/jmainserverchangepasswordprocessor.h \
+    service/jchangepassword.h
 SOURCES += main/main.cpp \
 	network/jmainserver.cpp \
     network/jmainserversocket.cpp \
@@ -44,4 +46,6 @@ SOURCES += main/main.cpp \
     service/jcontrolrole.cpp \
     service/juserstatemanager.cpp \
     network/jmainserverhalltalkprocessor.cpp \
-    service/jhalltalkbroadcaster.cpp
+    service/jhalltalkbroadcaster.cpp \
+    network/jmainserverchangepasswordprocessor.cpp \
+    service/jchangepassword.cpp

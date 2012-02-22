@@ -17,6 +17,7 @@ public:
 	bool checkCommand(JID type,JID param);
 	bool checkControlRole(JID targetUserId,ERole targetRole,EControlRoleAction act);
 	bool isMultiLoginAble(ERole role);
+	bool canChangePassword(JID toUserId);
 private:
 	JID m_userId;
 	JAbstractDatabaseFactory* m_dbFactory;

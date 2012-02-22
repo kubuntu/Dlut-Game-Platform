@@ -13,6 +13,7 @@
 
 #include "jdialogupdateuserinfo.h"
 #include "jdialogstartgame.h"
+#include "jdialogchangepassword.h"
 #include "service/jinstalledappmanager.h"
 #include "service/jgameclientloader.h"
 #include "pseudoserver/jpseudoserver.h"
@@ -168,4 +169,11 @@ void MainWindow::on_btn_update_myuserinfo_clicked()
 	if(QDialog::Accepted == dlg.exec()){
 		on_btn_refresh_myuserinfo_clicked();
 	}
+}
+
+void MainWindow::on_btn_changepswd_clicked()
+{
+	JDialogChangePassword dlg(this);
+	dlg.setUserId(m_myUserInfo.getUserId());
+	dlg.exec();
 }

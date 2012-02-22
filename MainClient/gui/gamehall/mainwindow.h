@@ -33,6 +33,8 @@ private slots:
 	void on_list_game_itemClicked(QListWidgetItem* item);
 	void on_btn_refresh_list_clicked();
 	void On_socket_disconnected();
+	void on_btn_changepswd_clicked();
+
 private:
 	void updateGameList();
 	void updateGameInfo(JID gameId);

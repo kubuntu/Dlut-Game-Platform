@@ -55,7 +55,8 @@ HEADERS += \
     src/network/jclienthalltalkprocessor.h \
     src/global/jencryptor.h \
     src/request/jgameclientargumentanalyser.h \
-    src/global/jhead.h
+    src/global/jhead.h \
+    src/network/jclientchangepasswordprocessor.h
 SOURCES += src/network/jsocketbase.cpp \
     src/network/jclientsocketbase.cpp \
     src/network/jserversocketbase.cpp \
@@ -100,4 +101,5 @@ SOURCES += src/network/jsocketbase.cpp \
     src/network/jclienthalltalkprocessor.cpp \
     src/global/jencryptor.cpp \
     src/request/jgameclientargumentanalyser.cpp \
-    src/global/jhead.cpp
+    src/global/jhead.cpp \
+    src/network/jclientchangepasswordprocessor.cpp

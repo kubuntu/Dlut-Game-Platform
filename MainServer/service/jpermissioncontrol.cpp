@@ -19,10 +19,28 @@ bool JPermissionControl::checkInformation(JID protocol,const JHead& head)
 {
 	switch(protocol){
 	case EIP_DownloadRemoteMtime:
-		return (m_userId > 0);
+		switch(head.m_type){
+		case EIT_UserInfo:
+		case EIT_GameInfo:
+		case EIT_ServerInfo:
+			return (m_userId > 0);
+			break;
+		default:
+			return false;
+			break;
+		}
 		break;
 	case EIP_DownloadData:
-		return (m_userId > 0);
+		switch(head.m_type){
+		case EIT_UserInfo:
+		case EIT_GameInfo:
+		case EIT_ServerInfo:
+			return (m_userId > 0);
+			break;
+		default:
+			return false;
+			break;
+		}
 		break;
 	case EIP_UploadData:
 		switch(head.m_type){
@@ -54,7 +72,6 @@ bool JPermissionControl::checkInformation(JID protocol,const JHead& head)
 				return serverinfo.getRunner() == m_userId;
 			}
 		}
-
 		break;
 	default:
 		return false;
@@ -94,4 +111,16 @@ bool JPermissionControl::checkControlRole(JID,ERole targetRole,EControlRoleActio
 bool JPermissionControl::isMultiLoginAble(ERole role)
 {
 	return role == ROLE_GAMESERVERRUNNER;
+}
+
+bool JPermissionControl::canChangePassword(JID toUserId)
+{
+	if( m_userId == toUserId ){ // 自己可以
+		return true ;
+	}else{
+		JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+		if(logindb->checkRole(m_userId,ROLE_ADMIN)) return true; // admin 可以
+		if(logindb->checkRole(m_userId,ROLE_ROOT)) return true; // root 可以
+		return false;
+	}
 }

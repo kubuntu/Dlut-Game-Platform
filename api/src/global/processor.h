@@ -14,6 +14,7 @@ enum EProcessorType{
 	EPI_UserRegister,
 	EPI_ControlRole,
 	EPI_HallTalk,
+	EPI_ChangePassword,
 
     EPI_UserType=0x0100,
     EPI_MaxType=0x1000,
