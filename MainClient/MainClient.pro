@@ -28,7 +28,8 @@ SOURCES += main/main.cpp \
     gui/admin/jformaddgame.cpp \
     service/jinstalledappmanager.cpp \
     gui/admin/adminmainwindow.cpp \
-    gui/gamehall/jdialogchangepassword.cpp
+    gui/gamehall/jdialogchangepassword.cpp \
+    service/jinputpasswordvalidater.cpp
 HEADERS += gui/gamehall/mainwindow.h \
     gui/selectserver/jcomboselectserver.h \
     gui/login/jdlglogin.h \
@@ -50,7 +51,8 @@ HEADERS += gui/gamehall/mainwindow.h \
     gui/admin/jformaddgame.h \
     service/jinstalledappmanager.h \
     gui/admin/adminmainwindow.h \
-    gui/gamehall/jdialogchangepassword.h
+    gui/gamehall/jdialogchangepassword.h \
+    service/jinputpasswordvalidater.h
 FORMS += gui/gamehall/mainwindow.ui \
     gui/login/jdlglogin.ui \
     gui/selectserver/jdlgnewserver.ui \

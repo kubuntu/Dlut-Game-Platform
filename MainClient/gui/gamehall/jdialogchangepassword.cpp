@@ -1,5 +1,6 @@
 #include "jdialogchangepassword.h"
 #include "ui_jdialogchangepassword.h"
+#include "service/jinputpasswordvalidater.h"
 
 #include <Util/JEncryptor>
 #include <Processor/JClientChangePasswordProcessor>
@@ -36,6 +37,15 @@ void JDialogChangePassword::accept()
 					tr("repeat password not match"));
 		return ;
 	}
+
+	JInputPasswordValidater ipv;
+	if( ! ipv.validatePassword( ui->edt_newpswd->text() ) ){
+		QMessageBox::critical(this,
+							  tr("input password error"),
+							  ipv.getErrorString());
+		return ;
+	}
+
 	JEncryptor ectr;
 	QString encryptedOldPswd = ectr.encryptPassword(ui->edt_oldpswd->text());
 	QString encryptedNewPswd = ectr.encryptPassword(ui->edt_newpswd->text());

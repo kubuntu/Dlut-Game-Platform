@@ -1,5 +1,6 @@
 #include "jdialoguserregister.h"
 #include "ui_jdialoguserregister.h"
+#include "service/jinputpasswordvalidater.h"
 
 #include <ClientRequest/JRequestUserRegister>
 
@@ -34,20 +35,15 @@ void JDialogUserRegister::accept()
 							  );
 		return;
 	}
-	if(ui->lineEdit_password->text().length()<6){
+
+	JInputPasswordValidater ipv;
+	if( ! ipv.validatePassword( ui->lineEdit_password->text() ) ){
 		QMessageBox::critical(this,
-							  tr("password too short"),
-							  tr("password can not be shorter than 6")
-							  );
-		return;
+							  tr("input password error"),
+							  ipv.getErrorString());
+		return ;
 	}
-	if(ui->lineEdit_password->text().length()>20){
-		QMessageBox::critical(this,
-							  tr("password too long"),
-							  tr("password can not be longer than 20")
-							  );
-		return;
-	}
+
 	m_register->sendRegister(ui->lineEdit_loginname->text(),ui->lineEdit_password->text(),ROLE_GAMEPLAYER);
 	if(m_register->waitForRegisterResult(1000)){
 		QMessageBox::information(this,
