@@ -9,7 +9,7 @@ class JAbstractServerInfoDB : public QObject
 {
     Q_OBJECT
 public:
-    explicit JAbstractServerInfoDB(QObject *parent = 0);
+    explicit JAbstractServerInfoDB(QObject *parent = 0):QObject(parent){}
 	virtual JServerInfo getServerInfoById(JID id)=0;
 	virtual JCode updateServerInfo(const JServerInfo& serverinfo)=0;
 	virtual bool isServerIdExist(JID id)=0;

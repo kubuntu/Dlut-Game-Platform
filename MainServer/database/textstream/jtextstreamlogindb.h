@@ -8,8 +8,8 @@ class JTextStreamLoginDB : public JAbstractLoginDB
 public:
     explicit JTextStreamLoginDB(QObject *parent = 0);
 	JID checkLoginName(const QString& loginname);
-	bool checkPasswd(JID,const QString& passwd);
-	bool checkRole(JID,JID);
+//	bool checkPasswd(JID,const QString& passwd);
+//	bool checkRole(JID,JID);
 	QString getLoginName(JID userId);
 	QString getPassword(JID userId);
 	void setPassword(JID userId , const QString& pswd);

@@ -52,18 +52,6 @@ JID JTextStreamLoginDB::checkLoginName(const QString& loginname)
 	return -1;
 }
 
-bool JTextStreamLoginDB::checkPasswd(JID userId,const QString& passwd)
-{
-	if(!s_loginusers.contains(userId)) return false;
-	return s_loginusers.value(userId).m_passwd==passwd;
-}
-
-bool JTextStreamLoginDB::checkRole(JID userId,JID role)
-{
-	if(!s_loginusers.contains(userId)) return false;
-	return s_loginusers.value(userId).m_role & (1<<role);
-}
-
 QString JTextStreamLoginDB::getLoginName(JID userId)
 {
 	return s_loginusers.value(userId).m_loginname;

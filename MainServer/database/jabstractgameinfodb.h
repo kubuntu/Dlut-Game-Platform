@@ -10,7 +10,7 @@ class JAbstractGameInfoDB : public QObject
 {
     Q_OBJECT
 public:
-    explicit JAbstractGameInfoDB(QObject *parent = 0);
+    explicit JAbstractGameInfoDB(QObject *parent = 0):QObject(parent){}
 	virtual JGameInfo getGameInfoById(JID id)=0;
 	virtual JGameList getGameList()=0;
 	virtual JCode updateGameInfo(const JGameInfo& gameinfo)=0;

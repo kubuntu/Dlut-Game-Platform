@@ -11,8 +11,8 @@ public:
 	explicit JSQLLoginDB(QSqlDatabase *dgpDB, QObject *parent = 0);
 //	~JSQLLoginDB();
 	JID checkLoginName(const QString &loginName);
-	bool checkPasswd(JID userID, const QString &passwd);
-	bool checkRole(JID userID, JID roleID);
+//	bool checkPasswd(JID userID, const QString &passwd);
+//	bool checkRole(JID userID, JID roleID);
 	QString getLoginName(JID userID);
 	QString getPassword(JID userID);
 	void setPassword(JID userId , const QString& pswd);

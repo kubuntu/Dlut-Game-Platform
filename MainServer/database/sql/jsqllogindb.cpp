@@ -33,36 +33,6 @@ JID JSQLLoginDB::checkLoginName(const QString &loginName) {
 	else return -1;
 }
 
-bool JSQLLoginDB::checkPasswd(JID userID, const QString &passwd) {
-	qDebug() << "+ checkPasswd";
-	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);
-	loginQuery->prepare("SELECT passwd FROM logininfo	\n"
-						"WHERE user_id = :userID");
-	loginQuery->bindValue(":userID", userID);
-	loginQuery->exec();
-
-	if (loginQuery->next()) {
-		qDebug() << "pwd in MySQL:" << loginQuery->value(0).toString();
-		qDebug() << "my pwd:" << passwd;
-		return loginQuery->value(0).toString() == passwd;
-	} else {
-		return false;
-	}
-	//return (loginQuery->next() &&
-		//	loginQuery->value(0).toString() == passwd);
-}
-
-bool JSQLLoginDB::checkRole(JID userID, JID roleID) {
-	qDebug() << "+ checkRole";
-	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);
-	loginQuery->prepare("SELECT roles FROM logininfo	\n"
-						"WHERE user_id = :userID");
-	loginQuery->bindValue(":userID", userID);
-	loginQuery->exec();
-	return (loginQuery->next() &&
-			loginQuery->value(0).toInt() & (1 << roleID));
-}
-
 QString JSQLLoginDB::getLoginName(JID userID) {
 	qDebug() << "+ getLoginName";
 	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);

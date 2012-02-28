@@ -101,7 +101,7 @@ bool JPermissionControl::checkControlRole(JID,ERole targetRole,EControlRoleActio
 	JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
 	JID testRole;
 	for(testRole = targetRole+1;testRole <= ROLE_ROOT;++testRole){
-		if(logindb->checkRole(m_userId,testRole)){
+		if(logindb->checkRole(m_userId,(ERole)testRole)){
 			return true;
 		}
 	}
