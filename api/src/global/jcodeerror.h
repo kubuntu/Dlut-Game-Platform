@@ -31,6 +31,8 @@ const JCode EOpenFileFailed = EFileSystemError | 0x0002; ///< 打开文件失败
 
 const JCode EDbError = 0x800; ///< 数据库错误
 const JCode EIdNotExist = EDbError | 0x0001; ///< Id不存在
+const JCode EPrepareFailed = EDbError | 0x0002; ///< prepare返回false
+const JCode EExecFailed = EDbError | 0x0003; ///< exec返回false
 
 const JCode ELoginError = 0x900; ///< error about login
 const JCode EPasswordError = ELoginError | 0x0001; ///< password error

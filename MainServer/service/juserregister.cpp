@@ -13,7 +13,7 @@ JUserRegister::JUserRegister(JID runnerId)
 
 void JUserRegister::execute(const QString& loginname,const QString& password,ERole role)
 {
-	JAbstractLoginDB* logindb=JAbstractDatabaseFactory::getInstance()->createLoginDB();
+	JAbstractLoginDB* logindb=JAbstractDatabaseFactory::getInstance()->getLoginDB();
 	if(-1 == m_runnerId){
 		if(role != ROLE_GAMEPLAYER){
 			m_result = ER_PermissionDenied;

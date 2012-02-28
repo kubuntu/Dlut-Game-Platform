@@ -9,15 +9,14 @@
 #include <QSqlError>
 #include <QDebug>
 
-JSQLServerInfoDB::JSQLServerInfoDB(QSqlDatabase *dgpDB, QObject *parent) :
-	JAbstractServerInfoDB(parent), serverInfoDB(dgpDB)
+JSQLServerInfoDB::JSQLServerInfoDB(QObject *parent) :
+	JAbstractServerInfoDB(parent)
 {
-	qDebug() << "+ JSQLSerInfoDB constructed";
 }
 
 JServerInfo JSQLServerInfoDB::getServerInfoById(JID ID) {
 	qDebug() << "+ getServerInfoById";
-	QSqlQuery *serverInfoQuery = new QSqlQuery(*serverInfoDB);
+	QSqlQuery *serverInfoQuery = new QSqlQuery;
 	if (serverInfoQuery->prepare("SELECT server_name,	\n"
 								 "runner_id,			\n"
 								 "host_addr,			\n"
@@ -49,7 +48,7 @@ JServerInfo JSQLServerInfoDB::getServerInfoById(JID ID) {
 
 JCode JSQLServerInfoDB::updateServerInfo(const JServerInfo &serverInfo) {
 	qDebug() << "+ updateServerInfo";
-	QSqlQuery serverInfoQuery(*serverInfoDB);
+	QSqlQuery serverInfoQuery;
 	if (serverInfoQuery.prepare("UPDATE serverinfo SET				\n"
 									"server_name = :serverName,	\n"
 									"runner_id = :runnerID,		\n"
@@ -79,7 +78,7 @@ JCode JSQLServerInfoDB::updateServerInfo(const JServerInfo &serverInfo) {
 
 bool JSQLServerInfoDB::isServerIdExist(JID id)
 {
-	QSqlQuery serverInfoQuery(*serverInfoDB);
+	QSqlQuery serverInfoQuery;
 	if (serverInfoQuery.prepare(
 			"select server_id from serverinfo "
 			" where server_id = :serverID"))
@@ -106,7 +105,7 @@ bool JSQLServerInfoDB::isServerIdExist(JID id)
 
 JCode JSQLServerInfoDB::insertServerInfo(const JServerInfo& serverInfo)
 {
-	QSqlQuery serverInfoQuery(*serverInfoDB);
+	QSqlQuery serverInfoQuery;
 	if (serverInfoQuery.prepare(
 			" INSERT INTO serverinfo "
 			" (server_id,server_name,runner_id,host_addr,host_port) "

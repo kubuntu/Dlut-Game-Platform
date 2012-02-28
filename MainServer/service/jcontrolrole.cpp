@@ -11,7 +11,7 @@ JControlRole::JControlRole()
 
 void JControlRole::execute(JID targetUserId,ERole targetRole,EControlRoleAction act)
 {
-	JAbstractLoginDB* loginDB = m_dbFactory->createLoginDB();
+	JAbstractLoginDB* loginDB = m_dbFactory->getLoginDB();
 	JRoleCombination role = loginDB->getRoleCombination(targetUserId);
 	qDebug()<<"formerRole"<<role;
 	switch(act){

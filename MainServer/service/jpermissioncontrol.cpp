@@ -47,27 +47,27 @@ bool JPermissionControl::checkInformation(JID protocol,const JHead& head)
 		case EIT_UserInfo://只有自己和Admin可以更改用户信息
 			if(head.m_id == m_userId) return true;
 			{
-				JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+				JAbstractLoginDB* logindb=m_dbFactory->getLoginDB();
 				if(logindb->checkRole(m_userId,ROLE_ADMIN)) return true;
 			}
 			return false;
 			break;
 		case EIT_GameInfo://只有游戏运营者和Admin可以更改游戏信息
 			{
-				JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+				JAbstractLoginDB* logindb=m_dbFactory->getLoginDB();
 				if(logindb->checkRole(m_userId,ROLE_ADMIN)) return true;
 				JID gameId = head.m_id;
-				JAbstractGameInfoDB* gameinfoDb=m_dbFactory->createGameInfoDB();
+				JAbstractGameInfoDB* gameinfoDb=m_dbFactory->getGameInfoDB();
 				JGameInfo gameinfo = gameinfoDb->getGameInfoById(gameId);
 				return gameinfo.getRunner() == m_userId;
 			}
 			break;
 		case EIT_ServerInfo://只有游戏运营者和Admin可以更改游戏信息
 			{
-				JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+				JAbstractLoginDB* logindb=m_dbFactory->getLoginDB();
 				if(logindb->checkRole(m_userId,ROLE_ADMIN)) return true;
 				JID serverId = head.m_id;
-				JAbstractServerInfoDB* serverinfoDB = m_dbFactory->createServerInfoDB();
+				JAbstractServerInfoDB* serverinfoDB = m_dbFactory->getServerInfoDB();
 				JServerInfo serverinfo = serverinfoDB->getServerInfoById(serverId);
 				return serverinfo.getRunner() == m_userId;
 			}
@@ -85,7 +85,7 @@ bool JPermissionControl::checkCommand(JID type,JID)
 	case ECT_Shutdown:
 	case ECT_Restart:
 		{
-			JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+			JAbstractLoginDB* logindb=m_dbFactory->getLoginDB();
 			if(logindb->checkRole(m_userId,ROLE_ROOT)) return true;
 			return false;
 		}
@@ -98,7 +98,7 @@ bool JPermissionControl::checkCommand(JID type,JID)
 
 bool JPermissionControl::checkControlRole(JID,ERole targetRole,EControlRoleAction)
 {
-	JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+	JAbstractLoginDB* logindb=m_dbFactory->getLoginDB();
 	JID testRole;
 	for(testRole = targetRole+1;testRole <= ROLE_ROOT;++testRole){
 		if(logindb->checkRole(m_userId,(ERole)testRole)){
@@ -118,7 +118,7 @@ bool JPermissionControl::canChangePassword(JID toUserId)
 	if( m_userId == toUserId ){ // 自己可以
 		return true ;
 	}else{
-		JAbstractLoginDB* logindb=m_dbFactory->createLoginDB();
+		JAbstractLoginDB* logindb=m_dbFactory->getLoginDB();
 		if(logindb->checkRole(m_userId,ROLE_ADMIN)) return true; // admin 可以
 		if(logindb->checkRole(m_userId,ROLE_ROOT)) return true; // root 可以
 		return false;

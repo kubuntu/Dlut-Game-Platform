@@ -19,7 +19,7 @@ void JLoginHashCodeCreator::setUserId(JID userId)
 QByteArray JLoginHashCodeCreator::createLoginHashCode()
 {
 	QCryptographicHash ch(QCryptographicHash::Md5);
-	JAbstractLoginDB* logindb=JAbstractDatabaseFactory::getInstance()->createLoginDB();
+	JAbstractLoginDB* logindb=JAbstractDatabaseFactory::getInstance()->getLoginDB();
 	ch.addData(QByteArray::fromHex(logindb->getLoginName(m_userId).toAscii()));
 	ch.addData(QByteArray::fromHex(logindb->getPassword(m_userId).toAscii()));
 	ch.addData(QTime::currentTime().toString().toAscii());

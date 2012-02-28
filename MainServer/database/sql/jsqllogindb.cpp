@@ -1,151 +1,156 @@
 #include "jsqllogindb.h"
 
+#include "jsqlcommon.h"
+
 #include <Global/Global>
 #include <Global/Login>
 #include <Global/Register>
+#include <Global/CodeError>
 
-#include <QTextCodec>
-#include <QSqlDatabase>
 #include <QSqlQuery>
-#include <QSqlDriver>
-#include <QVariant>
 #include <QSqlRecord>
 #include <QSqlError>
+#include <QVariant>
 #include <QDebug>
 
-
-JSQLLoginDB::JSQLLoginDB(QSqlDatabase *dgpDB, QObject *parent) :
-	JAbstractLoginDB(parent), loginDB(dgpDB)
+JSQLLoginDB::JSQLLoginDB(QObject *parent) :
+	JAbstractLoginDB(parent)
 {
-	qDebug() << "+ JSQLLoginDB constructed";
 }
 
 
 JID JSQLLoginDB::checkLoginName(const QString &loginName) {
-	qDebug() << "+ checkLoginName";
-	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);
-	loginQuery->prepare("SELECT user_id FROM logininfo	\n"
-						"WHERE user_name = :loginName");
-	loginQuery->bindValue(":loginName", loginName);
-	loginQuery->exec();
-	if (loginQuery->next())
-		return loginQuery->value(0).toInt();
+	QSqlQuery query;
+	if( ! query.prepare("SELECT user_id FROM logininfo "
+						"WHERE user_name = :loginName") ){
+		PREPARE_FAILED ;
+		return -1;
+	}
+	
+	query.bindValue(":loginName", loginName);
+	query.exec();
+	if (query.next())
+		return query.value(0).toInt();
 	else return -1;
 }
 
 QString JSQLLoginDB::getLoginName(JID userID) {
-	qDebug() << "+ getLoginName";
-	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);
-	if (loginQuery->prepare("SELECT user_name FROM logininfo	\n"
+	QSqlQuery query ;
+	if ( ! query.prepare("SELECT user_name FROM logininfo "
 							"WHERE user_id = :userID")) {
-		qDebug() << "getLoginName prepare successfully";
-	} else
-		qDebug() << "getLoginName prepare fail";
-	loginQuery->bindValue(":userID", userID);
-
-	//without wrong userID checking...
-	if (loginQuery->exec()) {
-//	if (loginQuery->exec("SELECT user_name FROM logininfo WHERE user_id = 1001")) {
-		qDebug() << "getLoginName execute successfully!";
-	} else {
-		qDebug() << loginQuery->lastError().databaseText();
-		qDebug() << "getLoginName execute fail";
+		PREPARE_FAILED ;
+		return QString() ;
 	}
-	if (loginQuery->next())
-		return loginQuery->value(0).toString();
+	
+	query.bindValue(":userID", userID);
+	
+	if ( ! query.exec()) {
+		EXEC_FAILED ;
+		return QString() ;
+	}
+	
+	if (query.next())
+		return query.value(0).toString();
 	else
-		return loginQuery->lastError().databaseText();
+		return QString();
 }
 
 QString JSQLLoginDB::getPassword(JID userID) {
-	qDebug() << "+ getPassword";
-	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);
-//	loginQuery->prepare("SELECT passwd FROM logininfo	\n"
-//						"WHERE user_id = :userID");
-	if (loginQuery->prepare("SELECT passwd FROM logininfo	\n"
-							"WHERE user_id = :userID"))
-		qDebug() << "getPassword prepare succ";
-	else qDebug() << "getPassword prepare fail";
-	loginQuery-> bindValue(":userID", userID);
-	//without wrong userID checking...
-//	loginQuery->exec();
-	if (loginQuery->exec())
-		qDebug() << "getPassword exec succ";
-	else qDebug() << "getPassword exec fail";
-	qDebug() << "before next";
-	if (loginQuery->next()) {
-		qDebug() << "getPassword has next";
-		return loginQuery->value(0).toString();
-	} else
-		return loginQuery->lastError().databaseText();
+	QSqlQuery query ;
+	if ( ! query.prepare("SELECT passwd FROM logininfo "
+							"WHERE user_id = :userID")){
+		PREPARE_FAILED ;
+		return QString() ;
+	}
+	
+	query.bindValue(":userID", userID);
+	
+	if ( ! query.exec()) {
+		EXEC_FAILED ;
+		return QString() ;
+	}
+	
+	if (query.next()) {
+		return query.value(0).toString();
+	} else {
+		return QString() ;
+	}
 }
 
 void JSQLLoginDB::setPassword(JID userId , const QString& pswd)
 {
-	QSqlQuery query(*loginDB) ;
-	if( ! query.prepare(" UPDATE logininfo		\n"
-							"SET passwd = :passwd		\n"
+	QSqlQuery query ;
+	if( ! query.prepare(" UPDATE logininfo "
+							"SET passwd = :passwd "
 							"WHERE user_id = :userID")){
-		qDebug()<<__FUNCTION__<<" prepare failed";
+		PREPARE_FAILED ;
 		return ;
 	}
+	
 	query.bindValue(":userID",userId);
 	query.bindValue(":passwd", pswd);
+	
 	if( ! query.exec() ){
-		qDebug()<<__FUNCTION__<<" exec failed : "<<query.lastError();
+		EXEC_FAILED ;
 		return ;
 	}
 }
 
 JCode JSQLLoginDB::addLoginUser(const QString &loginName, const QString &passwd) {
-	qDebug() << "+ addLoginUser";
-	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);
-	if (loginQuery->prepare("INSERT INTO logininfo			\n"
-						"(user_name, passwd, roles)			\n"
-						"VALUES(:loginName, :passwd, :roles)"))
-		qDebug() << "addLoginUser prepare succ";
-	else qDebug() << "addLoginUser prepare fail";
-	loginQuery->bindValue(":loginName", loginName);
-	loginQuery->bindValue(":passwd", passwd);
-	loginQuery->bindValue(":roles", 1 << ROLE_GAMEPLAYER);
-	if (loginQuery->exec()) {
-		qDebug() << "addLoginUser exec succ" ;
-		return 0;
+	QSqlQuery query ;
+	if ( ! query.prepare("INSERT INTO logininfo "
+						"(user_name, passwd, roles) "
+						"VALUES(:loginName, :passwd, :roles)")){
+		PREPARE_FAILED ;
+		return EPrepareFailed ;
 	}
-	else {
-		qDebug() << loginQuery->lastError();
-		return ER_UserIdFull;//wrong description
+	
+	query.bindValue(":loginName", loginName);
+	query.bindValue(":passwd", passwd);
+	query.bindValue(":roles", 1 << ROLE_GAMEPLAYER);
+	
+	if ( ! query.exec()) {
+		EXEC_FAILED ;
+		return EExecFailed ;
 	}
+	return 0;
 }
 
 JRoleCombination JSQLLoginDB::JSQLLoginDB::getRoleCombination(JID userID) {
-	qDebug() << "+ getRoleCombination";
-	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);
-	loginQuery->prepare("SELECT roles FROM logininfo	\n"
-						"WHERE user_id = :userID");
-	loginQuery->bindValue(":userID", userID);
-	loginQuery->exec();
-	if (loginQuery->next()) {
-		return loginQuery->value(0).toInt();
+	QSqlQuery query ;
+	if( ! query.prepare("SELECT roles FROM logininfo "
+						"WHERE user_id = :userID")){
+		PREPARE_FAILED ;
+		return 0 ;
 	}
-	return -1;
+	
+	query.bindValue(":userID", userID);
+	
+	if( ! query.exec() ){
+		EXEC_FAILED ;
+		return 0;
+	}
+	if (query.next()) {
+		return query.value(0).toInt();
+	}else{
+		return 0;
+	}
 }
 
 void JSQLLoginDB::setRoleCombination(JID userID, JRoleCombination roles) {
-	qDebug() << "+ setRoleCombination";
-	QSqlQuery *loginQuery = new QSqlQuery(*loginDB);
-	if (loginQuery->prepare("UPDATE logininfo		\n"
-							"SET roles = :roles		\n"
-							"WHERE user_id = :userID"))
-		qDebug() << "setRoleCombination prepare succ";
-	else qDebug() << "setRoleCombination prepare fail";
-	loginQuery->bindValue(":roles", roles);
-	loginQuery->bindValue(":user_ID", userID);
-	//without error checking...
-	if (loginQuery->exec()) {
-		qDebug() << "setRoleCombination exec succ";
-	} else {
-		qDebug() << loginQuery->lastError().databaseText();
-		qDebug() << "setRoleCombination exec fail";
+	QSqlQuery query ;
+	if ( ! query.prepare("UPDATE logininfo "
+							"SET roles = :roles "
+							"WHERE user_id = :userID")){
+		PREPARE_FAILED ;
+		return ;
+	}
+	
+	query.bindValue(":roles", roles);
+	query.bindValue(":user_ID", userID);
+	
+	if ( ! query.exec()) {
+		EXEC_FAILED ;
+		return ;
 	}
 }

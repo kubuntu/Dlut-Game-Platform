@@ -9,15 +9,14 @@
 #include <QSqlError>
 #include <QDebug>
 
-JSQLGameInfoDB::JSQLGameInfoDB(QSqlDatabase *dgpDB, QObject *parent) :
-	JAbstractGameInfoDB(parent), gameInfoDB(dgpDB)
+JSQLGameInfoDB::JSQLGameInfoDB(QObject *parent) :
+	JAbstractGameInfoDB(parent)
 {
-	qDebug() << "+ JSQLGameInfoDB constructed";
 }
 
 JGameInfo JSQLGameInfoDB::getGameInfoById(JID ID) {
 	qDebug() << "+ getGameInfoById" <<endl;
-	QSqlQuery *gameInfoQuery = new QSqlQuery(*gameInfoDB);
+	QSqlQuery *gameInfoQuery = new QSqlQuery;
 	if (gameInfoQuery->prepare("SELECT game_name,		\n"
 									"version,			\n"
 									"author_id,			\n"
@@ -56,7 +55,7 @@ JGameInfo JSQLGameInfoDB::getGameInfoById(JID ID) {
 
 JGameList JSQLGameInfoDB::getGameList() {
 	qDebug() << "+ getGameList";
-	QSqlQuery *gameInfoQuery = new QSqlQuery(*gameInfoDB);
+	QSqlQuery *gameInfoQuery = new QSqlQuery();
 	if (gameInfoQuery->exec("SELECT game_id, game_name FROM gameinfo"))
 		qDebug() << "getGameList exec succ";
 	else {
@@ -74,7 +73,7 @@ JGameList JSQLGameInfoDB::getGameList() {
 
 JCode JSQLGameInfoDB::updateGameInfo(const JGameInfo &gameInfo) {
 	qDebug() << "+ updateGameInfo";
-	QSqlQuery gameInfoQuery(*gameInfoDB);
+	QSqlQuery gameInfoQuery;
 	qDebug() << gameInfo.getGameId()
 			 << gameInfo.getName()
 			 << gameInfo.getVersion().getData()
@@ -117,7 +116,7 @@ JCode JSQLGameInfoDB::updateGameInfo(const JGameInfo &gameInfo) {
 
 bool JSQLGameInfoDB::isGameIdExist(JID id)
 {
-	QSqlQuery gameInfoQuery(*gameInfoDB);
+	QSqlQuery gameInfoQuery;
 	if (gameInfoQuery.prepare(
 			"select game_id from gameinfo "
 			"where game_id= :gameID"))
@@ -144,7 +143,7 @@ bool JSQLGameInfoDB::isGameIdExist(JID id)
 
 JCode JSQLGameInfoDB::insertGameInfo(const JGameInfo& gameInfo)
 {
-	QSqlQuery gameInfoQuery(*gameInfoDB);
+	QSqlQuery gameInfoQuery;
 	if (gameInfoQuery.prepare(
 			" INSERT INTO gameinfo "
 			" (game_id,game_name,version,author_id,runner_id,intro,server_id,download_url) "

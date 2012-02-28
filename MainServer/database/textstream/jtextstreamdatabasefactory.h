@@ -8,7 +8,7 @@ class JTextStreamDatabaseFactory : public JAbstractDatabaseFactory
 	explicit JTextStreamDatabaseFactory(QObject *parent = 0);
 public:
 	~JTextStreamDatabaseFactory();
-	static JTextStreamDatabaseFactory* getInstance();
+	static JTextStreamDatabaseFactory* createInstance(QObject* parent);
 	JAbstractLoginDB* createLoginDB();
 	JAbstractUserInfoDB* createUserInfoDB();
 	JAbstractGameInfoDB* createGameInfoDB();

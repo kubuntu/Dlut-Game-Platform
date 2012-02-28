@@ -39,7 +39,7 @@ QByteArray JMainServerInformationManager::getData(const JHead& head)const
 	case EIT_UserInfo:
 		switch(head.m_category){
 		case 0:
-			pData=new JUserInfo(databaseFactory->createUserInfoDB()->getUserInfoById(head.m_id));
+			pData=new JUserInfo(databaseFactory->getUserInfoDB()->getUserInfoById(head.m_id));
 			break;
 		default:
 			qDebug()<<"JMainServerInformationManager::getData : no such category "<<head.m_category<<" of type "<<head.m_type;
@@ -48,10 +48,10 @@ QByteArray JMainServerInformationManager::getData(const JHead& head)const
 	case EIT_GameInfo:
 		switch(head.m_category){
 		case 0:
-			pData=new JGameInfo(databaseFactory->createGameInfoDB()->getGameInfoById(head.m_id));
+			pData=new JGameInfo(databaseFactory->getGameInfoDB()->getGameInfoById(head.m_id));
 			break;
 		case 1:
-			pData = new JGameList(databaseFactory->createGameInfoDB()->getGameList());
+			pData = new JGameList(databaseFactory->getGameInfoDB()->getGameList());
 			break;
 		default:
 			qDebug()<<"JMainServerInformationManager::getData : no such category "<<head.m_category<<" of type "<<head.m_type;
@@ -60,7 +60,7 @@ QByteArray JMainServerInformationManager::getData(const JHead& head)const
 	case EIT_ServerInfo:
 		switch(head.m_category){
 		case 0:
-			pData=new JServerInfo(databaseFactory->createServerInfoDB()->getServerInfoById(head.m_id));
+			pData=new JServerInfo(databaseFactory->getServerInfoDB()->getServerInfoById(head.m_id));
 			break;
 		default:
 			qDebug()<<"JMainServerInformationManager::getData : no such category "<<head.m_category<<" of type "<<head.m_type;
@@ -93,7 +93,7 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 			{
 				JUserInfo userinfo;
 				userinfo.fromByteArray(data);
-				databaseFactory->createUserInfoDB()->updateUserInfo(userinfo);
+				databaseFactory->getUserInfoDB()->updateUserInfo(userinfo);
 			}
 			break;
 		default:
@@ -111,7 +111,7 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 				
 				JGameInfo gameinfo;
 				gameinfo.fromByteArray(data);
-				JAbstractGameInfoDB* gameInfoDb = databaseFactory->createGameInfoDB();
+				JAbstractGameInfoDB* gameInfoDb = databaseFactory->getGameInfoDB();
 				if(gameInfoDb->isGameIdExist(gameinfo.getGameId())){
 					gameInfoDb->updateGameInfo(gameinfo);
 				}else{
@@ -130,7 +130,7 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 			{
 				JServerInfo serverinfo;
 				serverinfo.fromByteArray(data);
-				JAbstractServerInfoDB* serverInfoDb = databaseFactory->createServerInfoDB();
+				JAbstractServerInfoDB* serverInfoDb = databaseFactory->getServerInfoDB();
 				if(serverInfoDb->isServerIdExist(serverinfo.getServerId())){
 					serverInfoDb->updateServerInfo(serverinfo);
 				}else{

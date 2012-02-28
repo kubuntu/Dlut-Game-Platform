@@ -20,10 +20,9 @@ JTextStreamDatabaseFactory::~JTextStreamDatabaseFactory()
 	JTextStreamServerInfoDB::flush();
 }
 
-JTextStreamDatabaseFactory* JTextStreamDatabaseFactory::getInstance()
+JTextStreamDatabaseFactory* JTextStreamDatabaseFactory::createInstance(QObject* parent)
 {
-	static QObject parent;
-	static JTextStreamDatabaseFactory* instance=new JTextStreamDatabaseFactory(&parent);
+	JTextStreamDatabaseFactory* instance=new JTextStreamDatabaseFactory(parent);
 	return instance;
 }
 

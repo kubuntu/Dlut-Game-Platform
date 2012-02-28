@@ -15,7 +15,7 @@ JCode JChangePassword::changePassword(
 	
 	// login db
 	JAbstractDatabaseFactory* dbFactory=JAbstractDatabaseFactory::getInstance();
-	JAbstractLoginDB* logindb=dbFactory->createLoginDB();
+	JAbstractLoginDB* logindb=dbFactory->getLoginDB();
 	
 	// check oldPassword
 	if( ! logindb->checkPasswd(userId,oldPassword)){

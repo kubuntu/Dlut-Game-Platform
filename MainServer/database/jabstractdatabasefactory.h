@@ -14,10 +14,20 @@ protected:
 	explicit JAbstractDatabaseFactory(QObject *parent = 0);
 public:
 	static JAbstractDatabaseFactory* getInstance();
+	JAbstractLoginDB* getLoginDB();
+	JAbstractUserInfoDB* getUserInfoDB();
+	JAbstractGameInfoDB* getGameInfoDB();
+	JAbstractServerInfoDB* getServerInfoDB();
+protected:
 	virtual JAbstractLoginDB* createLoginDB()=0;
 	virtual JAbstractUserInfoDB* createUserInfoDB()=0;
 	virtual JAbstractGameInfoDB* createGameInfoDB()=0;
 	virtual JAbstractServerInfoDB* createServerInfoDB()=0;
+private:
+	JAbstractLoginDB* m_loginDB;
+	JAbstractUserInfoDB* m_userInfoDB;
+	JAbstractGameInfoDB* m_gameInfoDB;
+	JAbstractServerInfoDB* m_serverInfoDB;
 };
 
 #endif // JABSTRACTDATABASEFACTORY_H

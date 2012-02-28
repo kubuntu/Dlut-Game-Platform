@@ -8,14 +8,10 @@ class QSqlDatabase;
 class JSQLUserInfoDB : public JAbstractUserInfoDB
 {
 public:
-	explicit JSQLUserInfoDB(QSqlDatabase *dgpDB, QObject *parent = 0);
-//	~JSQLUserInfoDB();
+	explicit JSQLUserInfoDB(QObject *parent = 0);
 	JUserInfo getUserInfoById(JID userID);
 	JCode updateUserInfo(const JUserInfo &userInfo);
 	void testUserinfoExist(JID userID);
-
-private:
-	QSqlDatabase *userInfoDB;
 };
 
 #endif // JSQLUSERINFODB_H

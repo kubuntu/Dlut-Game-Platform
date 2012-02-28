@@ -9,16 +9,15 @@
 #include <QSqlError>
 #include <QDebug>
 
-JSQLUserInfoDB::JSQLUserInfoDB(QSqlDatabase *dgpDB, QObject *parent) :
-	JAbstractUserInfoDB(parent), userInfoDB(dgpDB)
+JSQLUserInfoDB::JSQLUserInfoDB(QObject *parent) :
+	JAbstractUserInfoDB(parent)
 {
-	qDebug() << "+ JSQLUserInfo constructed";
 }
 
 JUserInfo JSQLUserInfoDB::getUserInfoById(JID userID) {
 	qDebug() << "+ getUserInfoById";
 	testUserinfoExist(userID);
-	QSqlQuery *userInfoQuery = new QSqlQuery(*userInfoDB);
+	QSqlQuery *userInfoQuery = new QSqlQuery ;
 	if (userInfoQuery->prepare("SELECT nickname, org FROM userinfo	\n"
 							   "WHERE user_id = :userID"))
 		qDebug() << "getUserInfoById prepare succ";
@@ -45,7 +44,7 @@ JUserInfo JSQLUserInfoDB::getUserInfoById(JID userID) {
 JCode JSQLUserInfoDB::updateUserInfo(const JUserInfo &userInfo) {
 	qDebug() << "+ updateUserInfo";
 	testUserinfoExist(userInfo.getUserId());
-	QSqlQuery *userInfoQuery = new QSqlQuery(*userInfoDB);
+	QSqlQuery *userInfoQuery = new QSqlQuery ;
 	if (userInfoQuery->prepare("UPDATE userinfo	SET			\n"
 									"nickname = :nickname,	\n"
 									"org = :org				\n"
@@ -70,7 +69,7 @@ JCode JSQLUserInfoDB::updateUserInfo(const JUserInfo &userInfo) {
 
 void JSQLUserInfoDB::testUserinfoExist(const JID userID) {
 	qDebug() << "~~ test userinfo exist";
-	QSqlQuery *userInfoQuery = new QSqlQuery(*userInfoDB);
+	QSqlQuery *userInfoQuery = new QSqlQuery ;
 	if (userInfoQuery->prepare("SELECT * from userinfo\n"
 							   "WHERE user_id = :userID"))
 	{

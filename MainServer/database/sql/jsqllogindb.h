@@ -3,25 +3,17 @@
 
 #include "../jabstractlogindb.h"
 
-class QSqlDatabase;
-
 class JSQLLoginDB : public JAbstractLoginDB
 {
 public:
-	explicit JSQLLoginDB(QSqlDatabase *dgpDB, QObject *parent = 0);
-//	~JSQLLoginDB();
+	explicit JSQLLoginDB(QObject *parent = 0);
 	JID checkLoginName(const QString &loginName);
-//	bool checkPasswd(JID userID, const QString &passwd);
-//	bool checkRole(JID userID, JID roleID);
 	QString getLoginName(JID userID);
 	QString getPassword(JID userID);
 	void setPassword(JID userId , const QString& pswd);
 	JRoleCombination getRoleCombination(JID userID);
 	JCode addLoginUser(const QString &loginName, const QString &passwd);
 	void setRoleCombination(JID userID, JRoleCombination roles);
-
-private:
-	QSqlDatabase *loginDB;
 };
 
 #endif // JSQLLOGINDB_H
