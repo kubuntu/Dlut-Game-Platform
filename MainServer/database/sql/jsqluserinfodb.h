@@ -11,7 +11,6 @@ public:
 	explicit JSQLUserInfoDB(QObject *parent = 0);
 	JUserInfo getUserInfoById(JID userID);
 	JCode updateUserInfo(const JUserInfo &userInfo);
-	void testUserinfoExist(JID userID);
 };
 
 #endif // JSQLUSERINFODB_H

@@ -1,11 +1,11 @@
 #include "jsqluserinfodb.h"
 
-#include <QTextCodec>
-#include <QSqlDatabase>
+#include "jsqlcommon.h"
+
+#include <Global/CodeError>
+
 #include <QSqlQuery>
-#include <QSqlDriver>
 #include <QVariant>
-#include <QSqlRecord>
 #include <QSqlError>
 #include <QDebug>
 
@@ -15,95 +15,40 @@ JSQLUserInfoDB::JSQLUserInfoDB(QObject *parent) :
 }
 
 JUserInfo JSQLUserInfoDB::getUserInfoById(JID userID) {
-	qDebug() << "+ getUserInfoById";
-	testUserinfoExist(userID);
-	QSqlQuery *userInfoQuery = new QSqlQuery ;
-	if (userInfoQuery->prepare("SELECT nickname, org FROM userinfo	\n"
-							   "WHERE user_id = :userID"))
-		qDebug() << "getUserInfoById prepare succ";
-	else {
-		qDebug() << userInfoQuery->lastError().databaseText();
-		qDebug() << "getUserInfoById prepare fail";
-	}
-	userInfoQuery->bindValue(":userID", userID);
-	if (userInfoQuery->exec())
-		qDebug() << "getUserInfoById exec succ";
-	else {
-		qDebug() << userInfoQuery->lastError().databaseText();
-		qDebug() << "getUserInfoById exec fail";
-	}
-	if (userInfoQuery->next())
+	QSqlQuery query ;
+	PREPARE( query , 
+			"SELECT nickname, org FROM userinfo "
+			"WHERE user_id = :userID",
+			JUserInfo() );
+	
+	query.bindValue(":userID", userID);
+	
+	EXEC( query , JUserInfo() );
+	
+	if (query.next())
 		return JUserInfo(userID,
-						 userInfoQuery->value(0).toString(),
-						 userInfoQuery->value(1).toString()
+						 query.value(0).toString(),
+						 query.value(1).toString()
 						 );
 	else
 		return JUserInfo();
 }
 
 JCode JSQLUserInfoDB::updateUserInfo(const JUserInfo &userInfo) {
-	qDebug() << "+ updateUserInfo";
-	testUserinfoExist(userInfo.getUserId());
-	QSqlQuery *userInfoQuery = new QSqlQuery ;
-	if (userInfoQuery->prepare("UPDATE userinfo	SET			\n"
-									"nickname = :nickname,	\n"
-									"org = :org				\n"
-							   "WHERE user_id = :userID"))
-		qDebug() << "updateUserInfo prepare succ";
-	else {
-		qDebug() << userInfoQuery->lastError().databaseText();
-		qDebug() << "updateUserInfo prepare fail";
-	}
-	userInfoQuery->bindValue(":nickname", userInfo.getNickname());
-	userInfoQuery->bindValue(":org", userInfo.getOrganization());
-	userInfoQuery->bindValue(":userID", userInfo.getUserId());
-	if (userInfoQuery->exec()) {
-		qDebug() << "updateUserInfo exec succ";
-		return 0;
-	} else {
-		qDebug() << userInfoQuery->lastError().databaseText();
-		qDebug() << "updateUserInfo exec fail";
-		return -1;
-	}
-}
-
-void JSQLUserInfoDB::testUserinfoExist(const JID userID) {
-	qDebug() << "~~ test userinfo exist";
-	QSqlQuery *userInfoQuery = new QSqlQuery ;
-	if (userInfoQuery->prepare("SELECT * from userinfo\n"
-							   "WHERE user_id = :userID"))
-	{
-		qDebug() << "test userinfo exist prepare succ";
-	} else {
-		qDebug() << userInfoQuery->lastError().text();
-		qDebug() << "test userinfo exist prepare fail";
-		return ;
-	}
-	userInfoQuery->bindValue(":userID", userID);
-	if (userInfoQuery->exec()) {
-		qDebug() << "test userinfo exist exec succ";
-	} else {
-		qDebug() << userInfoQuery->lastError().text();
-		qDebug() << "test userinfo exist exec fail";
-		return ;
-	}
-
-	// if not exists ,insert one empty userinfo...
-	if (userInfoQuery->next()) return ;
-
-	if (userInfoQuery->prepare("INSERT INTO userinfo(user_id) VALUES(:userID)")) {
-		qDebug() << "insert userinfo prepare succ";
-	} else {
-		qDebug() << userInfoQuery->lastError().text();
-		qDebug() << "insert userinfo prepare fail";
-		return ;
-	}
-	userInfoQuery->bindValue(":userID", userID);
-	if (userInfoQuery->exec()) {
-		qDebug() << "insert userinfo exec succ";
-	} else {
-		qDebug() << userInfoQuery->lastError().text();
-		qDebug() << "insert userinfo exec fail";
-		return ;
-	}
+	QSqlQuery query ;
+	PREPARE( query ,
+			"UPDATE userinfo SET "
+			"nickname = :nickname, "
+			"org = :org "
+			"WHERE user_id = :userID",
+			EPrepareFailed
+			);
+	
+	query.bindValue(":nickname", userInfo.getNickname());
+	query.bindValue(":org", userInfo.getOrganization());
+	query.bindValue(":userID", userInfo.getUserId());
+	
+	EXEC( query , EExecFailed );
+	
+	return 0 ;
 }

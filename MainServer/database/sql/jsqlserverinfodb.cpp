@@ -1,11 +1,11 @@
 #include "jsqlserverinfodb.h"
 
-#include <QTextCodec>
-#include <QSqlDatabase>
+#include "jsqlcommon.h"
+
+#include <Global/CodeError>
+
 #include <QSqlQuery>
-#include <QSqlDriver>
 #include <QVariant>
-#include <QSqlRecord>
 #include <QSqlError>
 #include <QDebug>
 
@@ -15,118 +15,89 @@ JSQLServerInfoDB::JSQLServerInfoDB(QObject *parent) :
 }
 
 JServerInfo JSQLServerInfoDB::getServerInfoById(JID ID) {
-	qDebug() << "+ getServerInfoById";
-	QSqlQuery *serverInfoQuery = new QSqlQuery;
-	if (serverInfoQuery->prepare("SELECT server_name,	\n"
-								 "runner_id,			\n"
-								 "host_addr,			\n"
-								 "host_port				\n"
-								 "FROM serverinfo		\n"
-								 "WHERE server_id = :serverID"))
-		qDebug() << "getServerInfoById prepare succ";
-	else {
-		qDebug() << serverInfoQuery->lastError().databaseText();
-		qDebug() << "getServerInfoById prepare fail";
-	}
-	serverInfoQuery->bindValue(":serverID", ID);
-	if (serverInfoQuery->exec())
-		qDebug() << "getServerInfoById exec succ";
-	else {
-		qDebug() << serverInfoQuery->lastError().databaseText();
-		qDebug() << "getServerInfoId exec fail";
-	}
-	if (serverInfoQuery->next())
+	QSqlQuery query ;
+	PREPARE( query , 
+			"SELECT server_name, "
+			"runner_id, "
+			"host_addr, "
+			"host_port "
+			"FROM serverinfo "
+			"WHERE server_id = :serverID",
+			JServerInfo() );
+	
+	query.bindValue(":serverID", ID);
+	
+	EXEC( query , JServerInfo() );
+	
+	if (query.next())
 		return JServerInfo(ID,
-						   serverInfoQuery->value(0).toString(),
-						   serverInfoQuery->value(1).toInt(),
-						   SHost(QHostAddress(serverInfoQuery->value(2).toString()),
-								 serverInfoQuery->value(3).toInt())
+						   query.value(0).toString(),
+						   query.value(1).toInt(),
+						   SHost(QHostAddress(query.value(2).toString()),
+								 query.value(3).toInt())
 						   );
 	else
 		return JServerInfo();
 }
 
 JCode JSQLServerInfoDB::updateServerInfo(const JServerInfo &serverInfo) {
-	qDebug() << "+ updateServerInfo";
-	QSqlQuery serverInfoQuery;
-	if (serverInfoQuery.prepare("UPDATE serverinfo SET				\n"
-									"server_name = :serverName,	\n"
-									"runner_id = :runnerID,		\n"
-									"host_addr = :hostAddr,		\n"
-									"host_port = :hostPort		\n"
-								 "WHERE server_id = :serverID"))
-		qDebug() << "updateServerInfo prepare succ";
-	else {
-		qDebug() << serverInfoQuery.lastError().databaseText();
-		qDebug() << "updateServerInfo prepare fail";
-	}
-	serverInfoQuery.bindValue(":serverName", serverInfo.getName());
-	serverInfoQuery.bindValue(":runnerID", serverInfo.getRunner());
-	serverInfoQuery.bindValue(":hostAddr", serverInfo.getHost().m_address.toString());
-	serverInfoQuery.bindValue(":hostPort", serverInfo.getHost().m_port);
-	serverInfoQuery.bindValue(":serverID", serverInfo.getServerId());
-	if (serverInfoQuery.exec()) {
-		qDebug() << "updateServerInfo exec succ";
-		return 0;
-	}
-	else {
-		qDebug() << serverInfoQuery.lastError().databaseText();
-		qDebug() << "updateServerInfo exec fail";
-		return -1;
-	}
+	QSqlQuery query;
+	PREPARE( query ,
+			"UPDATE serverinfo SET "
+			"server_name = :serverName, "
+			"runner_id = :runnerID, "
+			"host_addr = :hostAddr, "
+			"host_port = :hostPort "
+			"WHERE server_id = :serverID",
+			EPrepareFailed
+			);
+	
+	query.bindValue(":serverName", serverInfo.getName());
+	query.bindValue(":runnerID", serverInfo.getRunner());
+	query.bindValue(":hostAddr", serverInfo.getHost().m_address.toString());
+	query.bindValue(":hostPort", serverInfo.getHost().m_port);
+	query.bindValue(":serverID", serverInfo.getServerId());
+	
+	EXEC( query , EExecFailed );
+	
+	return 0 ;
 }
 
 bool JSQLServerInfoDB::isServerIdExist(JID id)
 {
-	QSqlQuery serverInfoQuery;
-	if (serverInfoQuery.prepare(
+	QSqlQuery query;
+	PREPARE( query ,
 			"select server_id from serverinfo "
-			" where server_id = :serverID"))
-		qDebug() << __FUNCTION__ << " prepare succ";
-	else {
-		qDebug() << serverInfoQuery.lastError().databaseText();
-		qDebug() << __FUNCTION__ << " prepare fail";
-	}
-	serverInfoQuery.bindValue(":serverID", id);
-	if (serverInfoQuery.exec()) {
-		qDebug() << __FUNCTION__ << " exec succ";
-		if(serverInfoQuery.size()>0){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	else {
-		qDebug() << serverInfoQuery.lastError().databaseText();
-		qDebug() << __FUNCTION__ << " exec fail";
+			" where server_id = :serverID",
+			false );
+	
+	query.bindValue(":serverID", id);
+	
+	EXEC( query , false );
+	
+	if(query.size()>0){
+		return true;
+	}else{
 		return false;
 	}
 }
 
 JCode JSQLServerInfoDB::insertServerInfo(const JServerInfo& serverInfo)
 {
-	QSqlQuery serverInfoQuery;
-	if (serverInfoQuery.prepare(
+	QSqlQuery query;
+	PREPARE( query ,
 			" INSERT INTO serverinfo "
 			" (server_id,server_name,runner_id,host_addr,host_port) "
-			" values(:serverID,:serverName,:runnerID,:hostAddr,:hostPort) "))
-		qDebug() << __FUNCTION__ << " prepare succ";
-	else {
-		qDebug() << serverInfoQuery.lastError().databaseText();
-		qDebug() << __FUNCTION__ << " prepare fail";
-	}
-	serverInfoQuery.bindValue(":serverName", serverInfo.getName());
-	serverInfoQuery.bindValue(":runnerID", serverInfo.getRunner());
-	serverInfoQuery.bindValue(":hostAddr", serverInfo.getHost().m_address.toString());
-	serverInfoQuery.bindValue(":hostPort", serverInfo.getHost().m_port);
-	serverInfoQuery.bindValue(":serverID", serverInfo.getServerId());
-	if (serverInfoQuery.exec()) {
-		qDebug() << __FUNCTION__ << " exec succ";
-		return 0;
-	}
-	else {
-		qDebug() << serverInfoQuery.lastError().databaseText();
-		qDebug() << __FUNCTION__ << " exec fail";
-		return -1;
-	}
+			" values(:serverID,:serverName,:runnerID,:hostAddr,:hostPort) ",
+			EPrepareFailed);
+	
+	query.bindValue(":serverName", serverInfo.getName());
+	query.bindValue(":runnerID", serverInfo.getRunner());
+	query.bindValue(":hostAddr", serverInfo.getHost().m_address.toString());
+	query.bindValue(":hostPort", serverInfo.getHost().m_port);
+	query.bindValue(":serverID", serverInfo.getServerId());
+	
+	EXEC( query , EExecFailed );
+	
+	return 0 ;
 }
