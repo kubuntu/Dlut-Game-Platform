@@ -10,7 +10,12 @@ class JClientUserRegisterProcessor : public JClientNetworkDataProcessorBase
 	explicit JClientUserRegisterProcessor(JSession* session,JSocketBase *socket);
 public:
 	static JClientUserRegisterProcessor* getInstance();
-	void sendRegister(const QString& loginname,const QString& password,ERole role);
+	void sendRegister(
+		const QString& loginname,
+		const QString& password,
+		ERole role,
+		const QString& invitationCode
+	);
 signals:
 	void receiveRegisterResult(JCode result,JID userId,const QString& loginname);
 protected:

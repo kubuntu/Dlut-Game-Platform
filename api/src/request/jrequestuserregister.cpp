@@ -13,6 +13,7 @@ const QString registerErrorString[]={
 	QObject::tr("login name exists"),
 	QObject::tr("login name length error"),
 	QObject::tr("password length error"),
+	QObject::tr("invitation code error"),
 	QObject::tr("user id is full"),
 };
 
@@ -27,11 +28,16 @@ JRequestUserRegister::JRequestUserRegister(QObject *parent) :
 			SLOT(on_processor_receiveRegisterResult(JCode,JID,QString)));
 }
 
-void JRequestUserRegister::sendRegister(const QString& loginname,const QString& password,ERole role)
+void JRequestUserRegister::sendRegister(
+	const QString& loginname,
+	const QString& password,
+	ERole role,
+	const QString& invitationCode
+	)
 {
 	m_state = ERS_Sending;
 	JEncryptor e;
-	m_processor->sendRegister(loginname,e.encryptPassword(password),role);
+	m_processor->sendRegister(loginname,e.encryptPassword(password),role,invitationCode);
 }
 
 JRequestUserRegister::ERegisterState JRequestUserRegister::getRegisterState()const

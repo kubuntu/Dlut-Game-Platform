@@ -13,6 +13,7 @@ protected:
 	JAbstractUserInfoDB *createUserInfoDB();
 	JAbstractGameInfoDB *createGameInfoDB();
 	JAbstractServerInfoDB *createServerInfoDB();
+	JAbstractInvitationCodeDB* createInvitationCodeDB();
 private:
 	explicit JSQLDatabaseFactory(QObject *parent = 0);
 private slots:

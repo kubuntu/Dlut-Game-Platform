@@ -8,7 +8,6 @@
 
 class JAbstractGameInfoDB : public QObject
 {
-    Q_OBJECT
 public:
     explicit JAbstractGameInfoDB(QObject *parent = 0):QObject(parent){}
 	virtual JGameInfo getGameInfoById(JID id)=0;

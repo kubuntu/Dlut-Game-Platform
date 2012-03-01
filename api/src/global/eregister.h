@@ -17,6 +17,7 @@ enum ERegister{
 	ER_LoginNameExists, ///< 已存在相同的用户名
 	ER_LoginNameLengthError, ///< 用户名长度非法
 	ER_PasswordLengthError, ///< 密码长度非法
+	ER_InvitationCodeError, ///< 邀请码错误
 	ER_UserIdFull, ///< 用户ID已满，不能再继续注册用户
 };
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>JDialogUserRegister</class>
- <widget class="QDialog" name="DialogUserRegister">
+ <widget class="QDialog" name="JDialogUserRegister">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -34,8 +34,8 @@
     <rect>
      <x>50</x>
      <y>90</y>
-     <width>211</width>
-     <height>81</height>
+     <width>233</width>
+     <height>95</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -63,6 +63,16 @@
       </property>
      </widget>
     </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_invite">
+      <property name="text">
+       <string>invitation code</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit_invite"/>
+    </item>
    </layout>
   </widget>
  </widget>
@@ -71,7 +81,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>DialogUserRegister</receiver>
+   <receiver>JDialogUserRegister</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -87,7 +97,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>DialogUserRegister</receiver>
+   <receiver>JDialogUserRegister</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

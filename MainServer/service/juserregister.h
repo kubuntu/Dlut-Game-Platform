@@ -10,7 +10,12 @@ class JUserRegister
 {
 public:
 	JUserRegister(JID runnerId);
-	void execute(const QString& loginname,const QString& password,ERole role);
+	void execute(
+		const QString& loginname,
+		const QString& password,
+		ERole role,
+		const QString& invitationCode
+	);
 	JCode getResult()const;
 	JID getUserId()const;
 	const QString& getLoginname()const;

@@ -80,7 +80,7 @@ void JWidgetAdmin::on_btn_add_clicked()
 	}
 	ERole role=(ERole)iRole;
 	JRequestUserRegister rur;
-	rur.sendRegister(loginname,password,role);
+	rur.sendRegister(loginname,password,role,QString());
 	if(rur.waitForRegisterResult(1000)){
 		ui->lab_msg->setText(tr("add user success"));
 	}else{

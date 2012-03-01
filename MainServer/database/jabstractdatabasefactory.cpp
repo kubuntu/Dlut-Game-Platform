@@ -25,6 +25,7 @@ JAbstractDatabaseFactory* JAbstractDatabaseFactory::getInstance()
             instance->m_userInfoDB = instance->createUserInfoDB() ;
             instance->m_gameInfoDB = instance->createGameInfoDB() ;
             instance->m_serverInfoDB = instance->createServerInfoDB() ;
+			instance->m_invitationCodeDB = instance->createInvitationCodeDB() ;
         }
     }
     return instance;
@@ -44,6 +45,10 @@ JAbstractGameInfoDB* JAbstractDatabaseFactory::getGameInfoDB(){
 
 JAbstractServerInfoDB* JAbstractDatabaseFactory::getServerInfoDB(){
 	return m_serverInfoDB ;
+}
+
+JAbstractInvitationCodeDB* JAbstractDatabaseFactory::getInvitationCodeDB(){
+	return m_invitationCodeDB ;
 }
 
 JAbstractDatabaseFactory::JAbstractDatabaseFactory(QObject *parent)

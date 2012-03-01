@@ -13,6 +13,7 @@ public:
 	JAbstractUserInfoDB* createUserInfoDB();
 	JAbstractGameInfoDB* createGameInfoDB();
 	JAbstractServerInfoDB* createServerInfoDB();
+	JAbstractInvitationCodeDB* createInvitationCodeDB();
 };
 
 #endif // JTEXTSTREAMDATABASEFACTORY_H

@@ -14,7 +14,10 @@ HEADERS += \
 	$$PWD/sql/jsqlgameinfodb.h \
 	$$PWD/sql/jsqllogindb.h \
 	$$PWD/sql/jsqlserverinfodb.h \
-	$$PWD/sql/jsqluserinfodb.h
+	$$PWD/sql/jsqluserinfodb.h \
+    database/jabstractinvitationcodedb.h \
+    database/textstream/jteststreaminvitationcodedb.h \
+    database/sql/jsqlinvitationcodedb.h
 
 SOURCES += \
 	$$PWD/jabstractdatabasefactory.cpp \
@@ -28,4 +31,6 @@ SOURCES += \
 	$$PWD/sql/jsqlgameinfodb.cpp \
 	$$PWD/sql/jsqllogindb.cpp \
 	$$PWD/sql/jsqlserverinfodb.cpp \
-	$$PWD/sql/jsqluserinfodb.cpp
+	$$PWD/sql/jsqluserinfodb.cpp \
+    database/textstream/jteststreaminvitationcodedb.cpp \
+    database/sql/jsqlinvitationcodedb.cpp

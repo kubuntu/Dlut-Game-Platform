@@ -18,10 +18,12 @@ void JMainServerUserRegisterProcessor::process(const QByteArray& data)
 	QString loginname;
 	QString password;
 	JID role;
+	QString invitationCode;
 	stream>>loginname;
 	stream>>password;
 	stream>>role;
-	processUserRegister(loginname,password,role);
+	stream>>invitationCode;
+	processUserRegister(loginname,password,role,invitationCode);
 }
 
 JType JMainServerUserRegisterProcessor::getProcessorType()const
@@ -39,13 +41,17 @@ void JMainServerUserRegisterProcessor::replyRegisterResult(JCode result,JID user
 	sendData(outdata);
 }
 
-void JMainServerUserRegisterProcessor::processUserRegister(const QString& loginname,const QString& password,JID role)
+void JMainServerUserRegisterProcessor::processUserRegister(
+	const QString& loginname,
+	const QString& password,
+	JID role,
+	const QString& invitationCode)
 {
 	if(role<0 || role > ROLE_ROOT){
 		replyRegisterResult(ER_RoleOverflow,-1,loginname);
 		return;
 	}
 	JUserRegister ur(getSession()->getUserId());
-	ur.execute(loginname,password,(ERole)role);
+	ur.execute(loginname,password,(ERole)role,invitationCode);
 	replyRegisterResult(ur.getResult(),ur.getUserId(),ur.getLoginname());
 }

@@ -4,6 +4,7 @@
 #include "jsqluserinfodb.h"
 #include "jsqlgameinfodb.h"
 #include "jsqlserverinfodb.h"
+#include "jsqlinvitationcodedb.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -63,6 +64,10 @@ JAbstractGameInfoDB* JSQLDatabaseFactory::createGameInfoDB() {
 
 JAbstractServerInfoDB* JSQLDatabaseFactory::createServerInfoDB() {
 	return new JSQLServerInfoDB(this);
+}
+
+JAbstractInvitationCodeDB* JSQLDatabaseFactory::createInvitationCodeDB(){
+	return new JSQLInvitationCodeDB(this);
 }
 
 void JSQLDatabaseFactory::on_application_aboutToQuit()

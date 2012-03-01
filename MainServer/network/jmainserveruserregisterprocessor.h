@@ -13,7 +13,11 @@ public:
 
 	void replyRegisterResult(JCode result,JID userId,const QString& loginname);
 protected:
-	virtual void processUserRegister(const QString& loginname,const QString& password,JID role);
+	virtual void processUserRegister(
+		const QString& loginname,
+		const QString& password,
+		JID role,
+		const QString& invitationCode);
 };
 
 #endif // JMAINSERVERUSERREGISTERPROCESSOR_H
