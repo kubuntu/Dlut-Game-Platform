@@ -9,6 +9,7 @@ namespace Ui {
 
 class JWidgetAdmin;
 class JFormAddGame;
+class JWidgetAddInvitationCode;
 
 class AdminMainWindow : public QMainWindow
 {
@@ -22,9 +23,11 @@ private:
     Ui::AdminMainWindow *ui;
 	JWidgetAdmin *m_widgetadmin;
 	JFormAddGame *m_formAddGame;
+	JWidgetAddInvitationCode* m_widgetAddInvitationCode;
 private slots:
 	void on_actionShow_admin_window_triggered();
 	void on_actionAdd_game_triggered();
+	void on_actionAdd_invitation_code_triggered();
 	void On_socket_disconnected();
 };
 

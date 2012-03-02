@@ -1,7 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>AdminMainWindow</class>
  <widget class="QMainWindow" name="AdminMainWindow">
   <property name="geometry">
@@ -15,12 +13,13 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
+     <width>800</width>
      <height>25</height>
     </rect>
    </property>
@@ -30,9 +29,11 @@
     </property>
     <addaction name="actionShow_admin_window"/>
     <addaction name="actionAdd_game"/>
+    <addaction name="actionAdd_invitation_code"/>
    </widget>
    <addaction name="menuAdmin"/>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionShow_admin_window">
    <property name="text">
     <string>show &amp;admin window</string>
@@ -43,9 +44,12 @@
     <string>add &amp;game</string>
    </property>
   </action>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAdd_invitation_code">
+   <property name="text">
+    <string>add &amp;invitation code</string>
+   </property>
+  </action>
  </widget>
- <pixmapfunction/>
+ <resources/>
  <connections/>
 </ui>

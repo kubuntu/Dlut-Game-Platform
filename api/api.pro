@@ -56,7 +56,8 @@ HEADERS += \
     src/global/jencryptor.h \
     src/request/jgameclientargumentanalyser.h \
     src/global/jhead.h \
-    src/network/jclientchangepasswordprocessor.h
+    src/network/jclientchangepasswordprocessor.h \
+    src/request/juploadinvitationcode.h
 SOURCES += src/network/jsocketbase.cpp \
     src/network/jclientsocketbase.cpp \
     src/network/jserversocketbase.cpp \
@@ -102,4 +103,5 @@ SOURCES += src/network/jsocketbase.cpp \
     src/global/jencryptor.cpp \
     src/request/jgameclientargumentanalyser.cpp \
     src/global/jhead.cpp \
-    src/network/jclientchangepasswordprocessor.cpp
+    src/network/jclientchangepasswordprocessor.cpp \
+    src/request/juploadinvitationcode.cpp

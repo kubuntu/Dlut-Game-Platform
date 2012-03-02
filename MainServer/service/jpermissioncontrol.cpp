@@ -71,6 +71,14 @@ bool JPermissionControl::checkInformation(JID protocol,const JHead& head)
 				JServerInfo serverinfo = serverinfoDB->getServerInfoById(serverId);
 				return serverinfo.getRunner() == m_userId;
 			}
+			break;
+		case EIT_InvitationCode:// 只有Admin可以添加邀请码
+			{
+				JAbstractLoginDB* logindb=m_dbFactory->getLoginDB();
+				if(logindb->checkRole(m_userId,ROLE_ADMIN)) return true;
+				return false;
+			}
+			break;
 		}
 		break;
 	default:

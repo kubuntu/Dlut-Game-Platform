@@ -10,6 +10,7 @@ public:
 	static void read();
 	static void flush();
 	int removeInvitationCode(const QString& code);
+	JCode addInvitationCode(const QString& code);
 private:
 	static QList<QString> s_codelist;
 };

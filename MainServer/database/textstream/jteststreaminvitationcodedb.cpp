@@ -60,3 +60,9 @@ int JTestStreamInvitationCodeDB::removeInvitationCode(const QString& code)
 		return 0;
 	}
 }
+
+JCode JTestStreamInvitationCodeDB::addInvitationCode(const QString& code)
+{
+	s_codelist.push_back(code);
+	return 0;
+}

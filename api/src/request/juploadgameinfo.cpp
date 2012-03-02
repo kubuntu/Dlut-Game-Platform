@@ -11,7 +11,10 @@ JUploadGameInfo::JUploadGameInfo(QObject *parent) :
 
 JCode JUploadGameInfo::pushGameInfo(const JGameInfo& gameinfo,int msecs)
 {
-	return pushInformationData(gameinfo.getGameId(),gameinfo.toByteArray(),msecs);
+	return pushInformationData(
+				gameinfo.getGameId(),
+				gameinfo.toByteArray(),
+				msecs);
 }
 
 JHead JUploadGameInfo::getHead(JID id)const

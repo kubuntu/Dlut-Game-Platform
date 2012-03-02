@@ -3,6 +3,7 @@
 
 #include "jwidgetadmin.h"
 #include "jformaddgame.h"
+#include "jwidgetaddinvitationcode.h"
 
 #include <Socket/JMainClientSocket>
 
@@ -14,6 +15,7 @@ AdminMainWindow::AdminMainWindow(QWidget *parent) :
 {
 	m_widgetadmin=NULL;
 	m_formAddGame = NULL;
+	m_widgetAddInvitationCode = NULL;
     ui->setupUi(this);
 	connect(JMainClientSocket::getInstance(),
 			SIGNAL(disconnected()),
@@ -41,6 +43,15 @@ void AdminMainWindow::on_actionAdd_game_triggered(){
 	}
 	m_formAddGame->show();
 	m_formAddGame->reset();
+}
+
+void AdminMainWindow::on_actionAdd_invitation_code_triggered(){
+	if( NULL == m_widgetAddInvitationCode ){
+		m_widgetAddInvitationCode = new JWidgetAddInvitationCode(this);
+		m_widgetAddInvitationCode->setWindowFlags(Qt::Window);
+	}
+	m_widgetAddInvitationCode->reset();
+	m_widgetAddInvitationCode->show();
 }
 
 void AdminMainWindow::On_socket_disconnected()

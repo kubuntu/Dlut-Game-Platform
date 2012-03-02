@@ -143,6 +143,17 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 			return ER_NoSuchCategory;
 		}
 		break;
+	case EIT_InvitationCode:
+		{
+			QString code;
+			QDataStream stream(data);
+			stream>>code;
+			JAbstractInvitationCodeDB* icDB
+					= databaseFactory->getInvitationCodeDB();
+			// do not effect Mtime , return directly
+			return icDB->addInvitationCode(code);
+		}
+		break;
 	default:
 		qDebug()<<"JMainServerInformationManager::updateData : no such type"<<head.m_type;
 		return ER_NoSuchType;

@@ -22,6 +22,7 @@ namespace NetworkData{
         EIT_UserInfo,
         EIT_GameInfo,
         EIT_ServerInfo,
+        EIT_InvitationCode,
     };
 }
 bool operator==(const NetworkData::JHead&,const NetworkData::JHead&);

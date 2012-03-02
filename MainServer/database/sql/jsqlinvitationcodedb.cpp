@@ -2,6 +2,8 @@
 
 #include "jsqlcommon.h"
 
+#include <Global/CodeError>
+
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QVariant>
@@ -29,4 +31,22 @@ int JSQLInvitationCodeDB::removeInvitationCode(const QString& code)
 	EXEC( query , -1 );
 
 	return query.numRowsAffected();
+}
+
+JCode JSQLInvitationCodeDB::addInvitationCode(const QString& code)
+{
+	QSqlQuery query;
+	PREPARE( query ,
+			"INSERT INTO "
+			TableName
+			" (code) "
+			" values ( :code )",
+			EPrepareFailed
+			);
+
+	query.bindValue(":code" , code );
+
+	EXEC( query , EExecFailed);
+
+	return 0;
 }
