@@ -1,10 +1,10 @@
-Codec : UTF-8 Unicode text
-Language : Chinese Simplified
-We are looking forward to your help to translate this article into english
+* Codec : UTF-8 Unicode text
+* Language : Chinese Simplified
+* We are looking forward to your help to translate this article into english
 
-字符编码 : UTF-8 Unicode text
-换行符 : LF
-语言 : 简体中文
+* 字符编码 : UTF-8 Unicode text
+* 换行符 : LF
+* 语言 : 简体中文
 
 # 大工游戏平台
 
@@ -19,12 +19,14 @@ We are looking forward to your help to translate this article into english
 
 ## 字符编码相关问题
 如果您使用的是其它操作系统（如Windows等），您在阅读doc/文件夹下的纯文本文件以及源代码时可能会出现以下问题。这需要您做相应的设置才能正常阅读。
+
 ### 中文乱码：
 * 我们使用的字符编码统一为UTF-8格式。请您在您的计算机上做相应的设置以避免出现中文乱码的现象。
+
 ### 多行接在一起：
 * 我们使用的换行符为LF，而不是CRLF。请您在您的计算机上做相应的设置以避免出现多行接在一起的现象。
 
 		大连理工大学电子信息与电气工程学部CPF科技协会JDMD工作室
 
-JDMD studio , Dalian University of Technology , China
-E-mail : elephant_liu@mail.dlut.edu.cn
+* JDMD studio , Dalian University of Technology , China
+* E-mail : elephant_liu@mail.dlut.edu.cn
