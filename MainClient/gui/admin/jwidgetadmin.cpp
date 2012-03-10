@@ -4,14 +4,14 @@
 #include <Global/Command>
 #include <Global/CodeError>
 
-#include <ClientRequest/JCommandSendBase>
+#include <ClientRequest/JSendCommand>
 #include <ClientRequest/JRequestUserRegister>
 
 JWidgetAdmin::JWidgetAdmin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::JWidgetAdmin)
 {
-	m_send=new JCommandSendBase(this);
+	m_send=new JSendCommand(this);
 	m_send->setObjectName("send");
     ui->setupUi(this);
 }
@@ -23,14 +23,12 @@ JWidgetAdmin::~JWidgetAdmin()
 
 void JWidgetAdmin::on_btn_shutdown_mainserver_clicked()
 {
-	JCommandSendBase csb;
-	csb.sendShutdown();
+	m_send->sendShutdown();
 }
 
 void JWidgetAdmin::on_btn_restart_mainserver_clicked()
 {
-	JCommandSendBase csb;
-	csb.sendRestart();;
+	m_send->sendRestart();
 }
 
 void JWidgetAdmin::on_send_receiveCommandResult(JID type,JCode result)

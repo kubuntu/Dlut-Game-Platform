@@ -2,6 +2,17 @@
 
 #include "../global/jgameinfo.h"
 
+/*!
+	\file juploadgameinfo.h
+	\brief 定义了 JUploadGameInfo 类
+*/
+
+/*!
+	\class JUploadGameInfo juploadgameinfo.h
+	\ingroup client
+	\brief 上传 gameInfo 信息
+*/
+
 using namespace NetworkData;
 
 JUploadGameInfo::JUploadGameInfo(QObject *parent) :

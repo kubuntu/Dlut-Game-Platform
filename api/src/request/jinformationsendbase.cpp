@@ -5,6 +5,16 @@
 #include "../network/jclientinformationprocessor.h"
 #include "../global/jelapsedtimer.h"
 
+/*!
+	\file jinformationsendbase.h
+	\brief 定义了 JInformationSendBase 类
+*/
+/*!
+	\class JInformationSendBase jinformationsendbase.h
+	\ingroup client
+	\brief Information 类的数据发送
+*/
+
 using namespace NetworkData;
 
 JInformationSendBase::JInformationSendBase(QObject *parent) :

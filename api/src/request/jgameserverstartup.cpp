@@ -7,6 +7,17 @@
 #include "../network/jmainclientsocket.h"
 #include "../global/jcodeerror.h"
 
+/*!
+	\file jgameserverstartup.h
+	\brief 定义了 JGameServerStartup 类
+*/
+
+/*!
+	\class JGameServerStartup jgameserverstartup.h <Helper/JGameServerStartup>
+	\ingroup gameserver
+	\brief 上传 gameserver 相关的信息
+*/
+
 JGameServerStartup::JGameServerStartup()
 {
 }

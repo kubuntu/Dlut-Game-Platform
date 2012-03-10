@@ -6,6 +6,16 @@
 #include "../global/jelapsedtimer.h"
 #include "../network/jinformationmanager.h"
 
+/*!
+	\file jinformationrequestbyheadbase.h
+	\brief 定义了 JInformationRequestByHeadBase 类
+*/
+/*!
+	\class JInformationRequestByHeadBase jinformationrequestbyheadbase.h
+	\ingroup client
+	\brief Information 类的数据请求
+*/
+
 using namespace NetworkData;
 
 JInformationRequestByHeadBase::JInformationRequestByHeadBase(QObject *parent) :

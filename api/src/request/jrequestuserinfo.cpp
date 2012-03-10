@@ -1,5 +1,16 @@
 #include "jrequestuserinfo.h"
 
+/*!
+	\file jrequestuserinfo.h
+	\brief 定义了 JRequestUserInfo 类
+*/
+
+/*!
+	\class JRequestUserInfo jrequestuserinfo.h
+	\ingroup client
+	\brief 请求 userinfo 信息
+*/
+
 JRequestUserInfo::JRequestUserInfo(QObject *parent) :
 	JInformationRequestBase(parent)
 {

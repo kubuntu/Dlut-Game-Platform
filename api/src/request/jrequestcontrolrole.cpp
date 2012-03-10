@@ -6,6 +6,17 @@
 #include "../global/jelapsedtimer.h"
 #include "../global/jcodeerror.h"
 
+/*!
+	\file jrequestcontrolrole.h
+	\brief 定义了 JRequestControlRole 类
+*/
+
+/*!
+	\class JRequestControlRole jrequestcontrolrole.h
+	\ingroup client
+	\brief 向服务器发送请求的基类。
+*/
+
 JRequestControlRole::JRequestControlRole(QObject *parent) :
     JRequestBase(parent)
 {

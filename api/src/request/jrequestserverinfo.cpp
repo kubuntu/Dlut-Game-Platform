@@ -2,6 +2,17 @@
 
 using namespace NetworkData;
 
+/*!
+	\file jrequestserverinfo.h
+	\brief 定义了 JRequestServerInfo 类
+*/
+
+/*!
+	\class JRequestServerInfo jrequestserverinfo.h
+	\ingroup client
+	\brief 请求 gameserver 信息
+*/
+
 JRequestServerInfo::JRequestServerInfo(QObject *parent) :
     JInformationRequestBase(parent)
 {

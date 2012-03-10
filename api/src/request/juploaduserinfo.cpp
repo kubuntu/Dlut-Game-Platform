@@ -2,6 +2,17 @@
 
 #include "../global/juserinfo.h"
 
+/*!
+	\file juploaduserinfo.h
+	\brief 定义了 JUploadUserInfo 类
+*/
+
+/*!
+	\class JUploadUserInfo juploaduserinfo.h
+	\ingroup client
+	\brief 修改用户信息
+*/
+
 using namespace NetworkData;
 
 JUploadUserInfo::JUploadUserInfo(QObject *parent) :

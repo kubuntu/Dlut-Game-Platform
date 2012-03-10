@@ -1,16 +1,16 @@
-#ifndef JCOMMANDSENDBASE_H
-#define JCOMMANDSENDBASE_H
+#ifndef JSENDCOMMAND_H
+#define JSENDCOMMAND_H
 
 #include "jrequestbase.h"
 #include "../global/jglobal.h"
 
 class JClientCommandProcessor;
 
-class JCommandSendBase : public JRequestBase
+class JSendCommand : public JRequestBase
 {
     Q_OBJECT
 public:
-    explicit JCommandSendBase(QObject *parent = 0);
+    explicit JSendCommand(QObject *parent = 0);
 	void sendShutdown();
 	void sendRestart();
 signals:
@@ -19,4 +19,4 @@ private:
 	JClientCommandProcessor* m_processor;
 };
 
-#endif // JCOMMANDSENDBASE_H
+#endif // JSENDCOMMAND_H

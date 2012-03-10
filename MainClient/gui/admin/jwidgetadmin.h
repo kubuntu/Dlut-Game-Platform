@@ -8,7 +8,7 @@
 namespace Ui {
     class JWidgetAdmin;
 }
-class JCommandSendBase;
+class JSendCommand;
 
 class JWidgetAdmin : public QWidget
 {
@@ -20,7 +20,7 @@ public:
 
 private:
     Ui::JWidgetAdmin *ui;
-	JCommandSendBase* m_send;
+	JSendCommand* m_send;
 private slots:
 	void on_btn_reset_clicked();
 	void on_btn_add_clicked();

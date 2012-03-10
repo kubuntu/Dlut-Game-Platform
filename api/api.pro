@@ -36,7 +36,7 @@ HEADERS += \
     src/global/jgamelist.h \
     src/network/jclientinformationprocessor.h \
     src/network/jclientcommandprocessor.h \
-    src/request/jcommandsendbase.h \
+    src/request/jsendcommand.h \
     src/global/command.h \
     src/global/jcodeerror.h \
     src/network/jsession.h \
@@ -86,7 +86,7 @@ SOURCES += src/network/jsocketbase.cpp \
     src/global/jgamelist.cpp \
     src/network/jclientinformationprocessor.cpp \
     src/network/jclientcommandprocessor.cpp \
-    src/request/jcommandsendbase.cpp \
+    src/request/jsendcommand.cpp \
     src/network/jsession.cpp \
     src/network/jserverinformationprocessorbase.cpp \
     src/network/jnetworkdataprocessorbase.cpp \

@@ -1,5 +1,15 @@
 #include "jinformationrequestbase.h"
 
+/*!
+	\file jinformationrequestbase.h
+	\brief 定义了 JInformationRequestBase 类
+*/
+/*!
+	\class JInformationRequestBase jinformationrequestbase.h
+	\ingroup client
+	\brief Information 类的数据请求
+*/
+
 JInformationRequestBase::JInformationRequestBase(QObject *parent) :
 	JInformationRequestByHeadBase(parent)
 {

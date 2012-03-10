@@ -6,6 +6,17 @@
 #include "../global/jelapsedtimer.h"
 #include "../global/jencryptor.h"
 
+/*!
+	\file jrequestuserregister.h
+	\brief 定义了 JRequestUserRegister 类
+*/
+
+/*!
+	\class JRequestUserRegister jrequestuserregister.h
+	\ingroup client
+	\brief 发送用户注册请求
+*/
+
 const QString registerErrorString[]={
 	QObject::tr("success"),
 	QObject::tr("permission denied"),

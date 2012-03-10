@@ -9,6 +9,17 @@
 const static QString error_no="no error";
 
 /*!
+	\file jconnecthelper.h
+	\brief 定义了 JConnectHelper 类
+*/
+
+/*!
+	\class JConnectHelper jconnecthelper.h "Helper/JConnectHelper"
+	\ingroup client
+	\brief 封装套接字向服务器发起连接请求的相关操作
+*/
+
+/*!
 	\fn JConnectHelper::error();
 	\brief 发生错误。
 

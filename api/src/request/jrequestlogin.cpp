@@ -19,13 +19,6 @@
 	\brief 登录请求。
 
 	JRequestLogin对登录请求提供一个基本的封装。\n
-	登录的过程：\n
-	  -# 通过 JRequestPort 获得登录服务的端口。
-	  -# 调用 connectToHost() 函数连接服务器。
-	  -# 调用 login() 函数发送用户名、密码及登录身份。
-	  
-	登录成功后，服务器会返回用户ID及 LoginHashCode 。\n
-	JRequestLogin 会自动通过 JLoginHashCodeRecorder 将它们记录下来。
 */
 
 /*!
@@ -33,9 +26,6 @@
 	\brief 登录结果
 
 	\a result 表示是否登录成功。\n
-	如果登录成功，在发出这个信号前，JRequestLogin 会自动通过 JLoginHashCodeRecorder 记录 userId 及 Login hash code 。\n
-	关于Login hash confirm和Login hash code，参见 JLoginHashCodeRecorder 的文档。\n
-	\sa JLoginHashCodeRecorder
 */
 
 const QString loginErrorString[]={
