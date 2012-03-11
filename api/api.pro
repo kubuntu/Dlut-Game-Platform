@@ -19,14 +19,11 @@ HEADERS += \
     src/global/jinformation.h \
     src/network/jinformationmanager.h \
     src/global/jserializabledata.h \
-    src/request/jrequestuserinfo.h \
     src/global/juserinfo.h \
     src/request/jinformationrequestbase.h \
     src/global/jgameinfo.h \
-    src/request/jrequestgameinfo.h \
     src/global/jversion.h \
     src/global/jserverinfo.h \
-    src/request/jrequestserverinfo.h \
     src/request/jinformationsendbase.h \
     src/request/juploadgameinfo.h \
     src/request/juploadserverinfo.h \
@@ -57,7 +54,8 @@ HEADERS += \
     src/request/jgameclientargumentanalyser.h \
     src/global/jhead.h \
     src/network/jclientchangepasswordprocessor.h \
-    src/request/juploadinvitationcode.h
+    src/request/juploadinvitationcode.h \
+    src/request/jrequestinformation.h
 SOURCES += src/network/jsocketbase.cpp \
     src/network/jclientsocketbase.cpp \
     src/network/jserversocketbase.cpp \
@@ -68,14 +66,11 @@ SOURCES += src/network/jsocketbase.cpp \
     src/global/shost.cpp \
     src/global/jinformation.cpp \
     src/network/jinformationmanager.cpp \
-    src/request/jrequestuserinfo.cpp \
     src/global/juserinfo.cpp \
     src/request/jinformationrequestbase.cpp \
     src/global/jgameinfo.cpp \
-    src/request/jrequestgameinfo.cpp \
     src/global/jversion.cpp \
     src/global/jserverinfo.cpp \
-    src/request/jrequestserverinfo.cpp \
     src/request/jinformationsendbase.cpp \
     src/request/juploadgameinfo.cpp \
     src/request/juploadserverinfo.cpp \
@@ -104,4 +99,5 @@ SOURCES += src/network/jsocketbase.cpp \
     src/request/jgameclientargumentanalyser.cpp \
     src/global/jhead.cpp \
     src/network/jclientchangepasswordprocessor.cpp \
-    src/request/juploadinvitationcode.cpp
+    src/request/juploadinvitationcode.cpp \
+    src/request/jrequestinformation.cpp

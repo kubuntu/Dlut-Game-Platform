@@ -4,14 +4,14 @@
 #include <Processor/JClientHallTalkProcessor>
 #include <Socket/JMainClientSocket>
 #include <Session/JSession>
-#include <ClientRequest/JRequestUserInfo>
+#include <ClientRequest/JRequestInformation>
 
 JWidgetHallTalk::JWidgetHallTalk(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::JWidgetHallTalk)
 {
 	m_processor = JClientHallTalkProcessor::getInstance();
-	m_requserinfo = new JRequestUserInfo(this);
+	m_requserinfo = new JRequestInformation<JUserInfo>(this);
     ui->setupUi(this);
 	connect(m_processor,SIGNAL(rcvMessage(QString)),SLOT(showMessage(QString)));
 	connect(ui->lineEdit,SIGNAL(returnPressed()),SLOT(sendMessageInEdit()));
@@ -31,7 +31,7 @@ void JWidgetHallTalk::showMessage(const QString& msg)
 void JWidgetHallTalk::sendMessageInEdit()
 {
 	JID myUserID = JMainClientSocket::getInstance()->getSession()->getUserId();
-	JUserInfo myUserInfo = m_requserinfo->getUserInfo(myUserID);
+	JUserInfo myUserInfo = m_requserinfo->getInformation(myUserID);
 	QString msg=tr("%1 says:%2").arg(myUserInfo.getNickname()).arg(ui->lineEdit->text());
 	m_processor->sendMessage(msg);
 	ui->lineEdit->clear();

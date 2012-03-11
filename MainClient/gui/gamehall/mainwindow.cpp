@@ -5,9 +5,7 @@
 #include <QMessageBox>
 #include <QPalette>
 
-#include <ClientRequest/JRequestGameInfo>
-#include <ClientRequest/JRequestUserInfo>
-#include <ClientRequest/JRequestServerInfo>
+#include <ClientRequest/JRequestInformation>
 #include <Socket/JMainClientSocket>
 #include <Session/JSession>
 
@@ -22,8 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    m_gis=new JRequestGameInfo(this);
-    m_gis->setObjectName(tr("gameinfosrv"));
+    m_requestGameInfo=new JRequestInformation<JGameInfo>(this);
+    m_requestGameInfo->setObjectName(tr("gameinfosrv"));
 	m_currentId=-1;
     ui->setupUi(this);
     QPalette palette;
@@ -35,10 +33,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->list_game->setPalette(palette);
     ui->tb_game->setPalette(palette);
 
-	m_requserinfo=new JRequestUserInfo(this);
+	m_requestUserInfo=new JRequestInformation<JUserInfo>(this);
 	connect(JMainClientSocket::getInstance(),
 			SIGNAL(disconnected()),
 			SLOT(On_socket_disconnected()));
+	m_requestGameList = new JRequestInformation<JGameList>(this);
 }
 
 MainWindow::~MainWindow()
@@ -82,7 +81,7 @@ void MainWindow::On_socket_disconnected()
 
 void MainWindow::on_list_game_itemClicked(QListWidgetItem* item)
 {
-	JGameList gl = m_gis->pullGameList(1000);
+	JGameList gl = m_requestGameList->pullInformation(0,1000);
 	foreach(const QString& name,gl)
     {
 		if(item->text()==name)
@@ -96,7 +95,7 @@ void MainWindow::on_list_game_itemClicked(QListWidgetItem* item)
 
 void MainWindow::updateGameList()
 {
-	JGameList gl = m_gis->pullGameList(1000);
+	JGameList gl = m_requestGameList->pullInformation(0,1000);
 	foreach(const QString& name,gl)
 	{
 		ui->list_game->addItem(name);
@@ -105,8 +104,8 @@ void MainWindow::updateGameList()
 
 void MainWindow::updateGameInfo(JID gameId)
 {
-	JGameInfo gi=m_gis->pullGameInfo(gameId);
-	JUserInfo author=m_requserinfo->pullUserInfo(gi.getAuthor());
+	JGameInfo gi=m_requestGameInfo->pullInformation(gameId);
+	JUserInfo author=m_requestUserInfo->pullInformation(gi.getAuthor());
 	ui->tb_game->setText(tr("<font color=red>name</font> : %1 <br>"
 							"<font color=red>author</font> : %2 %3 %4<br>"
 							"<font color=red>version</font> : %5 <br>"
@@ -131,9 +130,10 @@ void MainWindow::on_btn_start_game_clicked()
 	}
 	
 	JID gameId = m_currentId ;
-	JGameInfo gameinfo = m_gis->pullGameInfo(gameId);
-	JRequestServerInfo rsi;
-	JServerInfo serverinfo = rsi.pullServerInfo(gameinfo.getServerId());
+	JGameInfo gameinfo = m_requestGameInfo->pullInformation(gameId);
+	
+	JRequestInformation<JServerInfo> rsi ;
+	JServerInfo serverinfo = rsi.pullInformation(gameinfo.getServerId());
 	JInstalledAppManager* iam = JInstalledAppManager::getInstance() ;
 	if( iam->isInstalled(gameId) ){
 		PackageMetainfo metainfo = iam->getMetainfo(gameId) ;
@@ -156,7 +156,7 @@ void MainWindow::on_btn_start_game_clicked()
 void MainWindow::on_btn_refresh_myuserinfo_clicked()
 {
 	JID myUserID = JMainClientSocket::getInstance()->getSession()->getUserId();
-	m_myUserInfo = m_requserinfo->pullUserInfo(myUserID);
+	m_myUserInfo = m_requestUserInfo->pullInformation(myUserID);
 	ui->text_userid->setText(QString::number(m_myUserInfo.getUserId()));
 	ui->text_nickname->setText(m_myUserInfo.getNickname());
 	ui->text_organization->setText(m_myUserInfo.getOrganization());

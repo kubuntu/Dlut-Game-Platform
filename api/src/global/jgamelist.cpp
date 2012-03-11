@@ -20,8 +20,8 @@ using namespace NetworkData;
     
     以后构造函数可不可以不写了？
 */
-JGameList::JGameList()
-	:JSerializableData(-1)
+JGameList::JGameList(JID id)
+	:JSerializableData(id)
 {
 }
 

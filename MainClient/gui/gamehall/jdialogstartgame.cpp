@@ -6,8 +6,7 @@
 #include "service/jdownloader.h"
 
 #include <Global/CodeError>
-#include <ClientRequest/JRequestGameInfo>
-#include <ClientRequest/JRequestServerInfo>
+#include <ClientRequest/JRequestInformation>
 #include <Socket/JMainClientSocket>
 
 #include <QPushButton>
@@ -36,12 +35,12 @@ int JDialogStartGame::exec()
 {
 	show();
 	ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-	JRequestGameInfo* rgi = new JRequestGameInfo(this);
-	JRequestServerInfo* rsi = new JRequestServerInfo(this);
+	JRequestInformation<JGameInfo>* rgi = new JRequestInformation<JGameInfo>(this);
+	JRequestInformation<JServerInfo> *rsi = new JRequestInformation<JServerInfo>(this) ;
 	ui->label->setText(tr("request game info"));
-	JGameInfo gi = rgi->pullGameInfo(m_gameId,5*1000);
+	JGameInfo gi = rgi->pullInformation(m_gameId,5*1000);
 	ui->label->setText(tr("request server info"));
-	JServerInfo si = rsi->pullServerInfo(gi.getServerId(),5*1000);
+	JServerInfo si = rsi->pullInformation(gi.getServerId(),5*1000);
 	ui->label->setText(tr("prepare finished . begin to download"));
 	m_gameClientLoader->setParent(parent());
 	m_gameClientLoader->setPseudoServer(SHost(QHostAddress::LocalHost,JPseudoServer::getInstance()->serverPort()));

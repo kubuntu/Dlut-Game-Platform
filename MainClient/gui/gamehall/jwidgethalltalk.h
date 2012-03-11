@@ -3,11 +3,14 @@
 
 #include <QWidget>
 
+#include <DataStruct/JUserInfo>
+
 namespace Ui {
     class JWidgetHallTalk;
 }
 class JClientHallTalkProcessor;
-class JRequestUserInfo;
+template <class T>
+class JRequestInformation;
 
 class JWidgetHallTalk : public QWidget
 {
@@ -20,7 +23,7 @@ public:
 private:
     Ui::JWidgetHallTalk *ui;
 	JClientHallTalkProcessor* m_processor;
-	JRequestUserInfo* m_requserinfo;
+	JRequestInformation<JUserInfo>* m_requserinfo;
 private slots:
 	void showMessage(const QString& msg);
 	void sendMessageInEdit();

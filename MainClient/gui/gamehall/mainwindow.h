@@ -5,13 +5,15 @@
 
 #include <Global/Global>
 #include <DataStruct/JUserInfo>
+#include <DataStruct/JGameInfo>
+#include <DataStruct/JGameList>
 
 namespace Ui {
     class MainWindow;
 }
 
-class JRequestGameInfo;
-class JRequestUserInfo;
+template <class T>
+class JRequestInformation;
 class QListWidgetItem;
 
 class MainWindow : public QMainWindow {
@@ -39,8 +41,9 @@ private:
 	void updateGameList();
 	void updateGameInfo(JID gameId);
 private:
-    JRequestGameInfo* m_gis;
-	JRequestUserInfo* m_requserinfo;
+	JRequestInformation<JUserInfo>* m_requestUserInfo;
+	JRequestInformation<JGameInfo>* m_requestGameInfo;
+	JRequestInformation<JGameList>* m_requestGameList ;
 	JID m_currentId;
 	JUserInfo m_myUserInfo;
 };

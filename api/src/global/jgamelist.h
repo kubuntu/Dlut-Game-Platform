@@ -14,7 +14,7 @@
 class JGameList : public JSerializableData , public QMap<JID,QString>
 {
 public:
-    JGameList();
+    JGameList(JID id=-1);
 	void fromByteArray(const QByteArray& data);
 	QByteArray toByteArray()const;
 	NetworkData::JHead head()const;
