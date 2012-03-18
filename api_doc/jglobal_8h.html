@@ -17,7 +17,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
-      <li><a href="pages.html"><span>相关页面</span></a></li>
       <li><a href="modules.html"><span>模块</span></a></li>
       <li><a href="namespaces.html"><span>名字空间</span></a></li>
       <li><a href="annotated.html"><span>类</span></a></li>
@@ -49,8 +48,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">类型定义</a> &#124;
-<a href="#enum-members">枚举</a>  </div>
+<a href="#typedef-members">类型定义</a>  </div>
   <div class="headertitle">
 <h1>jglobal.h文件参考</h1>  </div>
 </div>
@@ -66,13 +64,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 类型定义</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef qint32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16">JID</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">整个项目通用的一个ID类型。  <a href="#aca7d043a394f3005f5f3392af7322f16"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add493273e78764e5fcec8376231451ba"></a><!-- doxytag: member="jglobal.h::JType" ref="add493273e78764e5fcec8376231451ba" args="" -->
+typedef qint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="jglobal_8h.html#add493273e78764e5fcec8376231451ba">JType</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">整个项目通用的一个type类型。 <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef qint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9">JCode</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">整个项目通用的函数返回值类型。  <a href="#ae81115bbe70c338270c695f96b946ad9"></a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="enum-members"></a>
-枚举</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="jglobal_8h.html#a3b9bcf9bd1a96d72095a1ab9ef8cc140">ENet</a> </td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>网络状态。 </p>
- <a href="jglobal_8h.html#a3b9bcf9bd1a96d72095a1ab9ef8cc140">更多...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef uint&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="jglobal_8h.html#af961da7e30045b426010a71809e301b6">JTime_t</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">整个项目通用的时间类型。  <a href="#af961da7e30045b426010a71809e301b6"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>详细描述</h2>
 <p>整个项目都需要用到的一些定义。 </p>
@@ -113,20 +111,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 
 </div>
 </div>
-<hr/><h2>枚举类型文档</h2>
-<a class="anchor" id="a3b9bcf9bd1a96d72095a1ab9ef8cc140"></a><!-- doxytag: member="jglobal.h::ENet" ref="a3b9bcf9bd1a96d72095a1ab9ef8cc140" args="" -->
+<a class="anchor" id="af961da7e30045b426010a71809e301b6"></a><!-- doxytag: member="jglobal.h::JTime_t" ref="af961da7e30045b426010a71809e301b6" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="jglobal_8h.html#a3b9bcf9bd1a96d72095a1ab9ef8cc140">ENet</a></td>
+          <td class="memname">typedef uint <a class="el" href="jglobal_8h.html#af961da7e30045b426010a71809e301b6">JTime_t</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>网络状态。 </p>
-<dl class="warning"><dt><b>警告:</b></dt><dd>这个值将会被取消。 </dd></dl>
+<p>整个项目通用的时间类型。 </p>
+<p>单位是秒。 </p>
 
 </div>
 </div>
@@ -145,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated at Sat Aug 27 2011 20:53:16 for DGP_API by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

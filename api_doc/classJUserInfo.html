@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>DGP_API: JUserInfo类参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- 制作者 Doxygen 1.7.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>名字空间</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>组合类型列表</span></a></li>
+      <li><a href="classes.html"><span>组合类型索引</span></a></li>
+      <li><a href="hierarchy.html"><span>类继承关系</span></a></li>
+      <li><a href="functions.html"><span>组合类型成员</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公有成员</a>  </div>
+  <div class="headertitle">
+<h1>JUserInfo类参考<br/>
+<small>
+[<a class="el" href="group__global.html">global</a>]</small>
+</h1>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="JUserInfo" --><!-- doxytag: inherits="JSerializableData" -->
+<p>记录一名玩家的信息。  
+<a href="#_details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="juserinfo_8h_source.html">DataStruct/JUserInfo</a>&gt;</code></p>
+<div class="dynheader">
+继承图，类JUserInfo</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classJUserInfo.png" usemap="#JUserInfo_map" alt=""/>
+  <map id="JUserInfo_map" name="JUserInfo_map">
+<area href="classJSerializableData.html" alt="JSerializableData" shape="rect" coords="0,0,111,24"/>
+</map>
+</div>
+
+<p><a href="classJUserInfo-members.html">所有成员的列表。</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+公有成员</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJUserInfo.html#a7c7c32ea4efbad5eda0a46e48201deb1">JUserInfo</a> (<a class="el" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16">JID</a> id=-1, const QString &amp;name=QString(), const QString &amp;org=QString())</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">构造一个JUserInfo。  <a href="#a7c7c32ea4efbad5eda0a46e48201deb1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJUserInfo.html#a9d10cc06579120508b4557b29cd5977d">fromByteArray</a> (const QByteArray &amp;data)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">从<em>data</em> 中序列化出数据。  <a href="#a9d10cc06579120508b4557b29cd5977d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">QByteArray&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJUserInfo.html#a17ae6072e1d6f10afcfc51adbbf1a447">toByteArray</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">将数据序列化到<em>data</em> 中。  <a href="#a17ae6072e1d6f10afcfc51adbbf1a447"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNetworkData_1_1JHead.html">NetworkData::JHead</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJUserInfo.html#a308ba682c219c253a04fb32e63fe0d8d">head</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">返回对象的头信息。  <a href="#a308ba682c219c253a04fb32e63fe0d8d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7023655a808c71e92dba292c2bafa2a1"></a><!-- doxytag: member="JUserInfo::getUserId" ref="a7023655a808c71e92dba292c2bafa2a1" args="() const " -->
+<a class="el" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16">JID</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJUserInfo.html#a7023655a808c71e92dba292c2bafa2a1">getUserId</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">返回用户ID <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab5dca4e73a57f20d6ab9fd1ff9605a2"></a><!-- doxytag: member="JUserInfo::getNickname" ref="aab5dca4e73a57f20d6ab9fd1ff9605a2" args="() const " -->
+const QString &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJUserInfo.html#aab5dca4e73a57f20d6ab9fd1ff9605a2">getNickname</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">返回用户昵称 <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1572a725ceaf7d5d0fde62dff8650ebf"></a><!-- doxytag: member="JUserInfo::getOrganization" ref="a1572a725ceaf7d5d0fde62dff8650ebf" args="() const " -->
+const QString &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJUserInfo.html#a1572a725ceaf7d5d0fde62dff8650ebf">getOrganization</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">返回用户组织 <br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>详细描述</h2>
+<p>记录一名玩家的信息。 </p>
+<p>包括玩家的Id，昵称和组织名。 </p>
+<hr/><h2>构造及析构函数文档</h2>
+<a class="anchor" id="a7c7c32ea4efbad5eda0a46e48201deb1"></a><!-- doxytag: member="JUserInfo::JUserInfo" ref="a7c7c32ea4efbad5eda0a46e48201deb1" args="(JID id=&#45;1, const QString &amp;name=QString(), const QString &amp;org=QString())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">JUserInfo::JUserInfo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16">JID</a>&nbsp;</td>
+          <td class="paramname"> <em>id</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em> = <code>QString()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&nbsp;</td>
+          <td class="paramname"> <em>org</em> = <code>QString()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>构造一个JUserInfo。 </p>
+<p>Id为<em>id</em> ，昵称为<em>name</em> ，组织名<em>org</em> 。 </p>
+
+</div>
+</div>
+<hr/><h2>成员函数文档</h2>
+<a class="anchor" id="a9d10cc06579120508b4557b29cd5977d"></a><!-- doxytag: member="JUserInfo::fromByteArray" ref="a9d10cc06579120508b4557b29cd5977d" args="(const QByteArray &amp;data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void JUserInfo::fromByteArray </td>
+          <td>(</td>
+          <td class="paramtype">const QByteArray &amp;&nbsp;</td>
+          <td class="paramname"> <em>data</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>从<em>data</em> 中序列化出数据。 </p>
+<p>格式： &lt;JID:userId&gt; &lt;QString:nickname&gt; &lt;QString:organization&gt; </p>
+
+<p>实现了<a class="el" href="classJSerializableData.html#a7c84da0d2c860a1a7f500f68863826e4">JSerializableData</a>。</p>
+
+</div>
+</div>
+<a class="anchor" id="a308ba682c219c253a04fb32e63fe0d8d"></a><!-- doxytag: member="JUserInfo::head" ref="a308ba682c219c253a04fb32e63fe0d8d" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structNetworkData_1_1JHead.html">JHead</a> JUserInfo::head </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>返回对象的头信息。 </p>
+<p>通过头信息索引数据，以进行储存与查找。 </p>
+
+<p>实现了<a class="el" href="classJSerializableData.html#ab7bc100d62fd79628f62b4d10994b1be">JSerializableData</a>。</p>
+
+</div>
+</div>
+<a class="anchor" id="a17ae6072e1d6f10afcfc51adbbf1a447"></a><!-- doxytag: member="JUserInfo::toByteArray" ref="a17ae6072e1d6f10afcfc51adbbf1a447" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QByteArray JUserInfo::toByteArray </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>将数据序列化到<em>data</em> 中。 </p>
+<p>格式参见 <a class="el" href="classJUserInfo.html#a9d10cc06579120508b4557b29cd5977d" title="从data 中序列化出数据。">JUserInfo::fromByteArray()</a> </p>
+
+<p>实现了<a class="el" href="classJSerializableData.html#ab09af002d440a7ec84f03ca21e3f02c6">JSerializableData</a>。</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成：<ul>
+<li><a class="el" href="juserinfo_8h_source.html">juserinfo.h</a></li>
+<li>juserinfo.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>名字空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>友元</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
+</body>
+</html>

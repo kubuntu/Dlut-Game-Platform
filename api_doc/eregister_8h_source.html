@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>DGP_API: eregister.h源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- 制作者 Doxygen 1.7.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>名字空间</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>eregister.h</h1>  </div>
+</div>
+<div class="contents">
+<a href="eregister_8h.html">浏览该文件的文档。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef EREGISTER_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define EREGISTER_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00013"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986a">00013</a> <span class="keyword">enum</span> <a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986a" title="注册结果">ERegister</a>{
+<a name="l00014"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986aac92c1d77c6ea7ec8e48756f5b0c9acb2">00014</a>     ER_SUCCESS, 
+<a name="l00015"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986aadf0ce0c60ac4c2a54d60645ce819486d">00015</a>     ER_PermissionDenied, 
+<a name="l00016"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986aaaa4ecc5d7801aee7bd1e7dae01287077">00016</a>     ER_RoleOverflow, 
+<a name="l00017"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986aa77bf7d77987f53628fc5c22871155d1a">00017</a>     ER_LoginNameExists, 
+<a name="l00018"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986aa71dc77584a5a88c1ee93a191a4ae3ff4">00018</a>     ER_LoginNameLengthError, 
+<a name="l00019"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986aae02619b6e01d1632e5386334e550b2d9">00019</a>     ER_PasswordLengthError, 
+<a name="l00020"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986aa0fecfa38559ba442de116e6ef561b609">00020</a>     ER_InvitationCodeError, 
+<a name="l00021"></a><a class="code" href="eregister_8h.html#aec152fe11040c04081bb04ecc2f6986aa9d38429d02ebd32b3e2cadc27d371e1b">00021</a>     ER_UserIdFull, 
+<a name="l00022"></a>00022 };
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="preprocessor">#endif // EREGISTER_H</span>
+</pre></div></div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>名字空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>友元</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
+</body>
+</html>

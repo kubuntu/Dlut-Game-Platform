@@ -17,7 +17,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
-      <li><a href="pages.html"><span>相关页面</span></a></li>
       <li><a href="modules.html"><span>模块</span></a></li>
       <li><a href="namespaces.html"><span>名字空间</span></a></li>
       <li><a href="annotated.html"><span>类</span></a></li>
@@ -63,9 +62,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 类型定义</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4ecdff7c00c08d305f89e86f25bdcf6"></a><!-- doxytag: member="elogin.h::JRole" ref="ac4ecdff7c00c08d305f89e86f25bdcf6" args="" -->
-typedef qint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="elogin_8h.html#ac4ecdff7c00c08d305f89e86f25bdcf6">JRole</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">每名用户能够以多个身份登录。我们按bit记录一个用户拥有的身份的组合。 <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a484966b3602240902ed45ac06729a995"></a><!-- doxytag: member="elogin.h::JRoleCombination" ref="a484966b3602240902ed45ac06729a995" args="" -->
+typedef qint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="elogin_8h.html#a484966b3602240902ed45ac06729a995">JRoleCombination</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">一个用户拥有的身份的组合 每名用户能够拥有多个身份。我们按位记录一个用户拥有的身份的组合。 <br/></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 枚举</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="elogin_8h.html#ab545dcc2f309e9852f48e19b36decec2">ERole</a> { <br/>
@@ -86,15 +85,45 @@ typedef qint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <a class="el" href="elogin_8h.html#a0551a16fdbae07faf632f41de2bc827baab89a039220f15e1984f90f8750c4fa1">EL_NO_SUCH_ROLE</a>, 
 <br/>
 &nbsp;&nbsp;<a class="el" href="elogin_8h.html#a0551a16fdbae07faf632f41de2bc827ba50700d6deb6a874b361e7d130824965e">EL_ALREADY_LOGIN</a>, 
-<a class="el" href="elogin_8h.html#a0551a16fdbae07faf632f41de2bc827ba273379fe8d7c9af0117aaf7a97fa59fd">EL_SOCKET_DISCONNECTED</a>
+<a class="el" href="elogin_8h.html#a0551a16fdbae07faf632f41de2bc827ba7c45519acd5a6a504df2031c22d88cf5">EL_NETWORK_ERROR</a>
 <br/>
  }</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>登录结果 </p>
  <a href="elogin_8h.html#a0551a16fdbae07faf632f41de2bc827b">更多...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="elogin_8h.html#a5ec371aa11d932e33e02ef88c1fd4d81">EControlRoleAction</a> { <a class="el" href="elogin_8h.html#a5ec371aa11d932e33e02ef88c1fd4d81a02de380f40621ab4a2debb45506796f8">ECRA_Add</a>, 
+<a class="el" href="elogin_8h.html#a5ec371aa11d932e33e02ef88c1fd4d81ad6a9420ed3a09c9b4c72d8d3f670a9c2">ECRA_Remove</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>更改用户身份的动作 详情请见 <a class="el" href="classJRequestControlRole.html" title="向服务器发送请求的基类。">JRequestControlRole</a> </p>
+ <a href="elogin_8h.html#a5ec371aa11d932e33e02ef88c1fd4d81">更多...</a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>详细描述</h2>
 <p>与登录相关的类型定义。 </p>
 <hr/><h2>枚举类型文档</h2>
+<a class="anchor" id="a5ec371aa11d932e33e02ef88c1fd4d81"></a><!-- doxytag: member="elogin.h::EControlRoleAction" ref="a5ec371aa11d932e33e02ef88c1fd4d81" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="elogin_8h.html#a5ec371aa11d932e33e02ef88c1fd4d81">EControlRoleAction</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>更改用户身份的动作 详情请见 <a class="el" href="classJRequestControlRole.html" title="向服务器发送请求的基类。">JRequestControlRole</a> </p>
+<dl><dt><b>枚举值: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a5ec371aa11d932e33e02ef88c1fd4d81a02de380f40621ab4a2debb45506796f8"></a><!-- doxytag: member="ECRA_Add" ref="a5ec371aa11d932e33e02ef88c1fd4d81a02de380f40621ab4a2debb45506796f8" args="" -->ECRA_Add</em>&nbsp;</td><td>
+<p>添加一个身份 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a5ec371aa11d932e33e02ef88c1fd4d81ad6a9420ed3a09c9b4c72d8d3f670a9c2"></a><!-- doxytag: member="ECRA_Remove" ref="a5ec371aa11d932e33e02ef88c1fd4d81ad6a9420ed3a09c9b4c72d8d3f670a9c2" args="" -->ECRA_Remove</em>&nbsp;</td><td>
+<p>移除一个身份 </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a0551a16fdbae07faf632f41de2bc827b"></a><!-- doxytag: member="elogin.h::ELogin" ref="a0551a16fdbae07faf632f41de2bc827b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -123,8 +152,8 @@ typedef qint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <tr><td valign="top"><em><a class="anchor" id="a0551a16fdbae07faf632f41de2bc827ba50700d6deb6a874b361e7d130824965e"></a><!-- doxytag: member="EL_ALREADY_LOGIN" ref="a0551a16fdbae07faf632f41de2bc827ba50700d6deb6a874b361e7d130824965e" args="" -->EL_ALREADY_LOGIN</em>&nbsp;</td><td>
 <p>已经登录，不能重复登录 </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a0551a16fdbae07faf632f41de2bc827ba273379fe8d7c9af0117aaf7a97fa59fd"></a><!-- doxytag: member="EL_SOCKET_DISCONNECTED" ref="a0551a16fdbae07faf632f41de2bc827ba273379fe8d7c9af0117aaf7a97fa59fd" args="" -->EL_SOCKET_DISCONNECTED</em>&nbsp;</td><td>
-<p>连接断开 </p>
+<tr><td valign="top"><em><a class="anchor" id="a0551a16fdbae07faf632f41de2bc827ba7c45519acd5a6a504df2031c22d88cf5"></a><!-- doxytag: member="EL_NETWORK_ERROR" ref="a0551a16fdbae07faf632f41de2bc827ba7c45519acd5a6a504df2031c22d88cf5" args="" -->EL_NETWORK_ERROR</em>&nbsp;</td><td>
+<p>网络错误 </p>
 </td></tr>
 </table>
 </dd>
@@ -158,7 +187,7 @@ typedef qint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <p>平台管理员 </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ab545dcc2f309e9852f48e19b36decec2aaad2928df914218ac6bc269fd007dbb6"></a><!-- doxytag: member="ROLE_ROOT" ref="ab545dcc2f309e9852f48e19b36decec2aaad2928df914218ac6bc269fd007dbb6" args="" -->ROLE_ROOT</em>&nbsp;</td><td>
-<p>根用户 </p>
+<p>根用户，并用于判断此枚举值的上限 </p>
 </td></tr>
 </table>
 </dd>
@@ -181,7 +210,7 @@ typedef qint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated at Sat Aug 27 2011 20:53:16 for DGP_API by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

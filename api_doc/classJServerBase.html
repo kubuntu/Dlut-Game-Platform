@@ -17,7 +17,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
-      <li><a href="pages.html"><span>相关页面</span></a></li>
       <li><a href="modules.html"><span>模块</span></a></li>
       <li><a href="namespaces.html"><span>名字空间</span></a></li>
       <li class="current"><a href="annotated.html"><span>类</span></a></li>
@@ -52,20 +51,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">公有成员</a> &#124;
-<a href="#pro-slots">保护槽</a> &#124;
 <a href="#pro-methods">保护成员</a>  </div>
   <div class="headertitle">
-<h1>JServerBase类参考<br/>
-<small>
-[<a class="el" href="group__server.html">serverapi</a>]</small>
-</h1>  </div>
+<h1>JServerBase类参考</h1>  </div>
 </div>
 <div class="contents">
 <!-- doxytag: class="JServerBase" -->
-<p>对Server端的基本功能做了一个简单的封装  
+<p>服务器端基类  
 <a href="#_details">更多...</a></p>
 
-<p><code>#include &lt;<a class="el" href="jserverbase_8h_source.html">network/jserverbase.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="jserverbase_8h_source.html">Socket/JServerBase</a>&gt;</code></p>
 
 <p><a href="classJServerBase-members.html">所有成员的列表。</a></p>
 <table class="memberdecls">
@@ -75,44 +70,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJServerBase.html#afd894a79d4a074c869f84b80e19b8b32">JServerBase</a> (QObject *parent=0)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">构造函数 <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual quint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJServerBase.html#a25e43a7e3aa37f0270960ddc64ff6d06">run</a> (quint16 port)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">启动一个Server  <a href="#a25e43a7e3aa37f0270960ddc64ff6d06"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">开始监听  <a href="#a25e43a7e3aa37f0270960ddc64ff6d06"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36602355408ee1c2fad46d286d5b63c5"></a><!-- doxytag: member="JServerBase::serverPort" ref="a36602355408ee1c2fad46d286d5b63c5" args="() const " -->
 quint16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJServerBase.html#a36602355408ee1c2fad46d286d5b63c5">serverPort</a> () const </td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">返回Server当前监听的端口 <br/></td></tr>
-<tr><td colspan="2"><h2><a name="pro-slots"></a>
-保护槽</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJServerBase.html#a84fb0d5843d74c9e65a6ebc78d4665dd">on_server_newConnection</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">处理新连接  <a href="#a84fb0d5843d74c9e65a6ebc78d4665dd"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">返回当前正在监听的端口 <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 保护成员</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1713787544702d47ddd449db5c1ad04b"></a><!-- doxytag: member="JServerBase::getConnection" ref="a1713787544702d47ddd449db5c1ad04b" args="(QTcpSocket *socket, QObject *parent) const =0" -->
-virtual <a class="el" href="classJConnectionBase.html">JConnectionBase</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJServerBase.html#a1713787544702d47ddd449db5c1ad04b">getConnection</a> (QTcpSocket *socket, QObject *parent) const =0</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">返回一个 <a class="el" href="classJConnectionBase.html" title="对Server端的基本的网络通信提供一个封装">JConnectionBase</a> 的实例来处理每一个连接的数据 <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26e65b7ff2c389f5b2507899b137a0e2"></a><!-- doxytag: member="JServerBase::getConnection" ref="a26e65b7ff2c389f5b2507899b137a0e2" args="(QTcpSocket *socket, QObject *parent) const =0" -->
+virtual <a class="el" href="classJServerSocketBase.html">JServerSocketBase</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJServerBase.html#a26e65b7ff2c389f5b2507899b137a0e2">getConnection</a> (QTcpSocket *socket, QObject *parent) const =0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子类需要实现此抽象方法来处理连接。 <br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>详细描述</h2>
-<p>对Server端的基本功能做了一个简单的封装 </p>
+<p>服务器端基类 </p>
+<p>处理基本的端口监听、连接等。 <br/>
+ </p>
 <hr/><h2>成员函数文档</h2>
-<a class="anchor" id="a84fb0d5843d74c9e65a6ebc78d4665dd"></a><!-- doxytag: member="JServerBase::on_server_newConnection" ref="a84fb0d5843d74c9e65a6ebc78d4665dd" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void JServerBase::on_server_newConnection </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [protected, slot]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>处理新连接 </p>
-<p>当有新连接到来的时候，这个函数会调用 <a class="el" href="classJServerBase.html#a1713787544702d47ddd449db5c1ad04b" title="返回一个 JConnectionBase 的实例来处理每一个连接的数据">getConnection()</a> 函数产生一个 <a class="el" href="classJConnectionBase.html" title="对Server端的基本的网络通信提供一个封装">JConnectionBase</a> 的实例来处理新连接。</p>
-<dl class="see"><dt><b>参见:</b></dt><dd><a class="el" href="classJServerBase.html#a1713787544702d47ddd449db5c1ad04b" title="返回一个 JConnectionBase 的实例来处理每一个连接的数据">getConnection()</a> </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a25e43a7e3aa37f0270960ddc64ff6d06"></a><!-- doxytag: member="JServerBase::run" ref="a25e43a7e3aa37f0270960ddc64ff6d06" args="(quint16 port)" -->
 <div class="memitem">
 <div class="memproto">
@@ -129,9 +101,9 @@ virtual <a class="el" href="classJConnectionBase.html">JConnectionBase</a> *&nbs
 </div>
 <div class="memdoc">
 
-<p>启动一个Server </p>
-<p>尝试监听<em>port</em> 端口。 </p>
-<dl class="return"><dt><b>返回:</b></dt><dd>Server的端口。 </dd></dl>
+<p>开始监听 </p>
+<p><em>port</em> 要求端口。<br/>
+ 如果 <em>port</em> 为0或 <em>port</em> 已被占用，则系统自动选择一个端口。 </p>
 
 </div>
 </div>
@@ -154,7 +126,7 @@ virtual <a class="el" href="classJConnectionBase.html">JConnectionBase</a> *&nbs
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated at Sat Aug 27 2011 20:53:16 for DGP_API by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

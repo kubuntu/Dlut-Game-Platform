@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>DGP_API: jcodeerror.h源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- 制作者 Doxygen 1.7.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>名字空间</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>jcodeerror.h</h1>  </div>
+</div>
+<div class="contents">
+<a href="jcodeerror_8h.html">浏览该文件的文档。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef JCODEERROR_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define JCODEERROR_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="jglobal_8h.html" title="整个项目都需要用到的一些定义。">jglobal.h</a>&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00012"></a><a class="code" href="jcodeerror_8h.html#aba82609fadf801af830a2ea2f01c8184">00012</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#aba82609fadf801af830a2ea2f01c8184" title="成功">ESuccess</a> = 0; 
+<a name="l00013"></a>00013 
+<a name="l00014"></a><a class="code" href="jcodeerror_8h.html#af47d921d2179146463ea80ffe5252cfa">00014</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#af47d921d2179146463ea80ffe5252cfa" title="未知错误">EUnknownError</a> = 0x00FF; 
+<a name="l00015"></a>00015 
+<a name="l00016"></a><a class="code" href="jcodeerror_8h.html#adb0f20df9d2ea628e6631e4cd246a851">00016</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#adb0f20df9d2ea628e6631e4cd246a851" title="未完成的功能，尚在开发中">EDeveloping</a> = 0x0100; 
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="jcodeerror_8h.html#abf06edd4b64214c254d812c2dbec6a61">00018</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#abf06edd4b64214c254d812c2dbec6a61" title="网络错误">ENetworkError</a> = 0x0200; 
+<a name="l00019"></a><a class="code" href="jcodeerror_8h.html#a3d558a8a7e99cb66e3245e531026e547">00019</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a3d558a8a7e99cb66e3245e531026e547" title="无法在http头信息中获得 ContentLength">ECannotGetContentLengthInHead</a> = <a class="code" href="jcodeerror_8h.html#abf06edd4b64214c254d812c2dbec6a61" title="网络错误">ENetworkError</a> | 0x0001; 
+<a name="l00020"></a><a class="code" href="jcodeerror_8h.html#a280276a7d6479a4d930829812d8538cf">00020</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a280276a7d6479a4d930829812d8538cf" title="ContentLength 为零.">EContentLengthIsZero</a> = <a class="code" href="jcodeerror_8h.html#abf06edd4b64214c254d812c2dbec6a61" title="网络错误">ENetworkError</a> | 0x0002; 
+<a name="l00021"></a>00021 
+<a name="l00022"></a><a class="code" href="jcodeerror_8h.html#aed6c4d29103df384364adc4290a9f332">00022</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#aed6c4d29103df384364adc4290a9f332" title="与权限相关的错误">EPermissionError</a> = 0x0300; 
+<a name="l00023"></a><a class="code" href="jcodeerror_8h.html#a82d935e03411c7fd60492d261a7936c8">00023</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a82d935e03411c7fd60492d261a7936c8" title="权限不够">EPermissionDenied</a> = <a class="code" href="jcodeerror_8h.html#aed6c4d29103df384364adc4290a9f332" title="与权限相关的错误">EPermissionError</a> | 0x0001; 
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="jcodeerror_8h.html#abcbbbc998f08b6f11537fae7c0c59407">00025</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#abcbbbc998f08b6f11537fae7c0c59407" title="与用户相关的错误">EUserError</a> = 0x0400; 
+<a name="l00026"></a><a class="code" href="jcodeerror_8h.html#a3ec2d96e5d1e593aa9ce469ae8591ef4">00026</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a3ec2d96e5d1e593aa9ce469ae8591ef4" title="没有这个用户">ENoSuchUser</a> = <a class="code" href="jcodeerror_8h.html#abcbbbc998f08b6f11537fae7c0c59407" title="与用户相关的错误">EUserError</a> | 0x0001; 
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="jcodeerror_8h.html#acc56841004d36c644bc3b20e2ce9d53c">00028</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#acc56841004d36c644bc3b20e2ce9d53c" title="文件系统错误">EFileSystemError</a> = 0x0700; 
+<a name="l00029"></a><a class="code" href="jcodeerror_8h.html#aaef9efb51805f4083ac20f7486acb78a">00029</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#aaef9efb51805f4083ac20f7486acb78a" title="建立目录失败">EMakeDirFailed</a> = <a class="code" href="jcodeerror_8h.html#acc56841004d36c644bc3b20e2ce9d53c" title="文件系统错误">EFileSystemError</a> | 0x0001; 
+<a name="l00030"></a><a class="code" href="jcodeerror_8h.html#ab5c0ce58e5d7a455845dcbc0e12b7497">00030</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#ab5c0ce58e5d7a455845dcbc0e12b7497" title="打开文件失败">EOpenFileFailed</a> = <a class="code" href="jcodeerror_8h.html#acc56841004d36c644bc3b20e2ce9d53c" title="文件系统错误">EFileSystemError</a> | 0x0002; 
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="jcodeerror_8h.html#a972b31f9119b380b5a66500f1075583e">00032</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a972b31f9119b380b5a66500f1075583e" title="数据库错误">EDbError</a> = 0x800; 
+<a name="l00033"></a><a class="code" href="jcodeerror_8h.html#a22e1321fa4ed4decb8adceb802f63d43">00033</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a22e1321fa4ed4decb8adceb802f63d43" title="Id不存在.">EIdNotExist</a> = <a class="code" href="jcodeerror_8h.html#a972b31f9119b380b5a66500f1075583e" title="数据库错误">EDbError</a> | 0x0001; 
+<a name="l00034"></a><a class="code" href="jcodeerror_8h.html#a97900177ccc627fce93c02b1fa1883d8">00034</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a97900177ccc627fce93c02b1fa1883d8" title="prepare返回false">EPrepareFailed</a> = <a class="code" href="jcodeerror_8h.html#a972b31f9119b380b5a66500f1075583e" title="数据库错误">EDbError</a> | 0x0002; 
+<a name="l00035"></a><a class="code" href="jcodeerror_8h.html#a42a7739cdb285817e009ed6266ffc34c">00035</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a42a7739cdb285817e009ed6266ffc34c" title="exec返回false">EExecFailed</a> = <a class="code" href="jcodeerror_8h.html#a972b31f9119b380b5a66500f1075583e" title="数据库错误">EDbError</a> | 0x0003; 
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="jcodeerror_8h.html#a887ce434af864975dd20a7243cbc8abc">00037</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a887ce434af864975dd20a7243cbc8abc" title="error about login">ELoginError</a> = 0x900; 
+<a name="l00038"></a><a class="code" href="jcodeerror_8h.html#a190ce60cfc5f56914149ec9aad3f727c">00038</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a190ce60cfc5f56914149ec9aad3f727c" title="password error">EPasswordError</a> = <a class="code" href="jcodeerror_8h.html#a887ce434af864975dd20a7243cbc8abc" title="error about login">ELoginError</a> | 0x0001; 
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="jcodeerror_8h.html#a3b2a9f8ac741f05c20e9722c06cc913e">00040</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#a3b2a9f8ac741f05c20e9722c06cc913e" title="用户自定义值不得小于这个值">EUserCode</a> = 0x1000; 
+<a name="l00041"></a><a class="code" href="jcodeerror_8h.html#aa85b6640f7f6faaeda17a6f2f9a7e076">00041</a> <span class="keyword">const</span> <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="jcodeerror_8h.html#aa85b6640f7f6faaeda17a6f2f9a7e076" title="用户自定义值不得大于这个值">EMaxCode</a> = 0xF000; 
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="preprocessor">#endif // JCODEERROR_H</span>
+</pre></div></div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>名字空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>友元</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
+</body>
+</html>

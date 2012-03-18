@@ -17,7 +17,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
-      <li><a href="pages.html"><span>相关页面</span></a></li>
       <li><a href="modules.html"><span>模块</span></a></li>
       <li><a href="namespaces.html"><span>名字空间</span></a></li>
       <li><a href="annotated.html"><span>类</span></a></li>
@@ -56,42 +55,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;QObject&gt;</span>
 <a name="l00005"></a>00005 
-<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="jglobal_8h.html" title="整个项目都需要用到的一些定义。">global/jglobal.h</a>&quot;</span>
-<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;clientapi_global.h&quot;</span>
-<a name="l00008"></a>00008 
-<a name="l00009"></a>00009 <span class="keyword">class </span>QHostAddress;
-<a name="l00010"></a>00010 <span class="keyword">class </span><a class="code" href="classJSocketBase.html" title="客户端向服务器端发起连接请求及基本数据通信的基类">JSocketBase</a>;
-<a name="l00011"></a>00011 
-<a name="l00012"></a><a class="code" href="classJRequestBase.html">00012</a> <span class="keyword">class </span>CLIENTAPISHARED_EXPORT <a class="code" href="classJRequestBase.html" title="向服务器发送请求的基类。">JRequestBase</a> : <span class="keyword">public</span> QObject
-<a name="l00013"></a>00013 {
-<a name="l00014"></a>00014     Q_OBJECT
-<a name="l00015"></a>00015 <span class="keyword">public</span>:
-<a name="l00016"></a>00016     <a class="code" href="classJRequestBase.html" title="向服务器发送请求的基类。">JRequestBase</a>(QObject *parent = 0);
-<a name="l00017"></a>00017     <span class="keywordtype">void</span> connectToHost(<span class="keyword">const</span> QHostAddress&amp; address,quint16 port);
-<a name="l00019"></a><a class="code" href="classJRequestBase.html#a7b19862123cc2939576cc4af1ed0a9bb">00019</a>     <span class="keyword">enum</span> <a class="code" href="classJRequestBase.html#a7b19862123cc2939576cc4af1ed0a9bb" title="连接状态。">EConnectState</a>{
-<a name="l00020"></a><a class="code" href="classJRequestBase.html#a7b19862123cc2939576cc4af1ed0a9bba8513f6b2c340febc00aa574358d3ba17">00020</a>         ECS_Init, 
-<a name="l00021"></a><a class="code" href="classJRequestBase.html#a7b19862123cc2939576cc4af1ed0a9bba99c825be9878419b2f672e6e58caf685">00021</a>         ECS_Connecting, 
-<a name="l00022"></a><a class="code" href="classJRequestBase.html#a7b19862123cc2939576cc4af1ed0a9bba29c1fb9c3d139feacf7bd7cb8c8a3fc8">00022</a>         ECS_Connected, 
-<a name="l00023"></a><a class="code" href="classJRequestBase.html#a7b19862123cc2939576cc4af1ed0a9bba901c820a79fe2cc5a59e43f0b133bf9e">00023</a>         ECS_Error, 
-<a name="l00024"></a>00024     };
-<a name="l00025"></a>00025     EConnectState getConnectState()<span class="keyword">const</span>;
-<a name="l00026"></a>00026     <span class="keywordtype">bool</span> waitForConnected(<span class="keywordtype">int</span> msecs=30000)<span class="keyword">const</span>;
-<a name="l00027"></a>00027     <span class="keyword">const</span> QString&amp; getConnectError()<span class="keyword">const</span>;
-<a name="l00028"></a>00028 <span class="keyword">protected</span>:
-<a name="l00029"></a>00029     <span class="keywordtype">void</span> setSocket(<a class="code" href="classJSocketBase.html" title="客户端向服务器端发起连接请求及基本数据通信的基类">JSocketBase</a>* socket);
-<a name="l00030"></a>00030 signals:
-<a name="l00031"></a>00031     <span class="keywordtype">void</span> connectResult(<span class="keywordtype">bool</span>);
-<a name="l00032"></a>00032     <span class="keywordtype">void</span> error();
-<a name="l00033"></a>00033 <span class="keyword">private</span>:
-<a name="l00034"></a>00034     <a class="code" href="classJSocketBase.html" title="客户端向服务器端发起连接请求及基本数据通信的基类">JSocketBase</a>* m_socket;
-<a name="l00035"></a>00035     EConnectState m_state;
-<a name="l00036"></a>00036     <span class="keyword">const</span> QString* m_error;
-<a name="l00037"></a>00037 <span class="keyword">private</span> slots:
-<a name="l00038"></a>00038     <span class="keywordtype">void</span> on_socket_SocketCode(<a class="code" href="jglobal_8h.html#a3b9bcf9bd1a96d72095a1ab9ef8cc140" title="网络状态。">ENet</a> netcode);
-<a name="l00039"></a>00039     <span class="keywordtype">void</span> on_socket_SocketError(<span class="keyword">const</span> QString&amp;);
-<a name="l00040"></a>00040 };
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="preprocessor">#endif // JREQUESTBASE_H</span>
+<a name="l00006"></a><a class="code" href="classJRequestBase.html">00006</a> <span class="keyword">class </span><a class="code" href="classJRequestBase.html" title="向服务器发送请求的基类。">JRequestBase</a> : <span class="keyword">public</span> QObject
+<a name="l00007"></a>00007 {
+<a name="l00008"></a>00008     Q_OBJECT
+<a name="l00009"></a>00009 <span class="keyword">public</span>:
+<a name="l00010"></a>00010     <span class="keyword">explicit</span> <a class="code" href="classJRequestBase.html" title="向服务器发送请求的基类。">JRequestBase</a>(QObject *parent = 0);
+<a name="l00011"></a>00011 };
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="preprocessor">#endif // JREQUESTBASE_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -108,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated at Sat Aug 27 2011 20:53:16 for DGP_API by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

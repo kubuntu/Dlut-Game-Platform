@@ -17,7 +17,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
-      <li><a href="pages.html"><span>相关页面</span></a></li>
       <li><a href="modules.html"><span>模块</span></a></li>
       <li><a href="namespaces.html"><span>名字空间</span></a></li>
       <li class="current"><a href="annotated.html"><span>类</span></a></li>
@@ -93,8 +92,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48ffd11273906af892bde7a655ffa3a4"></a><!-- doxytag: member="JRequestLogin::JRequestLogin" ref="a48ffd11273906af892bde7a655ffa3a4" args="(QObject *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJRequestLogin.html#a48ffd11273906af892bde7a655ffa3a4">JRequestLogin</a> (QObject *parent=0)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">构造函数，没啥可说的吧？ <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJRequestLogin.html#ab8400d5316413908a8c8d1c0f16247a7">login</a> (const QString &amp;loginname, const QString &amp;passwd, const <a class="el" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16">JID</a> &amp;role)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">发送登录请求。  <a href="#ab8400d5316413908a8c8d1c0f16247a7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJRequestLogin.html#ac5addb08e56aa83108dd4f022f5e5e99">login</a> (const QString &amp;loginname, const QString &amp;passwd, const <a class="el" href="elogin_8h.html#ab545dcc2f309e9852f48e19b36decec2">ERole</a> &amp;role)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">发送登录请求。  <a href="#ac5addb08e56aa83108dd4f022f5e5e99"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classJRequestLogin.html#a1805c2d7146b8d85b2c684afec796789">ELoginState</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJRequestLogin.html#abaa2a0c4f4d2d6591272f6be71da258e">getLoginState</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取当前的登录状态。  <a href="#abaa2a0c4f4d2d6591272f6be71da258e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJRequestLogin.html#a06ca4483838e5dccd4ed2644f9e00540">waitForLogined</a> (int msecs=30000)</td></tr>
@@ -106,15 +105,7 @@ const QString &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class=
 <hr/><a name="_details"></a><h2>详细描述</h2>
 <p>登录请求。 </p>
 <p>JRequestLogin对登录请求提供一个基本的封装。<br/>
- 登录的过程：<br/>
-</p>
-<ol type="1">
-<li>通过 <a class="el" href="classJRequestPort.html" title="获得各个服务的端口">JRequestPort</a> 获得登录服务的端口。</li>
-<li>调用 <a class="el" href="classJRequestBase.html#aa491f8ce54b72039fe474b534da6ab31">connectToHost()</a> 函数连接服务器。</li>
-<li>调用 <a class="el" href="classJRequestLogin.html#ab8400d5316413908a8c8d1c0f16247a7" title="发送登录请求。">login()</a> 函数发送用户名、密码及登录身份。</li>
-</ol>
-<p>登录成功后，服务器会返回用户ID及<a class="el" href="classJLoginHashCodeRecorder.html#LoginHashCode">Login hash code</a> 。<br/>
- <a class="el" href="classJRequestLogin.html" title="登录请求。">JRequestLogin</a> 会自动通过 <a class="el" href="classJLoginHashCodeRecorder.html" title="管理登录用户ID及Login hash code。">JLoginHashCodeRecorder</a> 将它们记录下来。 </p>
+ </p>
 <hr/><h2>成员枚举类型文档</h2>
 <a class="anchor" id="a1805c2d7146b8d85b2c684afec796789"></a><!-- doxytag: member="JRequestLogin::ELoginState" ref="a1805c2d7146b8d85b2c684afec796789" args="" -->
 <div class="memitem">
@@ -168,7 +159,7 @@ const QString &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class=
 
 </div>
 </div>
-<a class="anchor" id="ab8400d5316413908a8c8d1c0f16247a7"></a><!-- doxytag: member="JRequestLogin::login" ref="ab8400d5316413908a8c8d1c0f16247a7" args="(const QString &amp;loginname, const QString &amp;passwd, const JID &amp;role)" -->
+<a class="anchor" id="ac5addb08e56aa83108dd4f022f5e5e99"></a><!-- doxytag: member="JRequestLogin::login" ref="ac5addb08e56aa83108dd4f022f5e5e99" args="(const QString &amp;loginname, const QString &amp;passwd, const ERole &amp;role)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -187,7 +178,7 @@ const QString &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class=
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16">JID</a> &amp;&nbsp;</td>
+          <td class="paramtype">const <a class="el" href="elogin_8h.html#ab545dcc2f309e9852f48e19b36decec2">ERole</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>role</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -226,10 +217,7 @@ const QString &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class=
 
 <p>登录结果 </p>
 <p><em>result</em> 表示是否登录成功。<br/>
- 如果登录成功，在发出这个信号前，JRequestLogin 会自动通过 <a class="el" href="classJLoginHashCodeRecorder.html" title="管理登录用户ID及Login hash code。">JLoginHashCodeRecorder</a> 记录 userId 及 Login hash code 。<br/>
- 关于Login hash confirm和Login hash code，参见 <a class="el" href="classJLoginHashCodeRecorder.html" title="管理登录用户ID及Login hash code。">JLoginHashCodeRecorder</a> 的文档。<br/>
  </p>
-<dl class="see"><dt><b>参见:</b></dt><dd><a class="el" href="classJLoginHashCodeRecorder.html" title="管理登录用户ID及Login hash code。">JLoginHashCodeRecorder</a> </dd></dl>
 
 </div>
 </div>
@@ -279,7 +267,7 @@ const QString &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class=
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated at Sat Aug 27 2011 20:53:16 for DGP_API by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

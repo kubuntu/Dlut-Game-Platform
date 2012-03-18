@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>DGP_API: jgameinfo.h源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- 制作者 Doxygen 1.7.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>名字空间</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>jgameinfo.h</h1>  </div>
+</div>
+<div class="contents">
+<a href="jgameinfo_8h.html">浏览该文件的文档。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef JGAMEINFO_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define JGAMEINFO_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="jserializabledata_8h.html" title="定义了 JSerializableData 接口">jserializabledata.h</a>&quot;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="jglobal_8h.html" title="整个项目都需要用到的一些定义。">jglobal.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="jversion_8h.html" title="定义了 JVersion 类">jversion.h</a>&quot;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;QUrl&gt;</span>
+<a name="l00009"></a>00009 
+<a name="l00016"></a><a class="code" href="classJGameInfo.html">00016</a> <span class="keyword">class </span><a class="code" href="classJGameInfo.html" title="游戏信息">JGameInfo</a> : <span class="keyword">public</span> <a class="code" href="classJSerializableData.html" title="可序列化的数据的抽象基类">JSerializableData</a>
+<a name="l00017"></a>00017 {
+<a name="l00018"></a>00018 <span class="keyword">public</span>:
+<a name="l00019"></a>00019     <a class="code" href="classJGameInfo.html#a662fd9ec495d9e8b3202dc27b8e4c5b2" title="构造函数">JGameInfo</a>(<a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> gameId=-1);
+<a name="l00020"></a>00020     <a class="code" href="classJGameInfo.html#a662fd9ec495d9e8b3202dc27b8e4c5b2" title="构造函数">JGameInfo</a>(<a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> gameId,
+<a name="l00021"></a>00021               <span class="keyword">const</span> QString&amp; name,
+<a name="l00022"></a>00022               <span class="keyword">const</span> <a class="code" href="classJVersion.html" title="管理版本号。">JVersion</a>&amp; version,
+<a name="l00023"></a>00023               <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> author,
+<a name="l00024"></a>00024               <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> runner,
+<a name="l00025"></a>00025               <span class="keyword">const</span> QString&amp; introduction,
+<a name="l00026"></a>00026               <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> serverId,
+<a name="l00027"></a>00027               <span class="keyword">const</span> QUrl&amp; downloadUrl);
+<a name="l00028"></a>00028     <span class="keywordtype">void</span> <a class="code" href="classJGameInfo.html#a454c810b532fff8614f19f134d460969" title="从二进制数据中序列化出各成员内容">fromByteArray</a>(<span class="keyword">const</span> QByteArray&amp; data);
+<a name="l00029"></a>00029     QByteArray <a class="code" href="classJGameInfo.html#a3229cdbf7acc7d391b690f3868ac7789" title="将成员内容序列化为二进制数据">toByteArray</a>()<span class="keyword">const</span>;
+<a name="l00030"></a>00030     <a class="code" href="structNetworkData_1_1JHead.html" title="记录 NetworkData 的头信息">NetworkData::JHead</a> <a class="code" href="classJGameInfo.html#a7853ba86f12d95d69a4db93561ac2218" title="获得头信息">head</a>()<span class="keyword">const</span>;
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032     <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> <a class="code" href="classJGameInfo.html#a18772d33e8997c591dd1a7960ace826f" title="返回 gameId">getGameId</a>()<span class="keyword">const</span>;
+<a name="l00033"></a>00033     <span class="keyword">const</span> QString&amp; <a class="code" href="classJGameInfo.html#a6deec996f9f213f0c32d8c8d8f29034f" title="返回游戏名称">getName</a>()<span class="keyword">const</span>;
+<a name="l00034"></a>00034     <span class="keyword">const</span> <a class="code" href="classJVersion.html" title="管理版本号。">JVersion</a>&amp; <a class="code" href="classJGameInfo.html#a037f58e35461df0f75d17ad5f0c0fd1d" title="返回游戏版本">getVersion</a>()<span class="keyword">const</span>;
+<a name="l00035"></a>00035     <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> <a class="code" href="classJGameInfo.html#a6ec374ace5c794fd8c3ed56311ad8a94" title="返回游戏作者ID">getAuthor</a>()<span class="keyword">const</span>;
+<a name="l00036"></a>00036     <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> <a class="code" href="classJGameInfo.html#a714895e007a272a73452c46c9c523f0e" title="返回游戏运营者ID">getRunner</a>()<span class="keyword">const</span>;
+<a name="l00037"></a>00037     <span class="keyword">const</span> QString&amp; <a class="code" href="classJGameInfo.html#a59c02af85e7f2a70a7db4918830c030f" title="返回游戏文字介绍">getIntroduction</a>()<span class="keyword">const</span>;
+<a name="l00038"></a>00038     <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> <a class="code" href="classJGameInfo.html#a92b5d3493d9da021c6ac053657372562" title="返回游戏服务器ID">getServerId</a>()<span class="keyword">const</span>;
+<a name="l00039"></a>00039     <span class="keyword">const</span> QUrl&amp; <a class="code" href="classJGameInfo.html#a847a3ee97ff9ec7e835981c8da0f796a" title="返回游戏客户端下载地址">getDownloadUrl</a>()<span class="keyword">const</span>;
+<a name="l00040"></a>00040 <span class="keyword">private</span>:
+<a name="l00041"></a>00041     QString m_name;
+<a name="l00042"></a>00042     <a class="code" href="classJVersion.html" title="管理版本号。">JVersion</a> m_version;
+<a name="l00043"></a>00043     <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> m_author;
+<a name="l00044"></a>00044     <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> m_runner;
+<a name="l00045"></a>00045     QString m_introduction;
+<a name="l00046"></a>00046     <a class="code" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16" title="整个项目通用的一个ID类型。">JID</a> m_serverId;
+<a name="l00047"></a>00047     QUrl m_downloadUrl;
+<a name="l00048"></a>00048 };
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 <span class="preprocessor">#endif // JGAMEINFO_H</span>
+</pre></div></div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>名字空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>友元</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
+</body>
+</html>

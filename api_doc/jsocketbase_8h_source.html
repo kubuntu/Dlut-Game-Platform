@@ -17,7 +17,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
-      <li><a href="pages.html"><span>相关页面</span></a></li>
       <li><a href="modules.html"><span>模块</span></a></li>
       <li><a href="namespaces.html"><span>名字空间</span></a></li>
       <li><a href="annotated.html"><span>类</span></a></li>
@@ -56,46 +55,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;QObject&gt;</span>
 <a name="l00005"></a>00005 <span class="preprocessor">#include &lt;QAbstractSocket&gt;</span>
-<a name="l00006"></a>00006 
-<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="jglobal_8h.html" title="整个项目都需要用到的一些定义。">global/jglobal.h</a>&quot;</span>
-<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="magicnumber_8h.html" title="定义了 MagicNumber 命名空间">global/magicnumber.h</a>&quot;</span>
-<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;clientapi_global.h&quot;</span>
-<a name="l00010"></a>00010 
-<a name="l00011"></a>00011 <span class="keyword">class </span>QTcpSocket;
-<a name="l00012"></a>00012 <span class="keyword">class </span>QHostAddress;
-<a name="l00013"></a>00013 
-<a name="l00014"></a><a class="code" href="classJSocketBase.html">00014</a> <span class="keyword">class </span>CLIENTAPISHARED_EXPORT <a class="code" href="classJSocketBase.html" title="客户端向服务器端发起连接请求及基本数据通信的基类">JSocketBase</a> : <span class="keyword">public</span> QObject
-<a name="l00015"></a>00015 {
-<a name="l00016"></a>00016     Q_OBJECT
-<a name="l00017"></a>00017 <span class="keyword">public</span>:
-<a name="l00018"></a>00018     <span class="keyword">explicit</span> <a class="code" href="classJSocketBase.html" title="客户端向服务器端发起连接请求及基本数据通信的基类">JSocketBase</a>(QObject *parent = 0);
-<a name="l00019"></a>00019     <span class="keywordtype">void</span> connectToHost(<span class="keyword">const</span> QHostAddress&amp; address,
-<a name="l00020"></a>00020                        quint16 port);
-<a name="l00021"></a>00021     <span class="keywordtype">bool</span> isConnected()<span class="keyword">const</span>;
-<a name="l00022"></a>00022     QAbstractSocket::SocketState socketState () <span class="keyword">const</span>;
-<a name="l00023"></a>00023 <span class="keyword">private</span>:
-<a name="l00024"></a>00024     QTcpSocket *m_socket;
-<a name="l00025"></a>00025     qint32 m_size;
-<a name="l00026"></a>00026     QByteArray m_data;
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 signals:
-<a name="l00029"></a>00029     <span class="keywordtype">void</span> SocketCode(<a class="code" href="jglobal_8h.html#a3b9bcf9bd1a96d72095a1ab9ef8cc140" title="网络状态。">ENet</a> netcode);
-<a name="l00030"></a>00030     <span class="keywordtype">void</span> SocketError(QString);
-<a name="l00031"></a>00031 <span class="keyword">protected</span> slots:
-<a name="l00032"></a>00032     <span class="keywordtype">void</span> on_socket_connected();
-<a name="l00033"></a>00033     <span class="keywordtype">void</span> on_socket_disconnected();
-<a name="l00034"></a>00034     <span class="keywordtype">void</span> on_socket_readyRead();
-<a name="l00035"></a>00035     <span class="keywordtype">void</span> on_socket_error ( QAbstractSocket::SocketError socketError );
-<a name="l00036"></a>00036 <span class="keyword">private</span>:
-<a name="l00037"></a>00037     <span class="keyword">virtual</span> <a class="code" href="namespaceMagicNumber.html#aee5fa8b6592ee567764415262a7e0ab4" title="“魔数”的定义。">MagicNumber::JMagicNumber</a> getMagicNumber()<span class="keyword">const</span>=0;
-<a name="l00038"></a>00038 
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;QHash&gt;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;../global/jglobal.h&quot;</span>
+<a name="l00009"></a>00009 
+<a name="l00016"></a>00016 <span class="keyword">class </span>QTcpSocket;
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="keyword">class </span><a class="code" href="classJNetworkDataProcessorBase.html">JNetworkDataProcessorBase</a>;
+<a name="l00019"></a>00019 <span class="keyword">class </span><a class="code" href="structSHost.html" title="记录一个地址和端口。">SHost</a>;
+<a name="l00020"></a>00020 <span class="keyword">class </span><a class="code" href="classJSocketStrategy.html" title="套接字认证">JSocketStrategy</a>;
+<a name="l00021"></a>00021 <span class="keyword">class </span><a class="code" href="classJSession.html">JSession</a>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="classJSocketBase.html">00023</a> <span class="keyword">class </span><a class="code" href="classJSocketBase.html" title="套接字基类">JSocketBase</a> : <span class="keyword">public</span> QObject{
+<a name="l00024"></a>00024     Q_OBJECT
+<a name="l00025"></a>00025 <span class="keyword">public</span>:
+<a name="l00026"></a>00026     <span class="keyword">explicit</span> <a class="code" href="classJSocketBase.html#a07364d5b9c0d877ff5fd13ae5b33c258" title="构造函数">JSocketBase</a>(QTcpSocket* <span class="keyword">const</span> socket,QObject* parent=0);
+<a name="l00027"></a>00027     <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="classJSocketBase.html#a7d18f1b9b40a6e922e385fe3b54531ff" title="注册网络数据处理器">registerProcessor</a>(<a class="code" href="classJNetworkDataProcessorBase.html">JNetworkDataProcessorBase</a>*);
+<a name="l00028"></a>00028     <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> <a class="code" href="classJSocketBase.html#a6be5641ae84544c77c30701509a5ccf0" title="发送数据">sendData</a>(<a class="code" href="jglobal_8h.html#add493273e78764e5fcec8376231451ba" title="整个项目通用的一个type类型。">JType</a> type,<span class="keyword">const</span> QByteArray&amp;);
+<a name="l00029"></a>00029     <span class="keywordtype">void</span> <a class="code" href="classJSocketBase.html#a08c4c4df93ded4b1ee08703878675b12" title="关闭连接">closeConnect</a>();
+<a name="l00030"></a>00030     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classJSocketBase.html#aaec2046a406dc3aaeb2e383ac0225034" title="发起连接">connectToServer</a>(<span class="keyword">const</span> <a class="code" href="structSHost.html" title="记录一个地址和端口。">SHost</a>&amp;);
+<a name="l00031"></a>00031     QAbstractSocket::SocketState <a class="code" href="classJSocketBase.html#a06d8598e42dd33abe12dff44bd7a02c8" title="获得当前的socket状态">socketState</a> () <span class="keyword">const</span>;
+<a name="l00032"></a>00032     <a class="code" href="classJSession.html">JSession</a>* <a class="code" href="classJSocketBase.html#a0fceba775388cc5892f118eb0ef32ad4" title="获得session对象">getSession</a>();
+<a name="l00033"></a>00033     <a class="code" href="jglobal_8h.html#add493273e78764e5fcec8376231451ba" title="整个项目通用的一个type类型。">JType</a> <a class="code" href="classJSocketBase.html#a268f7ea13506531c6a5faf72ccb96114" title="获得当前正在处理的数据的协议类型">getType</a>()<span class="keyword">const</span>;
+<a name="l00034"></a>00034     <span class="keywordtype">void</span> <a class="code" href="classJSocketBase.html#ad8e09b2311458d4018af97f53f720d03" title="设置 SocketStrategy 对象">setSocketStrategy</a>(<a class="code" href="classJSocketStrategy.html" title="套接字认证">JSocketStrategy</a>* strategy);
+<a name="l00035"></a>00035     <a class="code" href="classJSocketStrategy.html" title="套接字认证">JSocketStrategy</a>* <a class="code" href="classJSocketBase.html#a52cb55c18806c80606047d8ae6920da3" title="获得 SocketStrategy 对象">getSocketStrategy</a>()<span class="keyword">const</span>;
+<a name="l00036"></a>00036 signals:
+<a name="l00037"></a>00037     <span class="keywordtype">void</span> <a class="code" href="classJSocketBase.html#a4eb2de47a7e7adab7cfca134f84c12fd" title="连接断开">disconnected</a>();
+<a name="l00038"></a>00038     <span class="keywordtype">void</span> <a class="code" href="classJSocketBase.html#a042914fc55cb5f632fb54e3a2ae9c474" title="发生错误">error</a> ( <a class="code" href="jglobal_8h.html#ae81115bbe70c338270c695f96b946ad9" title="整个项目通用的函数返回值类型。">JCode</a> errorCode );
 <a name="l00039"></a>00039 <span class="keyword">protected</span>:
-<a name="l00040"></a>00040     <span class="keyword">virtual</span> <span class="keywordtype">void</span> dataProcess(<span class="keyword">const</span> QByteArray&amp;)=0;
-<a name="l00041"></a>00041     <span class="keywordtype">void</span> sendData(<span class="keyword">const</span> QByteArray&amp;);
-<a name="l00042"></a>00042     <span class="keywordtype">void</span> closeConnect();
-<a name="l00043"></a>00043 };
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="preprocessor">#endif // JSOCKETBASE_H</span>
+<a name="l00040"></a>00040     QTcpSocket* <span class="keyword">const</span> m_socket;
+<a name="l00041"></a>00041 <span class="keyword">private</span> slots:
+<a name="l00042"></a>00042     <span class="keywordtype">void</span> <a class="code" href="classJSocketBase.html#a53314504b71f3e491ceb328a4ab3ccf0" title="处理数据">on_socket_readyRead</a>();
+<a name="l00043"></a>00043     <span class="keywordtype">void</span> on_socket_error(QAbstractSocket::SocketError);
+<a name="l00044"></a>00044 <span class="keyword">private</span>:
+<a name="l00045"></a>00045     QHash&lt;JType,JNetworkDataProcessorBase*&gt; m_processors;
+<a name="l00046"></a>00046     <a class="code" href="classJSession.html">JSession</a>* m_session;
+<a name="l00047"></a>00047     <a class="code" href="classJSocketStrategy.html" title="套接字认证">JSocketStrategy</a>* m_socketStrategy;
+<a name="l00048"></a>00048     <a class="code" href="jglobal_8h.html#add493273e78764e5fcec8376231451ba" title="整个项目通用的一个type类型。">JType</a> m_type;
+<a name="l00049"></a>00049     qint32 m_size;
+<a name="l00050"></a>00050     QByteArray m_data;
+<a name="l00051"></a>00051 };
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 <span class="preprocessor">#endif // JSOCKETBASE_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -112,7 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated at Sat Aug 27 2011 20:53:16 for DGP_API by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated at Sun Mar 18 2012 13:59:59 for DGP_API by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

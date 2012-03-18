@@ -17,7 +17,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>首页</span></a></li>
-      <li><a href="pages.html"><span>相关页面</span></a></li>
       <li><a href="modules.html"><span>模块</span></a></li>
       <li><a href="namespaces.html"><span>名字空间</span></a></li>
       <li class="current"><a href="annotated.html"><span>类</span></a></li>
@@ -50,79 +49,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
   </div>
 </div>
 <div class="header">
-  <div class="summary">
-<a href="#pub-methods">公有成员</a>  </div>
   <div class="headertitle">
 <h1>JRequestUserInfo类参考</h1>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="JRequestUserInfo" --><!-- doxytag: inherits="JLhcRequestBase" -->
-<p>获取用户信息  
+<!-- doxytag: class="JRequestUserInfo" --><!-- doxytag: inherits="JInformationRequestBase" -->
+<p>请求 userinfo 信息  
 <a href="#_details">更多...</a></p>
 
-<p><code>#include &lt;<a class="el" href="jrequestuserinfo_8h_source.html">service/jrequestuserinfo.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="jrequestuserinfo_8h_source.html">jrequestuserinfo.h</a>&gt;</code></p>
 <div class="dynheader">
 继承图，类JRequestUserInfo</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classJRequestUserInfo.png" usemap="#JRequestUserInfo_map" alt=""/>
   <map id="JRequestUserInfo_map" name="JRequestUserInfo_map">
-<area href="classJLhcRequestBase.html" alt="JLhcRequestBase" shape="rect" coords="0,56,112,80"/>
-<area href="classJRequestBase.html" alt="JRequestBase" shape="rect" coords="0,0,112,24"/>
+<area href="classJInformationRequestBase.html" alt="JInformationRequestBase" shape="rect" coords="0,112,198,136"/>
+<area href="classJInformationRequestByHeadBase.html" alt="JInformationRequestByHeadBase" shape="rect" coords="0,56,198,80"/>
+<area href="classJRequestBase.html" alt="JRequestBase" shape="rect" coords="0,0,198,24"/>
 </map>
 </div>
 
 <p><a href="classJRequestUserInfo-members.html">所有成员的列表。</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="pub-methods"></a>
-公有成员</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d4e48d29382a624246716df1cbce540"></a><!-- doxytag: member="JRequestUserInfo::JRequestUserInfo" ref="a7d4e48d29382a624246716df1cbce540" args="(QObject *parent=0)" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJRequestUserInfo.html#a7d4e48d29382a624246716df1cbce540">JRequestUserInfo</a> (QObject *parent=0)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">构造函数。 <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUserInfo_1_1SUserInfo.html">UserInfo::SUserInfo</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJRequestUserInfo.html#aa6f99c8ea2aaacb5cd0a2a0b628c0db6">rqsUserInfo</a> (<a class="el" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16">JID</a> userId)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取<em>userId</em> 的用户信息。  <a href="#aa6f99c8ea2aaacb5cd0a2a0b628c0db6"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>详细描述</h2>
-<p>获取用户信息 </p>
-<p>JRequestUserInfo对获取用户信息请求提供一个基本的封装。<br/>
- 请求的过程：<br/>
-</p>
-<ol type="1">
-<li>通过 <a class="el" href="classJRequestPort.html" title="获得各个服务的端口">JRequestPort</a> 获得用户信息服务的端口。<br/>
-</li>
-<li>调用 <a class="el" href="classJRequestBase.html#aa491f8ce54b72039fe474b534da6ab31">connectToHost()</a> 函数连接服务器。<br/>
-</li>
-<li>调用 <a class="el" href="classJLhcRequestBase.html#af0b2ade8a5da019081d37d73be69d9c6">sendLoginHashCode()</a> 函数发送Login hash code。<br/>
-</li>
-<li>调用 <a class="el" href="classJRequestUserInfo.html#aa6f99c8ea2aaacb5cd0a2a0b628c0db6" title="获取userId 的用户信息。">rqsUserInfo()</a> 函数获取用户信息。<br/>
-</li>
-</ol>
-<dl class="see"><dt><b>参见:</b></dt><dd><a class="el" href="structUserInfo_1_1SUserInfo.html" title="记录一名玩家的信息。">UserInfo::SUserInfo</a> </dd></dl>
-<hr/><h2>成员函数文档</h2>
-<a class="anchor" id="aa6f99c8ea2aaacb5cd0a2a0b628c0db6"></a><!-- doxytag: member="JRequestUserInfo::rqsUserInfo" ref="aa6f99c8ea2aaacb5cd0a2a0b628c0db6" args="(JID userId)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structUserInfo_1_1SUserInfo.html">UserInfo::SUserInfo</a> JRequestUserInfo::rqsUserInfo </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="jglobal_8h.html#aca7d043a394f3005f5f3392af7322f16">JID</a>&nbsp;</td>
-          <td class="paramname"> <em>userId</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>获取<em>userId</em> 的用户信息。 </p>
-<p>这个函数会等待一段时间直到收到请求结果。<br/>
- 如果请求失败，它会返回 UserInfo::SUserInfo() 。<br/>
- 这个函数会保存已经获取的用户信息，无论你是否是在同一个JRequestUserInfo 的实例中调用。<br/>
- 如果请求一个已保存的值，这个函数会立即返回这个值。 </p>
-
-</div>
-</div>
+<p>请求 userinfo 信息 </p>
 <hr/>该类的文档由以下文件生成：<ul>
 <li><a class="el" href="jrequestuserinfo_8h_source.html">jrequestuserinfo.h</a></li>
 <li>jrequestuserinfo.cpp</li>
@@ -142,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated at Sat Aug 27 2011 20:53:16 for DGP_API by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated at Sat Mar 10 2012 11:27:18 for DGP_API by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
