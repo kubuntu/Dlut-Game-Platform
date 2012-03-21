@@ -12,13 +12,13 @@ public:
     static JGameClientArgumentAnalyser* getInstance();
     bool processArgument(const QStringList& arguments);
     JID getUserId()const;
-    const QByteArray& getLoginHashCode()const;
+    const QString& getLoginHashCode()const;
     const SHost& getMainServer()const;
     const SHost& getGameServer()const;
 private:
     JGameClientArgumentAnalyser();
     JID m_userId;
-    QByteArray m_loginhashcode;
+    QString m_loginhashcode;
     SHost m_mainserver;
     SHost m_gameserver;
 };

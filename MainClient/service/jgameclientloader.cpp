@@ -193,7 +193,7 @@ QStringList JGameClientLoader::getArguments()const
 {
 	QStringList ret;
 	ret<<QString::number(m_session->getUserId());
-	ret<<m_session->getLoginHashCodeStr();
+	ret<<m_session->getLoginHashCode();
 	ret<<m_pseudoServer.m_address.toString();
 	ret<<QString::number(m_pseudoServer.m_port);
 	ret<<m_serverInfo.getHost().m_address.toString();

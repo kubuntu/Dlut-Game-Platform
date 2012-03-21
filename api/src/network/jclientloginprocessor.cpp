@@ -36,7 +36,7 @@ void JClientLoginProcessor::process(const QByteArray& data){
     QDataStream stream(data);
     JCode code;
     JID irole ;
-	QByteArray loginhashcode;
+	QString loginhashcode;
     stream>>code;
     if(code==0)
     {

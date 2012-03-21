@@ -8,7 +8,7 @@ class JLoginHashCodeCreator
 public:
     JLoginHashCodeCreator();
 	void setUserId(JID userId);
-	QByteArray createLoginHashCode();
+	QString createLoginHashCode();
 private:
 	JID m_userId;
 };

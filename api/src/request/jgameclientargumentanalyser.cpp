@@ -39,8 +39,7 @@ bool JGameClientArgumentAnalyser::processArgument(const QStringList& arguments)
         return false;
     }
     m_userId=arguments.at(1).toInt();
-    QString strcrypro=arguments.at(2);
-    m_loginhashcode=QByteArray::fromHex(strcrypro.toAscii());
+    m_loginhashcode=arguments.at(2);
     QHostAddress ms_addr(arguments.at(3));
     quint16 ms_port(arguments.at(4).toInt());
     m_mainserver = SHost(ms_addr,ms_port);
@@ -61,7 +60,7 @@ JID JGameClientArgumentAnalyser::getUserId()const
 	
 	\sa JSession
 */
-const QByteArray& JGameClientArgumentAnalyser::getLoginHashCode()const
+const QString& JGameClientArgumentAnalyser::getLoginHashCode()const
 {
     return m_loginhashcode;
 }

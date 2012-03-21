@@ -26,22 +26,12 @@ void JSession::setRole(ERole role)
 	m_role = role ;
 }
 
-const QByteArray& JSession::getLoginHashCode()const
+const QString& JSession::getLoginHashCode()const
 {
 	return m_loginhashcode;
 }
 
-void JSession::setLoginHashCode(const QByteArray& code)
+void JSession::setLoginHashCode(const QString& code)
 {
 	m_loginhashcode=code;
-}
-
-QString JSession::getLoginHashCodeStr()const
-{
-	return m_loginhashcode.toHex().toUpper();
-}
-
-void JSession::setLoginHashCodeStr(const QString& str)
-{
-	m_loginhashcode=QByteArray::fromHex(str.toAscii());
 }
