@@ -333,6 +333,19 @@ bool MySQLCreater::createDb() {
 		qDebug() << "create gameinfo exec fail";
 		return false;
 	}
+	
+	if (query->exec("CREATE TABLE `invitationCode` ( "
+					"`id` int(11) NOT NULL AUTO_INCREMENT, "
+					"`code` varchar(50) NOT NULL, "
+					"PRIMARY KEY (`id`) "
+					")"))
+	{
+		qDebug() << "create invitationCode succ";
+	} else {
+		qDebug() << query->lastError().text();
+		qDebug() << "create invitationCode exec fail";
+		return false;
+	}
 
 	return true;
 }
