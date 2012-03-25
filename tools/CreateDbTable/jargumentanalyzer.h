@@ -7,12 +7,8 @@
 class JArgumentAnalyzer{
 public:
 	bool analyse() ;
-	QString value(
-		const QString& key,
-		const QString& defaultValue=QString()
-	)const;
-	bool hasValue(const QString& key)const;
 	const QString& errorString()const;
+	const QMap<QString,QString>& argumentMap()const;
 private:
 	bool analyseStringList(const QStringList& sl);
 	

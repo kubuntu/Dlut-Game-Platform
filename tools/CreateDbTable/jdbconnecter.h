@@ -2,14 +2,12 @@
 #define JDBCONNECTER_H
 
 #include <QString>
+#include <QMap>
 
 class JDbConnecter{
 public:
 	bool connect(
-		const QString& drive,
-		const QString& database,
-		const QString& username,
-		const QString& password
+		const QMap<QString,QString>& argumentMap
 	);
 	const QString& errorString()const;
 private:

@@ -8,16 +8,20 @@ bool JArgumentAnalyzer::analyse(){
 	return analyseStringList(argv);
 }
 
-QString JArgumentAnalyzer::value(
-		const QString& key,
-		const QString& defaultValue
-	)const{
-	return m_values.value(key,defaultValue);
+const QMap<QString,QString>& JArgumentAnalyzer::argumentMap()const{
+	return m_values ;
 }
 
-bool JArgumentAnalyzer::hasValue(const QString& key)const{
-	return m_values.contains(key);
-}
+//QString JArgumentAnalyzer::value(
+//		const QString& key,
+//		const QString& defaultValue
+//	)const{
+//	return m_values.value(key,defaultValue);
+//}
+
+//bool JArgumentAnalyzer::hasValue(const QString& key)const{
+//	return m_values.contains(key);
+//}
 
 const QString& JArgumentAnalyzer::errorString()const{
 	return m_error ;

@@ -6,8 +6,13 @@
 #include <iostream>
 
 void outputUsage(){
-	std::cout<<" usage : "<<std::endl;
-	std::cout<<" CreateDbTable --drive=DRIVE --database=DATABASE --username=USERNAME --password=PASSWORD"<<std::endl;
+	std::cout<<"CreateDbTable usage : "<<std::endl;
+	std::cout<<
+"CreateDbTable --drive=DRIVE --database=DATABASE \
+	[--username=USERNAME] \
+	[--password=PASSWORD] \
+	[--hostname=HOSTNAME]"
+			<<std::endl;
 }
 
 int main(int argc, char *argv[])
@@ -20,37 +25,31 @@ int main(int argc, char *argv[])
 		std::cerr<<aa.errorString().toStdString()<<std::endl;
 		return 1;
 	}
+	const QMap<QString,QString>& argumentMap = aa.argumentMap() ;
 	
 	// --help
-	if( aa.hasValue("help") ){
+	if( argumentMap.contains("help") ){
 		outputUsage() ;
 		return 0;
 	}
 	
 	// necessary argument
-	const int necArgc = 4;
+	const int necArgc = 2;
 	const QString necArgv[necArgc] = {
 		QString("drive"),
 		QString("database"),
-		QString("username"),
-		QString("password"),
 	};
 	for(int i=0;i<necArgc;++i){
-		if( ! aa.hasValue(necArgv[i]) ){
+		if( ! argumentMap.contains(necArgv[i]) ){
 			std::cerr<<" missing argument : "
 					<<necArgv[i].toStdString()<<std::endl;
 			outputUsage() ;
 			return 1;
 		}
 	}
+	
 	JDbConnecter dc;
-	if( ! dc.connect(
-			aa.value("drive"),
-			aa.value("database"),
-			aa.value("username"),
-			aa.value("password")
-		)
-	){
+	if( ! dc.connect( argumentMap ) ){
 		std::cerr<<" connect db failed : "
 				<<dc.errorString().toStdString()<<std::endl;
 		return 2;
