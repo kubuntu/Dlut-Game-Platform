@@ -28,11 +28,20 @@ JSQLDatabaseFactory::JSQLDatabaseFactory(QObject *parent) :
 	QString database = dgpdbIni.value("database").toString();
 	dgpDB.setDatabaseName(database) ;
 	
-	QString userName = dgpdbIni.value("username").toString();
-	dgpDB.setUserName(userName);
+	if(dgpdbIni.contains("username") ){
+		QString userName = dgpdbIni.value("username").toString();
+		dgpDB.setUserName(userName);
+	}
 	
-	QString password = dgpdbIni.value("password").toString() ;
-	dgpDB.setPassword(password) ;
+	if(dgpdbIni.contains("password") ){
+		QString password = dgpdbIni.value("password").toString() ;
+		dgpDB.setPassword(password) ;
+	}
+	
+	if(dgpdbIni.contains("hostname") ){
+		QString hostname = dgpdbIni.value("hostname").toString();
+		dgpDB.setUserName(hostname);
+	}
 	
 	dgpdbIni.endGroup() ;
 	

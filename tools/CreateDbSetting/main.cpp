@@ -50,8 +50,7 @@ int main(int argc, char *argv[])
 	
 	JDgpDbSettingCreater ddsc;
 	if( ! ddsc.create( argumentMap ) ){
-		std::cerr<<" create setting failed : "
-				<<ddsc.errorString().toStdString()<<std::endl;
+		std::cerr<<" create setting failed : "<<std::endl;
 		return 2;
 	}
 	
