@@ -12,17 +12,6 @@ const QMap<QString,QString>& JArgumentAnalyzer::argumentMap()const{
 	return m_values ;
 }
 
-//QString JArgumentAnalyzer::value(
-//		const QString& key,
-//		const QString& defaultValue
-//	)const{
-//	return m_values.value(key,defaultValue);
-//}
-
-//bool JArgumentAnalyzer::hasValue(const QString& key)const{
-//	return m_values.contains(key);
-//}
-
 const QString& JArgumentAnalyzer::errorString()const{
 	return m_error ;
 }

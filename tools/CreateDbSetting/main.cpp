@@ -1,15 +1,14 @@
 #include <QCoreApplication>
 #include <JArgumentAnalyzer>
 
-#include "jdbconnecter.h"
-#include "jdgpdbtablecreater.h"
+#include "jdgpdbsettingcreater.h"
 
 #include <iostream>
 
 void outputUsage(){
-	std::cout<<"CreateDbTable usage : "<<std::endl;
+	std::cout<<"CreateDbSetting usage : "<<std::endl;
 	std::cout<<
-"CreateDbTable --drive=DRIVE --database=DATABASE \
+"CreateDbSetting --drive=DRIVE --database=DATABASE \
 	[--username=USERNAME] \
 	[--password=PASSWORD] \
 	[--hostname=HOSTNAME]"
@@ -49,16 +48,12 @@ int main(int argc, char *argv[])
 		}
 	}
 	
-	JDbConnecter dc;
-	if( ! dc.connect( argumentMap ) ){
-		std::cerr<<" connect db failed : "
-				<<dc.errorString().toStdString()<<std::endl;
+	JDgpDbSettingCreater ddsc;
+	if( ! ddsc.create( argumentMap ) ){
+		std::cerr<<" create setting failed : "
+				<<ddsc.errorString().toStdString()<<std::endl;
 		return 2;
 	}
-	JDgpDbTableCreater dtc;
-	if( ! dtc.create() ){
-		std::cerr<<dtc.errorString().toStdString()<<std::endl;
-		return 3;
-	}
+	
 	return 0;
 }
