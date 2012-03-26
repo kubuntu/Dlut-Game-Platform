@@ -28,7 +28,7 @@ bool JDbConnecter::connect(
 	// password
 	if(argumentMap.contains("password") ){
 		QString password = argumentMap.value("password");
-		dgpDB.setUserName(password);
+		dgpDB.setPassword(password);
 	}
 	
 	// hostname
