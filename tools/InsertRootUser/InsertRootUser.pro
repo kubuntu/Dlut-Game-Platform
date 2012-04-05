@@ -10,7 +10,8 @@ unix:!mac:QMAKE_LFLAGS += -Wl,--rpath=lib/
 
 SOURCES += \
 	main.cpp \
-	jdgpdbtablecreater.cpp
+	jrootuserinserter.cpp
+
 
 HEADERS += \
-	jdgpdbtablecreater.h
+	jrootuserinserter.h

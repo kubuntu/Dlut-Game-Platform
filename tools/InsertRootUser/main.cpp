@@ -2,14 +2,14 @@
 #include <JArgumentAnalyzer>
 #include <JDbConnecter>
 
-#include "jdgpdbtablecreater.h"
+#include "jrootuserinserter.h"
 
 #include <iostream>
 
 void outputUsage(){
-	std::cout<<"CreateDbTable usage : "<<std::endl;
+	std::cout<<"InsertRootUser usage : "<<std::endl;
 	std::cout<<
-"CreateDbTable --drive=DRIVE --database=DATABASE \
+"InsertRootUser --drive=DRIVE --database=DATABASE --rootpassword=ROOTPASSWORD \
 	[--username=USERNAME] \
 	[--password=PASSWORD] \
 	[--hostname=HOSTNAME]"
@@ -35,10 +35,11 @@ int main(int argc, char *argv[])
 	}
 	
 	// necessary argument
-	const int necArgc = 2;
+	const int necArgc = 3;
 	const QString necArgv[necArgc] = {
 		QString("drive"),
 		QString("database"),
+		QString("rootpassword"),
 	};
 	for(int i=0;i<necArgc;++i){
 		if( ! argumentMap.contains(necArgv[i]) ){
@@ -55,9 +56,10 @@ int main(int argc, char *argv[])
 				<<dc.errorString().toStdString()<<std::endl;
 		return 2;
 	}
-	JDgpDbTableCreater dtc;
-	if( ! dtc.create() ){
-		std::cerr<<dtc.errorString().toStdString()<<std::endl;
+	
+	JRootUserInserter rui;
+	if( ! rui.insert( argumentMap.value("rootpassword" ) ) ){
+		std::cerr<<rui.errorString().toStdString()<<std::endl;
 		return 3;
 	}
 	return 0;

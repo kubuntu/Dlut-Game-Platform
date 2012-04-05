@@ -1,4 +1,3 @@
 TEMPLATE  = subdirs
-SUBDIRS = lib testlib packager
-testlib.depends = lib
+SUBDIRS = lib packager
 packager.depends = lib

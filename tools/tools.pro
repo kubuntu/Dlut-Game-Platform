@@ -2,7 +2,11 @@ TEMPLATE  = subdirs
 SUBDIRS = \
 	CreateDbTable \
 	libarg \
-	CreateDbSetting
+	CreateDbSetting \
+	InsertRootUser \
+	libdbconnecter
 libarg.file = libarg/arg.pro
-CreateDbTable.depends = libarg
+libdbconnecter.file = libdbconnecter/dbconnecter.pro
+CreateDbTable.depends = libarg libdbconnecter
 CreateDbSetting.depends = libarg
+InsertRootUser.depends = libarg libdbconnecter

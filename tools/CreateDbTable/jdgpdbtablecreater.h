@@ -2,7 +2,6 @@
 #define JDGPDBTABLECREATER_H
 
 #include <QString>
-class JDbConnecter ;
 
 class JDgpDbTableCreater{
 public:
