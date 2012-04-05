@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>欢迎来到“地瓜皮”项目主页</title>
+		<link href="../static/style.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="../static/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+	<div class="content ui-tabs ui-widget ui-widget-content ui-corner-all">
+		<!-- Tabs -->
+		<div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+			<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+				<li><a class="ui-state-default ui-corner-top" href="platform.html">项目介绍</a></li>
+				<li><a class="ui-state-default ui-corner-top ui-state-active" href="tech.html">技术概述</a></li>
+				<li><a class="ui-state-default ui-corner-top" href="member.html">成员介绍</a></li>
+				<li><a class="ui-state-default ui-corner-top" href="partake.html">参与项目</a></li>
+				<li><a class="ui-state-default ui-corner-top" href="contact.html">联系我们</a></li>
+			</ul>
+		</div>
+		<div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+			<h2>技术概述</h2>
+				<ul>
+					<li>DGP的核心部分使用的编程语言为C++，使用的图形界面库为Qt4，版本为Qt 4.7.0</li>
+					<li>
+						DGP支持多编程语言及多编程框架。<br/>
+						参见本文“DGP关于支持多编程语言的设想”一节。
+					</li>
+					<li>
+						DGP使用git工具托管在<a class="link" href="https://github.com/">github.com</a>上<br/>
+						本项目源代码地址为： <a class="link" href="https://github.com/lexdene/Dlut-Game-Platform">https://github.com/lexdene/Dlut-Game-Platform</a><br />
+						不熟悉Git工具的同学请参见：<a class="link" href="../wiki/learn.html">“地瓜皮”项目相关学习资料</a>
+					</li>
+				</ul>
+			
+				<h2>目前已经确定的部分细节</h2>
+				<ol>
+					<li>
+						<h3>身份</h3>
+						<div>参与本项目的身份有五种：</div>
+						<ul>
+							<li>游戏玩家</li>
+							<li>游戏开发者：由游戏开发者独立自主地进行游戏开发，并上传至平台提供给游戏玩家进行游戏</li>
+							<li>平台管理者：负责宣传，招募游戏开发者，管理游戏开发者</li>
+							<li>平台运维者：负责保证平台服务器端正常运行及维护工作</li>
+							<li>平台开发者：负责开发平台的核心部分并为游戏开发者提供API接口</li>
+						</ul>
+					</li>
+					<li>
+						<h3>项目结构</h3>
+						<div>基本结构有五部分：MainServer, GameServer, GameFileServer, MainClient, GameClient。</div>
+						<ul>
+							<li>MainServer：主服务器。管理用户信息，管理游戏信息，处理用户登录，用户信息下载，游戏列表下载。由“平台开发者”负责开发维护。</li>
+							<li>GameServer：游戏服务器。每个游戏均有一个GameServer，负责处理游戏数据，被设计成单独的一个进程，甚至可以与 MainServer运行在不同的机器上。GameServer由“游戏开发者” 设计并实现。</li>
+							<li>GameFileServer：游戏客户端下载服务器。负责提供给“游戏玩家”下载最新版的GameClient。目前使用http web server（如apache）。</li>
+							<li>MainClient：主客户端。负责登录，查看游戏列表，查看玩家信息等功能。同时负责从GameFileServer下载需要的最新版本的GameClient。由“平台开发者”负责开发维护。</li>
+							<li>GameClient：游戏客户端。每个游戏均有一个GameClient。由MainClient从GameFileServer上下载。GameClient被设计成单独的可执行程序。GameClient由“游戏开发者”设计。</li>
+						</ul>
+					</li>
+
+					<li>
+						<h3>关于支持多编程语言</h3>
+						<ul>
+							<li>DGP的核心部分（MainServer和MainClient）使用的编程语言为C++，使用的图形界面库为Qt4，但是游戏开发者在设计游戏时能够自由地使用任何程序设计语言。</li>
+							<li>GameClient与GameServer是一个独立的可执行程序。其中GameClient由MainClient通过系统调用启动。因此，任何可以编译得到独立可执行程序并能够接受命令行参数的程序设计语言都可以用来在DGP中设计游戏。</li>
+						</ul>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

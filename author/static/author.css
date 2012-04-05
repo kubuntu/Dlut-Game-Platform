@@ -1,0 +1,15 @@
+.name_ch{
+	font-size:30px;
+	color:red;
+	text-align:center;
+}
+.baseinfo{
+	width:200px;
+	float:right;
+}
+.avatar{
+	display:inline;
+}
+.avatar img{
+	width:300px;
+}
