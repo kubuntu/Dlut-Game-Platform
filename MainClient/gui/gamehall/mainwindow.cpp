@@ -156,7 +156,12 @@ void MainWindow::on_btn_start_game_clicked()
 void MainWindow::on_btn_refresh_myuserinfo_clicked()
 {
 	JID myUserID = JMainClientSocket::getInstance()->getSession()->getUserId();
-	m_myUserInfo = m_requestUserInfo->pullInformation(myUserID);
+	JUserInfo userInfo = m_requestUserInfo->pullInformation(myUserID);
+	if(userInfo.getUserId() > 0){
+		m_myUserInfo = userInfo ;
+	}else{
+		m_myUserInfo = JUserInfo(myUserID);
+	}
 	ui->text_userid->setText(QString::number(m_myUserInfo.getUserId()));
 	ui->text_nickname->setText(m_myUserInfo.getNickname());
 	ui->text_organization->setText(m_myUserInfo.getOrganization());

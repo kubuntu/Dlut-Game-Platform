@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
         return 0;
 	}
 	ERole role = JMainClientSocket::getInstance()->getSession()->getRole() ;
-	qDebug()<<"role="<<role ;
 	QWidget *win = NULL ;
 	switch(role){
 	case ROLE_GAMEPLAYER:
