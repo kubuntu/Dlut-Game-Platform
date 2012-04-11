@@ -52,3 +52,38 @@ JCode JSQLUserInfoDB::updateUserInfo(const JUserInfo &userInfo) {
 	
 	return 0 ;
 }
+
+bool JSQLUserInfoDB::isUserIdExist(JID id){
+	QSqlQuery query;
+	PREPARE( query ,
+			"select user_id from userinfo "
+			"where user_id= :userId" ,
+			false );
+	
+	query.bindValue(":userId", id);
+	
+	EXEC( query , false );
+	
+	if(query.size() > 0){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+JCode JSQLUserInfoDB::insertUserInfo(const JUserInfo& userInfo){
+	QSqlQuery query;
+	PREPARE( query ,
+			" INSERT INTO userinfo "
+			" (user_id,nickname,org) "
+			" values(:userId,:nickname,:org) ",
+			EPrepareFailed );
+	
+	query.bindValue(":nickname", userInfo.getNickname());
+	query.bindValue(":org", userInfo.getOrganization());
+	query.bindValue(":userId", userInfo.getUserId());
+	
+	EXEC( query , EExecFailed );
+	
+	return 0 ;
+}

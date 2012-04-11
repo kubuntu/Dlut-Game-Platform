@@ -93,7 +93,12 @@ JCode JMainServerInformationManager::updateData(const JHead& head,const QByteArr
 			{
 				JUserInfo userinfo;
 				userinfo.fromByteArray(data);
-				databaseFactory->getUserInfoDB()->updateUserInfo(userinfo);
+				JAbstractUserInfoDB *db = databaseFactory->getUserInfoDB() ;
+				if( db->isUserIdExist(userinfo.getUserId()) ){
+					db->updateUserInfo(userinfo);
+				}else{
+					db->insertUserInfo(userinfo);
+				}
 			}
 			break;
 		default:

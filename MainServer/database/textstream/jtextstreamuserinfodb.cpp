@@ -44,6 +44,17 @@ JCode JTextStreamUserInfoDB::updateUserInfo(const JUserInfo& userinfo)
 	return 0;
 }
 
+bool JTextStreamUserInfoDB::isUserIdExist(JID id)
+{
+	return s_users.contains(id);
+}
+
+JCode JTextStreamUserInfoDB::insertUserInfo(const JUserInfo& userinfo)
+{
+	s_users.insert(userinfo.getUserId(),userinfo);
+	return 0;
+}
+
 void JTextStreamUserInfoDB::flush()
 {
 	if(s_users.isEmpty()) return;

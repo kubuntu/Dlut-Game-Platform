@@ -9,6 +9,8 @@ public:
 	explicit JTextStreamUserInfoDB(QObject* parent=0);
 	JUserInfo getUserInfoById(JID id);
 	JCode updateUserInfo(const JUserInfo& userinfo);
+	bool isUserIdExist(JID id);
+	JCode insertUserInfo(const JUserInfo& userinfo);
 
 	static void flush();
 };
