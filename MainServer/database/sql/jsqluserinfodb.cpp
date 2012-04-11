@@ -5,6 +5,7 @@
 #include <Global/CodeError>
 
 #include <QSqlQuery>
+#include <QSqlDriver>
 #include <QVariant>
 #include <QSqlError>
 #include <QDebug>
@@ -56,18 +57,26 @@ JCode JSQLUserInfoDB::updateUserInfo(const JUserInfo &userInfo) {
 bool JSQLUserInfoDB::isUserIdExist(JID id){
 	QSqlQuery query;
 	PREPARE( query ,
-			"select user_id from userinfo "
-			"where user_id= :userId" ,
+			"select * from userinfo "
+			"where user_id = :userId" ,
 			false );
 	
 	query.bindValue(":userId", id);
 	
 	EXEC( query , false );
 	
-	if(query.size() > 0){
-		return true;
+	if( query.driver()->hasFeature(QSqlDriver::QuerySize) ){
+		if(query.size() > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}else{
-		return false;
+		if(query.next()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
 

@@ -5,6 +5,7 @@
 #include <Global/CodeError>
 
 #include <QSqlQuery>
+#include <QSqlDriver>
 #include <QVariant>
 #include <QSqlError>
 #include <QDebug>
@@ -103,10 +104,18 @@ bool JSQLGameInfoDB::isGameIdExist(JID id)
 	
 	EXEC( query , false );
 	
-	if(query.size() > 0){
-		return true;
+	if( query.driver()->hasFeature(QSqlDriver::QuerySize) ){
+		if(query.size() > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}else{
-		return false;
+		if(query.next()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
 
