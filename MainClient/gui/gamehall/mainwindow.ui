@@ -21,48 +21,19 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="7" column="1" colspan="2">
-     <widget class="QTextBrowser" name="tb_game">
-      <property name="minimumSize">
-       <size>
-        <width>200</width>
-        <height>0</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="1">
-     <widget class="QPushButton" name="btn_start_game">
-      <property name="text">
-       <string>start game</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="3" rowspan="4" colspan="3">
-     <widget class="JWidgetHallTalk" name="widget" native="true">
-      <property name="minimumSize">
-       <size>
-        <width>250</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>16777215</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
+    <item row="0" column="0">
      <widget class="QLabel" name="lab_game">
       <property name="text">
        <string>application list</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="1" rowspan="5" colspan="2">
-     <widget class="QListWidget" name="list_game"/>
+    <item row="0" column="1">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </spacer>
     </item>
     <item row="0" column="2">
      <widget class="QPushButton" name="btn_refresh_list">
@@ -71,120 +42,139 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
-     <widget class="QLabel" name="lab_userid">
-      <property name="maximumSize">
+    <item row="1" column="0" rowspan="3" colspan="3">
+     <widget class="QListWidget" name="list_game"/>
+    </item>
+    <item row="4" column="0" colspan="3">
+     <widget class="QTextBrowser" name="tb_game"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="btn_start_game">
+      <property name="text">
+       <string>start game</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4" colspan="2">
+     <layout class="QGridLayout" name="gridLayout_userinfo">
+      <item row="0" column="0">
+       <widget class="QLabel" name="lab_userid">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>id</string>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="text_userid">
+        <property name="text">
+         <string>-1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lab_nickname">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>nick</string>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="text_nickname">
+        <property name="text">
+         <string>no nick name</string>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lab_organization">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>org</string>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="text_organization">
+        <property name="text">
+         <string>no organization</string>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="5">
+     <layout class="QHBoxLayout" name="horizontalLayout_cru">
+      <item>
+       <widget class="QToolButton" name="btn_changepswd">
+        <property name="toolTip">
+         <string>change password</string>
+        </property>
+        <property name="text">
+         <string>C</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_refresh_myuserinfo">
+        <property name="toolTip">
+         <string>refresh my user info</string>
+        </property>
+        <property name="text">
+         <string>R</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_update_myuserinfo">
+        <property name="toolTip">
+         <string>update my user info</string>
+        </property>
+        <property name="text">
+         <string>U</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="4" rowspan="3" colspan="2">
+     <widget class="JWidgetHallTalk" name="widget" native="true">
+      <property name="minimumSize">
        <size>
-        <width>16777215</width>
-        <height>30</height>
+        <width>250</width>
+        <height>0</height>
        </size>
-      </property>
-      <property name="text">
-       <string>id</string>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4">
-     <widget class="QLabel" name="text_userid">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>-1</string>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QLabel" name="lab_nickname">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>nick</string>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="4">
-     <widget class="QLabel" name="text_nickname">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>no nick name</string>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="3">
-     <widget class="QLabel" name="lab_organization">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>org</string>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="4">
-     <widget class="QLabel" name="text_organization">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>no organization</string>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="3">
-     <widget class="QPushButton" name="btn_update_myuserinfo">
-      <property name="text">
-       <string>update</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="3">
-     <widget class="QPushButton" name="btn_changepswd">
-      <property name="text">
-       <string>change password</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="4">
-     <widget class="QPushButton" name="btn_refresh_myuserinfo">
-      <property name="text">
-       <string>refresh</string>
       </property>
      </widget>
     </item>
