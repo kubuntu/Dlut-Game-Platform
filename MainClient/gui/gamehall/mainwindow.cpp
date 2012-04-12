@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     palette.setColor(QPalette::Text, QColor(Qt::green));
     palette.setColor(QPalette::HighlightedText, QColor(Qt::red));
     ui->list_game->setPalette(palette);
-    ui->tb_game->setPalette(palette);
+    ui->widget_gameinfo->setPalette(palette);
 
 	m_requestUserInfo=new JRequestInformation<JUserInfo>(this);
 	connect(JMainClientSocket::getInstance(),
@@ -67,7 +67,7 @@ void MainWindow::showEvent ( QShowEvent * event)
 void MainWindow::on_btn_refresh_list_clicked()
 {
     ui->list_game->clear();
-    ui->tb_game->clear();
+    ui->widget_gameinfo->clear();
 	m_currentId=-1;
 	updateGameList();
 }
@@ -105,17 +105,12 @@ void MainWindow::updateGameList()
 void MainWindow::updateGameInfo(JID gameId)
 {
 	JGameInfo gi=m_requestGameInfo->pullInformation(gameId);
+	ui->widget_gameinfo->setGameInfo(gi);
 	JUserInfo author=m_requestUserInfo->pullInformation(gi.getAuthor());
-	ui->tb_game->setText(tr("<font color=red>name</font> : %1 <br>"
-							"<font color=red>author</font> : %2 %3 %4<br>"
-							"<font color=red>version</font> : %5 <br>"
-							"<font color=red>introduction</font> :<br>"
-							"%6<br>").arg(gi.getName())
-						 .arg(author.getUserId())
-						 .arg(author.getNickname())
-						 .arg(author.getOrganization())
-						 .arg(gi.getVersion().getData())
-						 .arg(gi.getIntroduction()));
+	if( -1 == author.getUserId() ){
+		author = JUserInfo(gi.getAuthor() );
+	}
+	ui->widget_gameinfo->setUserInfo(author);
 }
 
 void MainWindow::on_btn_start_game_clicked()

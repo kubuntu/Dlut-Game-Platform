@@ -29,7 +29,8 @@ SOURCES += main/main.cpp \
     gui/admin/adminmainwindow.cpp \
     gui/gamehall/jdialogchangepassword.cpp \
     service/jinputpasswordvalidater.cpp \
-    gui/admin/jwidgetaddinvitationcode.cpp
+    gui/admin/jwidgetaddinvitationcode.cpp \
+    gui/gamehall/jwidgetgameinfo.cpp
 HEADERS += gui/gamehall/mainwindow.h \
     gui/selectserver/jcomboselectserver.h \
     gui/login/jdlglogin.h \
@@ -53,7 +54,8 @@ HEADERS += gui/gamehall/mainwindow.h \
     gui/admin/adminmainwindow.h \
     gui/gamehall/jdialogchangepassword.h \
     service/jinputpasswordvalidater.h \
-    gui/admin/jwidgetaddinvitationcode.h
+    gui/admin/jwidgetaddinvitationcode.h \
+    gui/gamehall/jwidgetgameinfo.h
 FORMS += gui/gamehall/mainwindow.ui \
     gui/login/jdlglogin.ui \
     gui/selectserver/jdlgnewserver.ui \
@@ -66,6 +68,7 @@ FORMS += gui/gamehall/mainwindow.ui \
     gui/admin/jformaddgame.ui \
     gui/admin/adminmainwindow.ui \
     gui/gamehall/jdialogchangepassword.ui \
-    gui/admin/jwidgetaddinvitationcode.ui
+    gui/admin/jwidgetaddinvitationcode.ui \
+    gui/gamehall/jwidgetgameinfo.ui
 RESOURCES += \
     res/sources.qrc

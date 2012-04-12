@@ -46,7 +46,7 @@
      <widget class="QListWidget" name="list_game"/>
     </item>
     <item row="4" column="0" colspan="3">
-     <widget class="QTextBrowser" name="tb_game"/>
+     <widget class="JWidgetGameInfo" name="widget_gameinfo"/>
     </item>
     <item row="5" column="0">
      <widget class="QPushButton" name="btn_start_game">
@@ -197,6 +197,12 @@
    <class>JWidgetHallTalk</class>
    <extends>QWidget</extends>
    <header>gui/gamehall/jwidgethalltalk.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>JWidgetGameInfo</class>
+   <extends>QWidget</extends>
+   <header>gui/gamehall/jwidgetgameinfo.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
