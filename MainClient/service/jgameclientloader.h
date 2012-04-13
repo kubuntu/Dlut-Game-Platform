@@ -26,6 +26,7 @@ public:
 	void start();
 private:
 	void setErrorString(const QString& error);
+	static QString getDownloadUrl(const JGameInfo& gameInfo);
 	QString getPartialSaveFilePath()const;
 	QString getArchiveSaveFilePath()const;
 	QString getInstallDirPath()const;
