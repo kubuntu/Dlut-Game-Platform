@@ -10,7 +10,6 @@ const static QString s_osStrList[]={
     "error",
 };
 
-
 /*!
     \class PackageMetainfo
     这个类记录的信息必须是人类可读的。
@@ -185,4 +184,17 @@ QByteArray PackageMetainfo::toXML(const PackageMetainfo& info){
     eleRunFilePath.appendChild(txtRunFilePath);
 
     return dom.toByteArray();
+}
+
+PackageMetainfo::OS PackageMetainfo::currentOs(){
+#ifdef Q_OS_LINUX
+	return PackageMetainfo::X11;
+#elif defined Q_OS_WIN32
+	return PackageMetainfo::SBMSWIN;
+#endif
+	return PackageMetainfo::MAX;
+}
+
+const QString& PackageMetainfo::currentOsStr(){
+	return s_osStrList[ currentOs() ];
 }

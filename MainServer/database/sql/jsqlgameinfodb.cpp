@@ -41,7 +41,7 @@ JGameInfo JSQLGameInfoDB::getGameInfoById(JID ID) {
 						 query.value(3).toInt(),
 						 query.value(4).toString(),
 						 query.value(5).toInt(),
-						 QUrl(query.value(6).toString())
+						 query.value(6).toString()
 						 );
 	else
 		return JGameInfo();
@@ -84,7 +84,7 @@ JCode JSQLGameInfoDB::updateGameInfo(const JGameInfo &gameInfo) {
 	query.bindValue(":runnerID", gameInfo.getRunner());
 	query.bindValue(":introdution", gameInfo.getIntroduction());
 	query.bindValue(":serverID", gameInfo.getServerId());
-	query.bindValue(":downUrl", gameInfo.getDownloadUrl().toString());
+	query.bindValue(":downUrl", gameInfo.getDownloadUrl());
 	query.bindValue(":gameID", gameInfo.getGameId());
 	
 	EXEC( query , EExecFailed );
@@ -134,7 +134,7 @@ JCode JSQLGameInfoDB::insertGameInfo(const JGameInfo& gameInfo)
 	query.bindValue(":runnerID", gameInfo.getRunner());
 	query.bindValue(":introduction", gameInfo.getIntroduction());
 	query.bindValue(":serverID", gameInfo.getServerId());
-	query.bindValue(":downUrl", gameInfo.getDownloadUrl().toString());
+	query.bindValue(":downUrl", gameInfo.getDownloadUrl());
 	query.bindValue(":gameID", gameInfo.getGameId());
 	
 	EXEC( query , EExecFailed );

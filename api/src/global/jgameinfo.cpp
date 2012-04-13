@@ -42,7 +42,7 @@ JGameInfo::JGameInfo(JID gameId,
 		  JID runner,
 		  const QString& introduction,
 		  JID serverId,
-		  const QUrl& downloadUrl)
+		  const QString& downloadUrl)
 	:JSerializableData(gameId),
 	m_name(name),
 	m_version(version),
@@ -160,7 +160,7 @@ JID JGameInfo::getServerId()const
 /*!
     \brief 返回游戏客户端下载地址
 */
-const QUrl& JGameInfo::getDownloadUrl()const
+const QString& JGameInfo::getDownloadUrl()const
 {
 	return m_downloadUrl;
 }

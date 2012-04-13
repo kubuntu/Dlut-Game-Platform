@@ -57,9 +57,20 @@ const QString& JGameClientLoader::getErrorString()const
 
 void JGameClientLoader::download()
 {
+	QString downloadUrl = m_gameInfo.getDownloadUrl() ;
+	// name
+	downloadUrl.replace( "${name}" , m_gameInfo.getName() );
+	// version
+	downloadUrl.replace( "${version}" , m_gameInfo.getVersion().toString() );
+	// os
+	QString os = PackageMetainfo::currentOsStr();
+	qDebug()<<"current os : "<<os;
+	downloadUrl.replace( "${os}" , os );
+	qDebug()<<"download url : "<<downloadUrl;
 	m_downloader->start(
-				m_gameInfo.getDownloadUrl(),
-				getPartialSaveFilePath());
+		downloadUrl,
+		getPartialSaveFilePath()
+	);
 }
 
 bool JGameClientLoader::install()
@@ -161,7 +172,7 @@ void JGameClientLoader::setErrorString(const QString& error)
 QString JGameClientLoader::getPartialSaveFilePath()const
 {
 	QString fileName ;
-	QFileInfo f(m_gameInfo.getDownloadUrl().path());
+	QFileInfo f(m_gameInfo.getDownloadUrl());
 	fileName = f.fileName();
 	qDebug()<<__FUNCTION__<<fileName;
 	return QString("temp/partial/%1")
@@ -171,7 +182,7 @@ QString JGameClientLoader::getPartialSaveFilePath()const
 QString JGameClientLoader::getArchiveSaveFilePath()const
 {
 	QString fileName ;
-	QFileInfo f(m_gameInfo.getDownloadUrl().path());
+	QFileInfo f(m_gameInfo.getDownloadUrl());
 	fileName = f.fileName();
 	qDebug()<<__FUNCTION__<<fileName;
 	return QString("temp/%1")

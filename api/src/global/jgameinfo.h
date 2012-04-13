@@ -5,7 +5,7 @@
 #include "jglobal.h"
 #include "jversion.h"
 
-#include <QUrl>
+#include <QString>
 
 /*!
     \file jgameinfo.h
@@ -24,7 +24,7 @@ public:
 			  JID runner,
 			  const QString& introduction,
 			  JID serverId,
-			  const QUrl& downloadUrl);
+			  const QString& downloadUrl);
 	void fromByteArray(const QByteArray& data);
 	QByteArray toByteArray()const;
 	NetworkData::JHead head()const;
@@ -36,7 +36,7 @@ public:
 	JID getRunner()const;
 	const QString& getIntroduction()const;
 	JID getServerId()const;
-	const QUrl& getDownloadUrl()const;
+	const QString& getDownloadUrl()const;
 private:
 	QString m_name;
 	JVersion m_version;
@@ -44,7 +44,7 @@ private:
 	JID m_runner;
 	QString m_introduction;
 	JID m_serverId;
-	QUrl m_downloadUrl;
+	QString m_downloadUrl;
 };
 
 #endif // JGAMEINFO_H

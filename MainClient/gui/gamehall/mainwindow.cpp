@@ -132,7 +132,7 @@ void MainWindow::on_btn_start_game_clicked()
 	JInstalledAppManager* iam = JInstalledAppManager::getInstance() ;
 	if( iam->isInstalled(gameId) ){
 		PackageMetainfo metainfo = iam->getMetainfo(gameId) ;
-		if( metainfo.gameId() && JVersion::fromString( metainfo.version() ) == gameinfo.getVersion() ){
+		if( metainfo.gameId() == gameId && JVersion::fromString( metainfo.version() ) == gameinfo.getVersion() ){
 			JGameClientLoader gameClientLoader;
 			gameClientLoader.setParent(parent());
 			gameClientLoader.setPseudoServer(SHost(QHostAddress::LocalHost,JPseudoServer::getInstance()->serverPort()));

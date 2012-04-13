@@ -46,7 +46,7 @@ void JFormAddGame::on_btn_game_add_clicked()
 			ui->edt_runnerid->text().toInt(),
 			ui->edt_intro->text(),
 			ui->edt_serverid->text().toInt(),
-			QUrl(ui->edt_downloadurl->text())
+			ui->edt_downloadurl->text()
 			);
 	ui->txt_msg_add_game->append(tr("begin send game info"));
 	JUploadGameInfo ugi;

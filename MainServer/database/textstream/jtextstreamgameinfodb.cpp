@@ -38,7 +38,7 @@ JTextStreamGameInfoDB::JTextStreamGameInfoDB(QObject *parent) :
 							   runner,
 							   introduction,
 							   serverId,
-							   QUrl(downloadUrl));
+							   downloadUrl);
 			s_gameinfos.insert(gameinfo.getGameId(),gameinfo);
 		}
 	}
@@ -54,7 +54,7 @@ JGameInfo JTextStreamGameInfoDB::getGameInfoById(JID id)
 										-1,
 										"no such game on server database",
 										-1,
-										QUrl()));
+										QString()));
 }
 
 JGameList JTextStreamGameInfoDB::getGameList()
@@ -100,7 +100,7 @@ void JTextStreamGameInfoDB::flush()
 		stream<<gameinfo.getRunner()<<'#';
 		stream<<gameinfo.getIntroduction()<<'#';
 		stream<<gameinfo.getServerId()<<'#';
-		stream<<gameinfo.getDownloadUrl().toString();
+		stream<<gameinfo.getDownloadUrl();
 		stream<<endl;
 	}
 	s_gameinfos.clear();

@@ -34,6 +34,9 @@ public:
 
     static PackageMetainfo fromXML(const QByteArray& data);
     static QByteArray toXML(const PackageMetainfo& info);
+    
+    static OS currentOs();
+    static const QString& currentOsStr();
 private:
     int m_gameId;
     QString m_name;
