@@ -1,3 +1,3 @@
 INCLUDEPATH += $$PWD/include
+include(../../output.pri)
 LIBS += -larg
-CONFIG += use_prl

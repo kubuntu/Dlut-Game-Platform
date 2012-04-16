@@ -1,7 +1,7 @@
 QT -= gui
 TEMPLATE = lib
 VERSION = 0.1.0
-CONFIG += create_prl
+include(../../output.pri)
 
 HEADERS += \
 	src/jargumentanalyzer.h

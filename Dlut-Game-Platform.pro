@@ -1,6 +1,12 @@
 TEMPLATE  = subdirs
-SUBDIRS = api MainClient MainServer SnakeClient SnakeServer \
-    CreateDatabase package
+SUBDIRS = \
+    package \
+    api \
+    MainClient \
+    MainServer \
+    SnakeClient \
+    SnakeServer \
+    CreateDatabase
 SUBDIRS += tools
 MainClient.depends = api
 MainClient.depends = package

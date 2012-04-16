@@ -6,7 +6,6 @@ CONFIG -= app_bundle
 TEMPLATE = app
 include(database/database.pri)
 include(../api/api.pri)
-unix:!mac:QMAKE_LFLAGS += -Wl,--rpath=lib/
 
 HEADERS += \
     network/jmainserver.h \

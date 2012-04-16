@@ -3,7 +3,8 @@ QT -= gui
 TEMPLATE = lib
 TARGET = dgppkg
 VERSION = 0.0.1
-CONFIG += create_prl
+
+include(../../output.pri)
 
 HEADERS += \
     src/packagemetainfo.h \
@@ -20,3 +21,7 @@ SOURCES += \
     src/dgppkgbase.cpp
 
 LIBS += -lzip
+win32{
+	INCLUDEPATH += C:/libzip/include
+	LIBS += -LC:/libzip/lib
+}

@@ -2,7 +2,7 @@ QT += network
 TEMPLATE = lib
 TARGET = dgpapi
 VERSION = 0.1.1
-CONFIG += create_prl
+include (../output.pri)
 
 HEADERS += \
     src/network/jnetworkdataprocessorbase.h \

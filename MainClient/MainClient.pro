@@ -2,8 +2,6 @@ TARGET = MainClient
 TEMPLATE = app
 include(../api/api.pri)
 include(../package/lib/lib.pri)
-LIBS += -L../package/lib/
-unix:!mac:QMAKE_LFLAGS += -Wl,--rpath=lib/
 
 SOURCES += main/main.cpp \
     gui/gamehall/mainwindow.cpp \

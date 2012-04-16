@@ -1,3 +1,3 @@
 INCLUDEPATH += $$PWD/include
+include(../../output.pri)
 LIBS += -ldbconnecter
-CONFIG += use_prl

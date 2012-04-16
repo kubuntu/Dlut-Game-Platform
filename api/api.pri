@@ -1,5 +1,4 @@
 INCLUDEPATH += $$PWD/include
-LIBS += -L../api/ -ldgpapi
-unix:!mac:QMAKE_LFLAGS += -Wl,--rpath=../api
-CONFIG += use_prl
+include(../output.pri)
+LIBS += -ldgpapi
 QT += network
