@@ -4,6 +4,7 @@
 #include <Global/Login>
 #include <Socket/JMainClientSocket>
 #include <Session/JSession>
+#include <Util/JLog>
 
 #include "gui/gamehall/mainwindow.h"
 #include "gui/login/jdlglogin.h"
@@ -20,13 +21,22 @@ void loadStyles(){
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
+	a.setApplicationName("MainClient");
 	loadStyles();
-	if(JDlgSelectServer().exec() ==QDialog::Rejected){
-		return 0;
+	int rtn ;
+	{
+		rtn = JDlgSelectServer().exec() ;
+		jLog()<<"dlg select server rtn :"<<rtn<<endl;
+		if( rtn != QDialog::Accepted ){
+			return 0;
+		}
 	}
-	if(JDlgLogin().exec()==QDialog::Rejected)
-    {
-        return 0;
+	{
+		rtn = JDlgLogin().exec() ;
+		jLog()<<"dlg login rtn : "<<rtn<<endl;
+		if( rtn != QDialog::Accepted ){
+			return 0;
+		}
 	}
 	ERole role = JMainClientSocket::getInstance()->getSession()->getRole() ;
 	QWidget *win = NULL ;
@@ -44,7 +54,7 @@ int main(int argc, char *argv[])
 	if( NULL != win ){
 		win->show() ;
 	}
-	int rtn = a.exec() ;
+	rtn = a.exec() ;
 	delete win ;
     return rtn;
 }

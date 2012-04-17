@@ -3,10 +3,7 @@ SUBDIRS = \
     package \
     api \
     MainClient \
-    MainServer \
-    SnakeClient \
-    SnakeServer \
-    CreateDatabase
+    MainServer
 SUBDIRS += tools
 MainClient.depends = api
 MainClient.depends = package

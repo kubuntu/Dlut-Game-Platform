@@ -22,6 +22,8 @@ public:
 	
 	QString toString()const;
 	static JVersion fromString(const QString& str);
+	
+	static JVersion platformVersion();
 private:
 	bool isLowerThan(const JVersion&)const;
 	bool isHigherThan(const JVersion&)const;

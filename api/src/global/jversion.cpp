@@ -105,6 +105,14 @@ JVersion JVersion::fromString(const QString& str)
 	return JVersion();
 }
 
+#define STR(a) _STR(a)
+#define _STR(a) #a
+JVersion JVersion::platformVersion()
+{
+	QString fv = QString("%1.%2").arg( STR(VERSION) ).arg( STR(COMPILE_VERSION ) );
+	return fromString(fv);
+}
+
 /*!
 	\relates JVersion
 	\brief 将版本号\a ver 输出到\a stream 流中。

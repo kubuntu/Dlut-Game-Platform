@@ -1,7 +1,7 @@
 QT += network
 TEMPLATE = lib
 TARGET = dgpapi
-VERSION = 0.1.1
+include (../version.pri)
 include (../output.pri)
 
 HEADERS += \
@@ -55,7 +55,8 @@ HEADERS += \
     src/global/jhead.h \
     src/network/jclientchangepasswordprocessor.h \
     src/request/juploadinvitationcode.h \
-    src/request/jrequestinformation.h
+    src/request/jrequestinformation.h \
+    src/global/jlog.h
 SOURCES += src/network/jsocketbase.cpp \
     src/network/jclientsocketbase.cpp \
     src/network/jserversocketbase.cpp \
@@ -100,4 +101,5 @@ SOURCES += src/network/jsocketbase.cpp \
     src/global/jhead.cpp \
     src/network/jclientchangepasswordprocessor.cpp \
     src/request/juploadinvitationcode.cpp \
-    src/request/jrequestinformation.cpp
+    src/request/jrequestinformation.cpp \
+    src/global/jlog.cpp
