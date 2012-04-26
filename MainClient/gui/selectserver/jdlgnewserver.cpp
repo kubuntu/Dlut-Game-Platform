@@ -1,7 +1,7 @@
 #include "jdlgnewserver.h"
 #include "ui_jdlgnewserver.h"
 
-#include <QPalette>
+#include <QMessageBox>
 
 JDlgNewServer::JDlgNewServer(QWidget *parent) :
     QDialog(parent),
@@ -18,36 +18,12 @@ JDlgNewServer::JDlgNewServer(QWidget *parent) :
 	QIntValidator *validator_port = new QIntValidator(this);
 	validator_port->setRange(0,65535);
 	ui->edt_port->setValidator(validator_port);
-    QPalette palette;
-    palette.setColor(QPalette::Background, QColor(0,0,0));
-    setPalette(palette);
-    palette.setColor(QPalette::Base, QColor(0,0,0));
-     palette.setColor(QPalette::WindowText, QColor(Qt::green));
-     palette.setColor(QPalette::Text, QColor(Qt::red));
-     ui->edt_address->setPalette(palette);
-     ui->edt_port->setPalette(palette);
-     ui->lab_address->setPalette(palette);
-     ui->lab_port->setPalette(palette);
 }
 
 JDlgNewServer::~JDlgNewServer()
 {
     delete ui;
 }
-
-void JDlgNewServer::changeEvent(QEvent *e)
-{
-    QDialog::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
-}
-
-#include <QMessageBox>
 
 void JDlgNewServer::accept()
 {

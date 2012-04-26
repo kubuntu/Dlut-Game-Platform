@@ -68,5 +68,3 @@ FORMS += gui/gamehall/mainwindow.ui \
     gui/gamehall/jdialogchangepassword.ui \
     gui/admin/jwidgetaddinvitationcode.ui \
     gui/gamehall/jwidgetgameinfo.ui
-RESOURCES += \
-    res/sources.qrc

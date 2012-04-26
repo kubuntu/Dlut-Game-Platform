@@ -1,6 +1,25 @@
 QLabel{
-    font-size:20px;
-    background:transparent;
-    background-image:url(:/bg.png);
-    color:yellow;
+	font-size:20px;
+	background:transparent;
+	color:green;
+}
+QDialog , QMainWindow , QListView , QListWidget , QTextBrowser , QFrame{
+	background:black;
+}
+QListView::item , QListWidget::item{
+	color:green;
+	background:transparent;
+}
+QListView::item:selected , QListWidget::item:selected{
+	color:red;
+}
+QLabel#lab_text{
+	font-size:10px;
+	color:yellow;
+	margin-left:50px;
+}
+QDialog{
+	background-image:url(styles/DGP1.png);
+	background-repeat:no-repeat;
+	background-position:top center;
 }

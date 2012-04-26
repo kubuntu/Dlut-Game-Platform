@@ -4,7 +4,7 @@
 #include <ClientRequest/JUploadInvitationCode>
 
 JWidgetAddInvitationCode::JWidgetAddInvitationCode(QWidget *parent) :
-    QWidget(parent),
+    QFrame(parent),
     ui(new Ui::JWidgetAddInvitationCode)
 {
     ui->setupUi(this);
@@ -39,16 +39,20 @@ void JWidgetAddInvitationCode::on_btn_rand_create_clicked()
 void JWidgetAddInvitationCode::on_btn_send_clicked()
 {
 	if(ui->edt_code->text().isEmpty()) return ;
+	QString code = ui->edt_code->text();
 
 	JUploadInvitationCode uic;
-	JCode result = uic.pushInvitationCode(ui->edt_code->text());
+	JCode result = uic.pushInvitationCode(code);
 	if( 0 == result ){
 		ui->textBrowser->append(
-					tr("add success")
+					tr("add code `%1` success")
+					.arg(code)
 					);
+		ui->edt_code->clear();
 	}else{
 		ui->textBrowser->append(
-					tr("add failed : %1")
+					tr("add code `%1` failed : %2")
+					.arg(code)
 					.arg(result)
 					);
 	}

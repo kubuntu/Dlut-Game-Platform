@@ -1,13 +1,13 @@
 #ifndef JFORMADDGAME_H
 #define JFORMADDGAME_H
 
-#include <QWidget>
+#include <QFrame>
 
 namespace Ui {
     class JFormAddGame;
 }
 
-class JFormAddGame : public QWidget
+class JFormAddGame : public QFrame
 {
     Q_OBJECT
 public:

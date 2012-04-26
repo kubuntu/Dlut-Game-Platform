@@ -8,7 +8,7 @@
 #include <Global/CodeError>
 
 JFormAddGame::JFormAddGame(QWidget *parent) :
-    QWidget(parent),
+    QFrame(parent),
     ui(new Ui::JFormAddGame)
 {
     ui->setupUi(this);

@@ -3,14 +3,14 @@
 
 #include <Global/Global>
 
-#include <QWidget>
+#include <QFrame>
 
 namespace Ui {
     class JWidgetAdmin;
 }
 class JSendCommand;
 
-class JWidgetAdmin : public QWidget
+class JWidgetAdmin : public QFrame
 {
     Q_OBJECT
 

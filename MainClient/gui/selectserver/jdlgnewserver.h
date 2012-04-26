@@ -17,7 +17,6 @@ public:
     SHallServer getServer()const;
 
 protected:
-    void changeEvent(QEvent *e);
     void accept();
 private:
     Ui::JDlgNewServer *ui;

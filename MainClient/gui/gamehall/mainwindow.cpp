@@ -3,7 +3,6 @@
 
 #include <QShowEvent>
 #include <QMessageBox>
-#include <QPalette>
 
 #include <ClientRequest/JRequestInformation>
 #include <Socket/JMainClientSocket>
@@ -24,44 +23,20 @@ MainWindow::MainWindow(QWidget *parent) :
     m_requestGameInfo->setObjectName(tr("gameinfosrv"));
 	m_currentId=-1;
     ui->setupUi(this);
-    QPalette palette;
-    palette.setColor(QPalette::Background, QColor(0,0,0));
-    setPalette(palette);
-    palette.setColor(QPalette::Base, QColor(0,0,0));
-    palette.setColor(QPalette::Text, QColor(Qt::green));
-    palette.setColor(QPalette::HighlightedText, QColor(Qt::red));
-    ui->list_game->setPalette(palette);
-    ui->widget_gameinfo->setPalette(palette);
 
 	m_requestUserInfo=new JRequestInformation<JUserInfo>(this);
 	connect(JMainClientSocket::getInstance(),
 			SIGNAL(disconnected()),
 			SLOT(On_socket_disconnected()));
 	m_requestGameList = new JRequestInformation<JGameList>(this);
+	
+	on_btn_refresh_list_clicked();
+	on_btn_refresh_myuserinfo_clicked();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::changeEvent(QEvent *e)
-{
-    QMainWindow::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
-}
-
-void MainWindow::showEvent ( QShowEvent * event)
-{
-	QMainWindow::showEvent(event);
-    on_btn_refresh_list_clicked();
-	on_btn_refresh_myuserinfo_clicked();
 }
 
 void MainWindow::on_btn_refresh_list_clicked()

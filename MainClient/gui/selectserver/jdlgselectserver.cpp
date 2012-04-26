@@ -6,7 +6,6 @@
 #include <Socket/JMainClientSocket>
 #include <Helper/JConnectHelper>
 
-#include <QPalette>
 #include <QMessageBox>
 
 JDlgSelectServer::JDlgSelectServer(QWidget *parent) :
@@ -14,11 +13,6 @@ JDlgSelectServer::JDlgSelectServer(QWidget *parent) :
     ui(new Ui::JDlgSelectServer)
 {
     ui->setupUi(this);
-    QPalette palette;
-    palette.setColor(QPalette::Background, QColor(0,0,0));
-    setPalette(palette);
-     palette.setColor(QPalette::WindowText, QColor(Qt::green));
-     ui->lab_text->setPalette(palette);
 }
 
 JDlgSelectServer::~JDlgSelectServer()

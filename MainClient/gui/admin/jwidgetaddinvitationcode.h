@@ -1,13 +1,13 @@
 #ifndef JWIDGETADDINVITATIONCODE_H
 #define JWIDGETADDINVITATIONCODE_H
 
-#include <QWidget>
+#include <QFrame>
 
 namespace Ui {
     class JWidgetAddInvitationCode;
 }
 
-class JWidgetAddInvitationCode : public QWidget
+class JWidgetAddInvitationCode : public QFrame
 {
     Q_OBJECT
 

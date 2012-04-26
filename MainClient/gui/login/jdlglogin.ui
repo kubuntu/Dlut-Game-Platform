@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Login Dialog</string>
+   <string>Login</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -152,28 +152,6 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>10</y>
-     <width>331</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="../../sources.qrc">:/res/DGP1.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-   <property name="wordWrap">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btn_register">
    <property name="geometry">
     <rect>
@@ -188,9 +166,6 @@
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="../../sources.qrc"/>
- </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

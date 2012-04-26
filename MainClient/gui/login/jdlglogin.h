@@ -20,13 +20,9 @@ class JDlgLogin : public QDialog {
 public:
     JDlgLogin(QWidget *parent = 0);
     ~JDlgLogin();
-protected:
-    void changeEvent(QEvent *e);
 protected slots:
     void accept();
     void error(QAbstractSocket::SocketError);
-protected:
-
 private:
     Ui::JDlgLogin *ui;
     JSettingLogin m_remember;

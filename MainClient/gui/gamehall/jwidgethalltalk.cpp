@@ -15,7 +15,8 @@ JWidgetHallTalk::JWidgetHallTalk(QWidget *parent) :
     ui->setupUi(this);
 	connect(m_processor,SIGNAL(rcvMessage(QString)),SLOT(showMessage(QString)));
 	connect(ui->lineEdit,SIGNAL(returnPressed()),SLOT(sendMessageInEdit()));
-	connect(ui->pushButton,SIGNAL(clicked()),SLOT(sendMessageInEdit()));
+	connect(ui->btn_send,SIGNAL(clicked()),SLOT(sendMessageInEdit()));
+	connect(ui->btn_clear,SIGNAL(clicked()),ui->textBrowser,SLOT(clear()));
 }
 
 JWidgetHallTalk::~JWidgetHallTalk()
@@ -32,7 +33,13 @@ void JWidgetHallTalk::sendMessageInEdit()
 {
 	JID myUserID = JMainClientSocket::getInstance()->getSession()->getUserId();
 	JUserInfo myUserInfo = m_requserinfo->getInformation(myUserID);
-	QString msg=tr("%1 says:%2").arg(myUserInfo.getNickname()).arg(ui->lineEdit->text());
+	QString nickname ;
+	if(myUserInfo.getNickname().isEmpty()){
+		nickname = tr("no nickname(%1)").arg(myUserID);
+	}else{
+		nickname = myUserInfo.getNickname() ;
+	}
+	QString msg=tr("%1 says:%2").arg(nickname).arg(ui->lineEdit->text());
 	m_processor->sendMessage(msg);
 	ui->lineEdit->clear();
 }

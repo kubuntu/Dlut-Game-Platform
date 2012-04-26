@@ -8,7 +8,7 @@
 #include <ClientRequest/JRequestUserRegister>
 
 JWidgetAdmin::JWidgetAdmin(QWidget *parent) :
-    QWidget(parent),
+    QFrame(parent),
     ui(new Ui::JWidgetAdmin)
 {
 	m_send=new JSendCommand(this);
