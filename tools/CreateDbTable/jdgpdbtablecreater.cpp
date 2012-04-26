@@ -4,8 +4,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 
-const static int NUM_TABLE = 5 ;
-const static QString strSqls[][3] = {
+const static int NUM_TABLE = 6 ;
+const static QString strSqls[NUM_TABLE][3] = {
 	{
 		"logininfo",
 		
@@ -22,9 +22,8 @@ const static QString strSqls[][3] = {
 		"user_id INTEGER PRIMARY KEY AUTOINCREMENT, "
 		"user_name VARCHAR(50) NOT NULL UNIQUE, "
 		"passwd VARCHAR(50) NOT NULL,"
-		"roles INTEGER NOT NULL DEFAULT '0');"
-		"INSERT INTO SQLITE_SEQUENCE "
-		"VALUES('logininfo', '1000');",
+		"roles INTEGER NOT NULL DEFAULT '0')"
+		
 	},
 	{
 		"userinfo",
@@ -101,6 +100,14 @@ const static QString strSqls[][3] = {
 		"`code` varchar(50) NOT NULL "
 		")"
 	},
+	{
+		"logininfo sequence",
+		
+		"",
+		
+		"INSERT INTO SQLITE_SEQUENCE "
+		"VALUES('logininfo', '1000')",
+	}
 };
 
 bool JDgpDbTableCreater::create(){
@@ -118,6 +125,13 @@ bool JDgpDbTableCreater::create(){
 	QSqlQuery query;
 	int i;
 	for(i=0;i<NUM_TABLE;++i){
+		/*
+		 sqlite 修改 AUTO_INCREMENT 需要额外的 sql 语句，
+		 因此语句的数目会不一样多。
+		 这里通过 isEmpty 判断是否结束，
+		 而非仅仅通过 NUM_TABLE 。
+		*/
+		if(strSqls[i][k].isEmpty()) break;
 		if( ! query.exec(strSqls[i][k]) ){
 			m_error = QString("create table %1 failed : %2")
 						.arg(strSqls[i][0])
